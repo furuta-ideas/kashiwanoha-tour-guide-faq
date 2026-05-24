@@ -1,0 +1,1232 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#1a73e8" />
+<title>柏の葉スマートシティツアー ガイドＦＡＱ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --blue: #1a73e8;
+    --red: #ea4335;
+    --yellow: #fbbc04;
+    --green: #34a853;
+    --text: #202124;
+    --text-sub: #5f6368;
+    --shadow: 0 1px 3px rgba(60,64,67,.15), 0 4px 12px rgba(60,64,67,.08);
+    --shadow-hover: 0 2px 6px rgba(60,64,67,.18), 0 8px 24px rgba(60,64,67,.14);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Google Sans', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { overflow-x: hidden; }
+
+  /* ---- Layout shell ---- */
+  .app { min-height: 100dvh; display: flex; flex-direction: column; }
+  .screen { display: none; flex: 1; flex-direction: column; }
+  .screen.active { display: flex; }
+  .container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px 20px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---- Top bar ---- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid #e8eaed;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+  }
+  .topbar .spacer { flex: 1; }
+  .topbar h1 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+  }
+  .iconbtn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .iconbtn:hover { background: #f1f3f4; }
+  .iconbtn.danger { color: var(--red); }
+  .iconbtn.primary { color: var(--blue); }
+
+  /* ---- Language toggle ---- */
+  .lang-toggle {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 10;
+    display: inline-flex;
+    background: rgba(255,255,255,0.92);
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    overflow: hidden;
+    user-select: none;
+  }
+  .lang-toggle button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--text-sub);
+    font-size: .8rem;
+    font-weight: 700;
+    padding: 7px 14px;
+    cursor: pointer;
+    letter-spacing: .04em;
+    transition: background .15s, color .15s;
+  }
+  .lang-toggle button.active {
+    background: var(--blue);
+    color: #fff;
+  }
+  .lang-toggle button:not(.active):hover { background: #f1f3f4; }
+
+  /* Header/topbar lang toggle (smaller variant) */
+  .topbar .lang-toggle {
+    position: static;
+    box-shadow: none;
+    background: #f1f3f4;
+  }
+  .topbar .lang-toggle button { padding: 5px 10px; font-size: .72rem; }
+
+  /* Bilingual text helper */
+  [data-lang="en"] .jp-only { display: none; }
+  [data-lang="ja"] .en-only { display: none; }
+
+  /* ---- Login screen ---- */
+  #login {
+    position: relative;
+    background: var(--bg);
+  }
+  #login::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/bg-pc.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  @media (max-width: 700px) {
+    #login::before {
+      background-image: url('assets/bg-mobile.jpg');
+    }
+  }
+  #login .container {
+    position: relative;
+    z-index: 1;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    padding: 16px 20px 4vh;
+    min-height: 100dvh;
+  }
+  /* Hidden hot-spot at top of login page to trigger admin (5s long press) */
+  .brand-hotspot {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40vh;
+    z-index: 2;
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .login-card {
+    background: rgba(255,255,255,0.94);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    padding: 22px 22px 20px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .login-card label {
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+  .login-card input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1.05rem;
+    border: 1.5px solid #dadce0;
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+    outline: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .login-card input[type="password"]:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(26,115,232,.15);
+  }
+  .btn-primary {
+    appearance: none;
+    border: none;
+    background: var(--blue);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 13px 24px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background .15s, box-shadow .15s, transform .05s;
+  }
+  .btn-primary:hover { background: #1765cc; box-shadow: var(--shadow); }
+  .btn-primary:active { transform: scale(.98); }
+  .btn-primary:disabled { background: #c5c7ca; cursor: not-allowed; box-shadow: none; }
+  .login-error {
+    color: var(--red);
+    font-size: .9rem;
+    font-weight: 500;
+    min-height: 1.4em;
+  }
+  .footer {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: .75rem;
+    padding: 16px;
+    user-select: none;
+  }
+  .login-footer {
+    text-align: center;
+    color: #ffffff;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 12px 8px 6px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.45);
+    user-select: none;
+  }
+
+  /* ---- Search screen ---- */
+  .search-wrap {
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 24px 20px;
+    margin-top: 16px;
+  }
+  .search-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1.5px solid #dadce0;
+    border-radius: 28px;
+    padding: 4px 8px 4px 20px;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .search-input-row:focus-within {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(26,115,232,.15);
+  }
+  .search-input-row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1.05rem;
+    padding: 12px 0;
+    background: transparent;
+    color: var(--text);
+    min-width: 0;
+  }
+  .micbtn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--text-sub);
+    font-size: 1.3rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .15s, color .15s;
+  }
+  .micbtn:hover { background: #f1f3f4; }
+  .micbtn.listening {
+    background: var(--red);
+    color: #fff;
+    animation: pulse 1.2s infinite;
+  }
+  .micbtn.unsupported { opacity: .35; cursor: not-allowed; }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(234,67,53,.55); }
+    50%     { box-shadow: 0 0 0 12px rgba(234,67,53,0); }
+  }
+  .search-btn-row { display: flex; justify-content: center; margin-top: 18px; }
+  .search-btn-row button {
+    min-width: 200px;
+  }
+  .hint {
+    margin-top: 18px;
+    color: var(--text-sub);
+    font-size: .85rem;
+    text-align: center;
+  }
+  .hint b { color: var(--text); font-weight: 500; }
+
+  /* ---- Results screen ---- */
+  .results-header {
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 16px 20px;
+    margin-top: 8px;
+  }
+  .results-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .results-meta .label { font-size: .8rem; color: var(--text-sub); font-weight: 500; }
+  .results-meta .kw { font-size: 1rem; font-weight: 700; color: var(--text); word-break: break-all; }
+  .results-count { font-size: .8rem; color: var(--text-sub); margin-top: 6px; }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .card {
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    border-left: 6px solid #ccc;
+    overflow: hidden;
+    transition: box-shadow .15s, transform .05s;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+  .card.color-0 { border-left-color: var(--blue); }
+  .card.color-1 { border-left-color: var(--red); }
+  .card.color-2 { border-left-color: var(--yellow); }
+  .card.color-3 { border-left-color: var(--green); }
+  .card-head {
+    cursor: pointer;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    user-select: none;
+  }
+  .card-head:active { background: #f8f9fa; }
+  .card-title {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .card-cat {
+    font-size: .7rem;
+    color: var(--text-sub);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .toggle-icon {
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+    border-radius: 50%;
+    background: #f1f3f4;
+    color: var(--text-sub);
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s, background .15s, color .15s;
+  }
+  .card.open .toggle-icon { transform: rotate(180deg); background: var(--blue); color: #fff; }
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+  }
+  .card.open .card-body { max-height: 2000px; }
+  .card-body-inner {
+    padding: 4px 22px 20px 22px;
+    border-top: 1px solid #f1f3f4;
+    margin-top: 0;
+  }
+  .answer {
+    font-size: 14pt;
+    font-weight: 700;
+    line-height: 1.8;
+    color: var(--text);
+    margin: 14px 0 0 0;
+    word-break: break-word;
+  }
+  .answer .bullet { color: var(--blue); margin-right: .35em; font-weight: 900; }
+
+  .more-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+  }
+  .btn-secondary {
+    appearance: none;
+    border: 1.5px solid var(--blue);
+    background: #fff;
+    color: var(--blue);
+    font-size: .95rem;
+    font-weight: 500;
+    padding: 11px 22px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .btn-secondary:hover { background: var(--blue); color: #fff; }
+  .btn-secondary:disabled { border-color: #dadce0; color: #9aa0a6; cursor: not-allowed; background: #fff; }
+
+  .empty {
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 32px 20px;
+    text-align: center;
+    margin-top: 16px;
+    color: var(--text-sub);
+  }
+  .empty .big { font-size: 1.1rem; color: var(--text); font-weight: 500; margin-bottom: 6px; }
+
+  /* ---- Modal (dialog) ---- */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(32,33,36,.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 16px;
+  }
+  .modal-backdrop.active { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0,0,0,.25);
+  }
+  .modal h2 { margin: 0 0 12px 0; font-size: 1.1rem; }
+  .modal p { color: var(--text-sub); margin: 0 0 16px 0; font-size: .95rem; }
+  .modal input[type="password"], .modal input[type="text"] {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 1rem;
+    border: 1.5px solid #dadce0;
+    border-radius: 10px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  .modal input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,115,232,.15); }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
+  .modal-msg { font-size: .85rem; color: var(--red); min-height: 1.2em; margin-bottom: 8px; }
+  .modal p.beta-notice {
+    color: var(--red);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 8px 0;
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
+  @media (max-width: 480px) {
+    .modal p.beta-notice { font-size: .95rem; line-height: 1.7; }
+  }
+  .modal h2.beta-title { color: var(--red); }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 600px) {
+    .brand-title { font-size: 1.55rem; }
+    .container { padding: 12px 14px 20px; }
+    .topbar h1 { font-size: .95rem; }
+    .search-wrap { padding: 18px 14px; }
+    .search-input-row input { font-size: 1rem; padding: 11px 0; }
+    .answer { font-size: 12pt; line-height: 1.75; }
+    .iconbtn { padding: 8px 10px; font-size: .85rem; }
+  }
+  @media (max-width: 380px) {
+    .brand-title { font-size: 1.35rem; }
+    .answer { font-size: 11.5pt; }
+  }
+
+  /* Hide native search cancel */
+  input::-webkit-search-cancel-button { display: none; }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ===== Login screen ===== -->
+  <section id="login" class="screen active" aria-label="ログイン画面 / Login">
+    <div class="brand-hotspot" id="brandTitle" aria-hidden="true"></div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-set-lang="ja" class="active">JP</button>
+      <button type="button" data-set-lang="en">EN</button>
+    </div>
+    <div class="container">
+      <form class="login-card" id="loginForm" autocomplete="off">
+        <label for="pwInput"><span class="jp-only">パスワード</span><span class="en-only">Password</span></label>
+        <input id="pwInput" type="password" inputmode="numeric" autocomplete="off" required />
+        <div class="login-error" id="loginError"></div>
+        <button type="submit" class="btn-primary" id="loginBtn"><span class="jp-only">ログイン</span><span class="en-only">Log in</span></button>
+      </form>
+      <div class="login-footer"><span class="jp-only">Rev20 ベータテスト版</span><span class="en-only">Rev20 Beta</span></div>
+    </div>
+  </section>
+
+  <!-- ===== Search screen ===== -->
+  <section id="search" class="screen" aria-label="キーワード入力画面 / Search">
+    <div class="topbar">
+      <button class="iconbtn danger" id="exitBtn1" title="アプリを終了 / Exit"><span class="jp-only">✕ 終了</span><span class="en-only">✕ Exit</span></button>
+      <div class="spacer"></div>
+      <h1><span class="jp-only">ガイドＦＡＱ 検索</span><span class="en-only">Guide FAQ Search</span></h1>
+      <div class="spacer"></div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="ja" class="active">JP</button>
+        <button type="button" data-set-lang="en">EN</button>
+      </div>
+      <button class="iconbtn" id="menuBtn" title="管理メニュー / Admin">⋮</button>
+    </div>
+    <div class="container">
+      <div class="search-wrap">
+        <form id="searchForm" autocomplete="off">
+          <div class="search-input-row">
+            <input id="kwInput" type="text" placeholder="" data-ph-jp="キーワードを入力（例：AIカメラ）" data-ph-en="Enter a keyword (e.g., AI camera)" autocomplete="off" enterkeyhint="search" />
+            <button type="button" class="micbtn" id="micBtn" title="音声入力 / Voice input">🎤</button>
+          </div>
+          <div class="search-btn-row">
+            <button type="submit" class="btn-primary"><span class="jp-only">🔍 検索</span><span class="en-only">🔍 Search</span></button>
+          </div>
+        </form>
+        <p class="hint">
+          <span class="jp-only">入力例：<b>AIカメラ</b> / <b>実証実験</b> / <b>街区</b> / <b>UDCK</b> / <b>自動運転</b></span>
+          <span class="en-only">Examples: <b>AI camera</b> / <b>pilot project</b> / <b>district</b> / <b>UDCK</b> / <b>autonomous driving</b></span>
+        </p>
+      </div>
+      <div class="footer">
+        <span class="jp-only">
+          キーボード入力 または マイク🎤での音声入力（日本語）に対応<br />
+          Enterキー または「🔍 検索」ボタンで実行
+        </span>
+        <span class="en-only">
+          Keyboard or mic 🎤 voice input (Japanese) supported<br />
+          Press Enter or tap the search button
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Results screen ===== -->
+  <section id="results" class="screen" aria-label="検索結果画面 / Results">
+    <div class="topbar">
+      <button class="iconbtn danger" id="exitBtn2" title="アプリを終了 / Exit"><span class="jp-only">✕ 終了</span><span class="en-only">✕ Exit</span></button>
+      <div class="spacer"></div>
+      <h1><span class="jp-only">検索結果</span><span class="en-only">Results</span></h1>
+      <div class="spacer"></div>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" data-set-lang="ja" class="active">JP</button>
+        <button type="button" data-set-lang="en">EN</button>
+      </div>
+      <button class="iconbtn primary" id="backBtn" title="検索画面に戻る / Back"><span class="jp-only">← 戻る</span><span class="en-only">← Back</span></button>
+    </div>
+    <div class="container" id="resultsContainer">
+      <div class="results-header">
+        <div class="results-meta">
+          <div class="label"><span class="jp-only">検索キーワード</span><span class="en-only">Search keyword</span></div>
+          <div class="kw" id="resKw"></div>
+        </div>
+        <div class="results-count" id="resCount"></div>
+      </div>
+      <div class="card-list" id="cardList"></div>
+      <div class="more-row" id="moreRow" style="display:none">
+        <button class="btn-secondary" id="moreBtn"><span class="jp-only">他の質問を見る ↓</span><span class="en-only">More questions ↓</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Modals ===== -->
+  <div class="modal-backdrop" id="betaModal" data-no-backdrop-close>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="betaTitle">
+      <h2 id="betaTitle" class="beta-title"><span class="jp-only">⚠ ベータテスト版のお知らせ</span><span class="en-only">⚠ Beta Notice</span></h2>
+      <p class="beta-notice">
+        <span class="jp-only">このアプリは、現在ベータテスト版です。<br />ご使用中に間違い・追加要望のご意見が<br />あった場合、右上の管理者メニューから<br />意見の送信ボタンを押して<br />メッセージをお送りください。</span>
+        <span class="en-only">This app is currently in beta.<br />If you find any errors or have requests during use,<br />please tap the admin menu (top right) and use<br />the "Send feedback" button to message us.</span>
+      </p>
+      <div class="modal-actions">
+        <button class="btn-primary" id="betaOkBtn">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="exitModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
+      <h2 id="exitTitle"><span class="jp-only">アプリを終了しますか？</span><span class="en-only">Exit the app?</span></h2>
+      <p><span class="jp-only">このタブを閉じてキーワード検索を終了します。</span><span class="en-only">Close this tab and end the keyword search.</span></p>
+      <div class="modal-actions">
+        <button class="iconbtn" data-modal-close><span class="jp-only">キャンセル</span><span class="en-only">Cancel</span></button>
+        <button class="btn-primary" id="exitConfirmBtn" style="background:var(--red)"><span class="jp-only">終了する</span><span class="en-only">Exit</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="adminModal">
+    <div class="modal" role="dialog" aria-modal="true">
+      <h2><span class="jp-only">管理者メニュー</span><span class="en-only">Admin menu</span></h2>
+
+      <div style="margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #e8eaed">
+        <p style="margin:0 0 10px 0">
+          <span class="jp-only">運営事務局へ要望・ご意見を送信できます。お使いのメールアプリが起動します。</span>
+          <span class="en-only">Send a request or feedback to the operations office. Your default mail app will open.</span>
+        </p>
+        <div style="display:flex; justify-content:flex-end">
+          <button class="btn-primary" id="sendFeedbackBtn" style="background:var(--green)">
+            <span class="jp-only">✉ 意見の送信</span><span class="en-only">✉ Send feedback</span>
+          </button>
+        </div>
+      </div>
+
+      <p><span class="jp-only">パスワードを変更します。現パスワードと新パスワードを入力してください。</span><span class="en-only">Change the password. Please enter the current and new password.</span></p>
+      <input type="password" id="curPw" placeholder="" autocomplete="off" data-ph-jp="現パスワード" data-ph-en="Current password" />
+      <input type="password" id="newPw" placeholder="" autocomplete="off" data-ph-jp="新パスワード" data-ph-en="New password" />
+      <input type="password" id="confPw" placeholder="" autocomplete="off" data-ph-jp="新パスワード（確認）" data-ph-en="New password (confirm)" />
+      <div class="modal-msg" id="adminMsg"></div>
+      <div class="modal-actions">
+        <button class="iconbtn" data-modal-close><span class="jp-only">キャンセル</span><span class="en-only">Cancel</span></button>
+        <button class="btn-primary" id="changePwBtn"><span class="jp-only">変更する</span><span class="en-only">Change</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   柏の葉スマートシティツアー ガイドＦＡＱ
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ---- FAQ DB (embedded; rebuilt from Excel) ---- */
+  const FAQ_DB = /*__FAQ_DB__*/;
+
+  /* ---- Constants ---- */
+  const APP_VERSION = '1.0';
+  const SALT = 'kashinoha-2026-tour-guide';
+  const DEFAULT_PASSWORD = '2026';
+  const STORAGE_KEYS = {
+    pwHash: 'kfaq.pwHash',
+    failCount: 'kfaq.failCount',
+    lockUntil: 'kfaq.lockUntil',
+    lang: 'kfaq.lang'
+  };
+  const MAX_FAILS = 3;
+  const LOCKOUT_MS = 30 * 1000;
+  const PAGE_SIZE = 4;
+
+  /* ---- Language state ---- */
+  let currentLang = (localStorage.getItem(STORAGE_KEYS.lang) === 'en') ? 'en' : 'ja';
+
+  const I18N = {
+    ja: {
+      noResultsTitle: '該当する質問が見つかりませんでした',
+      noResultsHint: 'キーワードを変えてもう一度お試しください。',
+      countTpl: '候補 {total} 件中 {start}〜{end} 件目を表示',
+      noAnswer: '回答情報が登録されていません。',
+      pwRequired: 'パスワードを入力してください。',
+      pwWrong: (n, max) => `パスワードが違います（${n}/${max}）。`,
+      pwLockTpl: (sec) => `ロックアウト中です。あと ${sec} 秒お待ちください。`,
+      pwLockedNotice: (max) => `${max}回連続で失敗しました。30秒間ロックアウトされます。`,
+      adminCurWrong: '現パスワードが違います。',
+      adminTooShort: '新パスワードは4文字以上で入力してください。',
+      adminMismatch: '新パスワード（確認）が一致しません。',
+      adminChanged: 'パスワードを変更しました。',
+      voiceUnsupported: 'このブラウザは音声入力に対応していません。Chrome、Safari、Edgeをご利用ください。',
+      enFallback: ''
+    },
+    en: {
+      noResultsTitle: 'No matching questions found',
+      noResultsHint: 'Please try a different keyword.',
+      countTpl: 'Showing {start}-{end} of {total} matches',
+      noAnswer: 'No answer registered for this entry.',
+      pwRequired: 'Please enter the password.',
+      pwWrong: (n, max) => `Incorrect password (${n}/${max}).`,
+      pwLockTpl: (sec) => `Locked out. Please wait ${sec} seconds.`,
+      pwLockedNotice: (max) => `${max} consecutive failures. Locked out for 30 seconds.`,
+      adminCurWrong: 'Current password is incorrect.',
+      adminTooShort: 'New password must be at least 4 characters.',
+      adminMismatch: 'New password confirmation does not match.',
+      adminChanged: 'Password changed.',
+      voiceUnsupported: 'Voice input is not supported in this browser. Please use Chrome, Safari, or Edge.',
+      enFallback: '⚠ English version not yet available — showing Japanese.'
+    }
+  };
+
+  function t(key, ...args) {
+    const v = I18N[currentLang][key] ?? I18N.ja[key];
+    return (typeof v === 'function') ? v(...args) : v;
+  }
+
+  function applyLang() {
+    document.documentElement.setAttribute('data-lang', currentLang);
+    document.documentElement.lang = currentLang;
+    // Placeholders
+    document.querySelectorAll('[data-ph-jp]').forEach(el => {
+      el.placeholder = el.getAttribute(currentLang === 'en' ? 'data-ph-en' : 'data-ph-jp') || '';
+    });
+    // Toggle button states
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-set-lang') === currentLang);
+    });
+    localStorage.setItem(STORAGE_KEYS.lang, currentLang);
+    // Re-render results if active
+    if (document.querySelector('.screen.active')?.id === 'results') {
+      renderResults();
+    }
+  }
+
+  function setLang(lang) {
+    if (lang !== 'ja' && lang !== 'en') return;
+    if (lang === currentLang) return;
+    currentLang = lang;
+    applyLang();
+  }
+
+  /* ---- Hash (simple Base64 + salt) ---- */
+  function hashPassword(pw) {
+    const raw = SALT + '::' + pw + '::' + SALT;
+    // Convert UTF-8 -> Base64
+    const b64 = btoa(unescape(encodeURIComponent(raw)));
+    // light obfuscation: reverse + chunk
+    return b64.split('').reverse().join('');
+  }
+
+  function getStoredHash() {
+    let h = localStorage.getItem(STORAGE_KEYS.pwHash);
+    if (!h) {
+      h = hashPassword(DEFAULT_PASSWORD);
+      localStorage.setItem(STORAGE_KEYS.pwHash, h);
+    }
+    return h;
+  }
+
+  /* ---- Text normalization for search ---- */
+  function toHalfWidth(str) {
+    return str.replace(/[！-～]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0xFEE0))
+              .replace(/　/g, ' ');
+  }
+  function katakanaToHiragana(str) {
+    return str.replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0x60));
+  }
+  function normalize(str) {
+    if (!str) return '';
+    let s = String(str);
+    s = toHalfWidth(s);
+    s = s.toLowerCase();
+    s = katakanaToHiragana(s);
+    s = s.replace(/\s+/g, '');
+    return s;
+  }
+
+  /* ---- Scoring search ---- */
+  function tokenize(q) {
+    const norm = normalize(q);
+    if (!norm) return [];
+    // split on Japanese particles and punctuation, keep meaningful chunks
+    const parts = norm.split(/[\s、。,.\/\\?？!！「」（）()\[\]\-_=+*&%$#@~"'｜\|・]+/).filter(Boolean);
+    // Also include the whole normalized query
+    const set = new Set(parts);
+    set.add(norm);
+    return [...set].filter(t => t.length >= 1);
+  }
+
+  function score(rec, tokens, rawNorm) {
+    if (!tokens.length) return 0;
+    let s = 0;
+    // Search both JA and EN fields so EN-typed keywords also match
+    const qNorm = normalize((rec.question || '') + ' ' + (rec.question_en || ''));
+    const tagNorm = ([...(rec.tags || []), ...(rec.tags_en || [])]).map(normalize);
+    const kwNorm = ([...(rec.keywords || []), ...(rec.keywords_en || [])]).map(normalize);
+    const aNorm = ([...(rec.answers || []), ...(rec.answers_en || [])]).map(normalize);
+
+    for (const t of tokens) {
+      if (!t) continue;
+      // Exact match against any keyword
+      if (kwNorm.some(k => k === t)) s += 10;
+      // Partial match against keyword
+      else if (kwNorm.some(k => k && k.indexOf(t) >= 0)) s += 6;
+      // Partial in question
+      if (qNorm.indexOf(t) >= 0) s += 5;
+      // Tag match (partial)
+      if (tagNorm.some(tg => tg && tg.indexOf(t) >= 0)) s += 3;
+      // Answer partial
+      if (aNorm.some(a => a && a.indexOf(t) >= 0)) s += 1;
+    }
+    // Whole-query boost
+    if (rawNorm && qNorm.indexOf(rawNorm) >= 0) s += 4;
+    return s;
+  }
+
+  function search(query) {
+    const tokens = tokenize(query);
+    const rawNorm = normalize(query);
+    const scored = FAQ_DB.map(rec => ({ rec, s: score(rec, tokens, rawNorm) }))
+                         .filter(o => o.s > 0)
+                         .sort((a, b) => b.s - a.s || a.rec.id - b.rec.id);
+    return scored.map(o => o.rec);
+  }
+
+  /* ---- DOM helpers ---- */
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => document.querySelectorAll(sel);
+
+  function show(screenId) {
+    $$('.screen').forEach(el => el.classList.remove('active'));
+    $('#' + screenId).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+  }
+
+  function openModal(id) { $('#' + id).classList.add('active'); }
+  function closeModal(id) { $('#' + id).classList.remove('active'); }
+
+  /* ---- Login flow ---- */
+  function loginAttempt(e) {
+    e && e.preventDefault();
+    const input = $('#pwInput');
+    const err = $('#loginError');
+    err.textContent = '';
+
+    const lockUntil = parseInt(localStorage.getItem(STORAGE_KEYS.lockUntil) || '0', 10);
+    if (lockUntil && Date.now() < lockUntil) {
+      const sec = Math.ceil((lockUntil - Date.now()) / 1000);
+      err.textContent = t('pwLockTpl', sec);
+      return;
+    }
+
+    const val = input.value || '';
+    if (!val) { err.textContent = t('pwRequired'); return; }
+
+    const ok = hashPassword(val) === getStoredHash();
+    if (ok) {
+      localStorage.removeItem(STORAGE_KEYS.failCount);
+      localStorage.removeItem(STORAGE_KEYS.lockUntil);
+      input.value = '';
+      // Show beta notice modal first; on OK, advance to search screen.
+      openModal('betaModal');
+    } else {
+      let fails = parseInt(localStorage.getItem(STORAGE_KEYS.failCount) || '0', 10) + 1;
+      localStorage.setItem(STORAGE_KEYS.failCount, String(fails));
+      if (fails >= MAX_FAILS) {
+        const until = Date.now() + LOCKOUT_MS;
+        localStorage.setItem(STORAGE_KEYS.lockUntil, String(until));
+        localStorage.setItem(STORAGE_KEYS.failCount, '0');
+        err.textContent = t('pwLockedNotice', MAX_FAILS);
+        startLockoutCountdown(until);
+      } else {
+        err.textContent = t('pwWrong', fails, MAX_FAILS);
+      }
+      input.select();
+    }
+  }
+  function startLockoutCountdown(until) {
+    const err = $('#loginError');
+    const tick = () => {
+      const remain = until - Date.now();
+      if (remain <= 0) { err.textContent = ''; return; }
+      err.textContent = t('pwLockTpl', Math.ceil(remain/1000));
+      setTimeout(tick, 500);
+    };
+    tick();
+  }
+
+  /* ---- Search flow ---- */
+  let lastResults = [];
+  let lastQuery = '';
+  let pageIndex = 0;
+
+  function runSearch(e) {
+    e && e.preventDefault();
+    const q = ($('#kwInput').value || '').trim();
+    if (!q) {
+      $('#kwInput').focus();
+      return;
+    }
+    lastQuery = q;
+    lastResults = search(q);
+    pageIndex = 0;
+    renderResults();
+    show('results');
+  }
+
+  function renderResults() {
+    $('#resKw').textContent = lastQuery;
+    const total = lastResults.length;
+    const start = pageIndex * PAGE_SIZE;
+    const end = Math.min(start + PAGE_SIZE, total);
+    if (total === 0) {
+      $('#resCount').textContent = '';
+      $('#cardList').innerHTML = '';
+      $('#moreRow').style.display = 'none';
+      $('#cardList').insertAdjacentHTML('beforeend',
+        `<div class="empty"><div class="big">${escapeHTML(t('noResultsTitle'))}</div><div>${escapeHTML(t('noResultsHint'))}</div></div>`);
+      return;
+    }
+    $('#resCount').textContent = t('countTpl').replace('{total}', total).replace('{start}', start + 1).replace('{end}', end);
+    const cards = lastResults.slice(start, end).map((rec, i) => cardHTML(rec, i)).join('');
+    $('#cardList').innerHTML = cards;
+    $('#moreRow').style.display = end < total ? 'flex' : 'none';
+    $('#moreBtn').disabled = end >= total;
+    bindCardEvents();
+  }
+
+  function escapeHTML(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function pickField(rec, jpKey, enKey) {
+    if (currentLang === 'en') {
+      const ev = rec[enKey];
+      if (ev != null && ((typeof ev === 'string' && ev.trim()) || (Array.isArray(ev) && ev.length && ev.some(x => x && String(x).trim())))) {
+        return { value: ev, fallback: false };
+      }
+      return { value: rec[jpKey], fallback: true };
+    }
+    return { value: rec[jpKey], fallback: false };
+  }
+
+  function cardHTML(rec, idx) {
+    const tagsField = pickField(rec, 'tags', 'tags_en');
+    const tag = (tagsField.value && tagsField.value[0]) ? escapeHTML(tagsField.value[0]) : '';
+    const qField = pickField(rec, 'question', 'question_en');
+    const aField = pickField(rec, 'answers', 'answers_en');
+    const showFallback = (currentLang === 'en' && (qField.fallback || aField.fallback));
+
+    const ans = (aField.value || []).slice(0, 3).map(a => {
+      const cleaned = String(a).replace(/^[●⚫・･\s]+/, '');
+      return `<p class="answer"><span class="bullet">●</span>${escapeHTML(cleaned)}</p>`;
+    }).join('');
+    const fallbackNotice = showFallback
+      ? `<p class="answer" style="font-size:.85rem;font-weight:500;color:var(--text-sub)">${escapeHTML(t('enFallback'))}</p>`
+      : '';
+    return `
+      <div class="card color-${idx % 4}" data-id="${rec.id}">
+        <div class="card-head" role="button" tabindex="0" aria-expanded="false">
+          <div>
+            <div class="card-title">${escapeHTML(qField.value || '')}</div>
+            ${tag ? `<div class="card-cat">${tag}</div>` : ''}
+          </div>
+          <div style="flex:1"></div>
+          <div class="toggle-icon">▾</div>
+        </div>
+        <div class="card-body">
+          <div class="card-body-inner">${fallbackNotice}${ans || `<p class="answer">${escapeHTML(t('noAnswer'))}</p>`}</div>
+        </div>
+      </div>`;
+  }
+
+  function bindCardEvents() {
+    $$('#cardList .card').forEach(card => {
+      const head = card.querySelector('.card-head');
+      const toggle = () => {
+        const willOpen = !card.classList.contains('open');
+        // Close all then open self
+        $$('#cardList .card.open').forEach(c => {
+          c.classList.remove('open');
+          c.querySelector('.card-head').setAttribute('aria-expanded', 'false');
+        });
+        if (willOpen) {
+          card.classList.add('open');
+          head.setAttribute('aria-expanded', 'true');
+        }
+      };
+      head.addEventListener('click', toggle);
+      head.addEventListener('keydown', ev => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); toggle(); }
+      });
+    });
+  }
+
+  // Click outside an open card closes it
+  document.addEventListener('click', (e) => {
+    const openCards = $$('#cardList .card.open');
+    if (!openCards.length) return;
+    const inside = e.target.closest('.card.open');
+    if (!inside) {
+      openCards.forEach(c => {
+        c.classList.remove('open');
+        const h = c.querySelector('.card-head');
+        if (h) h.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
+  /* ---- "More" button: next page ---- */
+  function showMore() {
+    const total = lastResults.length;
+    const next = (pageIndex + 1) * PAGE_SIZE;
+    if (next < total) pageIndex += 1;
+    else pageIndex = 0; // loop back
+    renderResults();
+    // Scroll to results top
+    $('#resultsContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ---- Voice input (Web Speech API) ---- */
+  function setupVoice() {
+    const mic = $('#micBtn');
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      mic.classList.add('unsupported');
+      mic.title = 'このブラウザは音声入力に対応していません';
+      mic.addEventListener('click', () => {
+        alert(t('voiceUnsupported'));
+      });
+      return;
+    }
+    let rec = null;
+    let listening = false;
+
+    const stop = () => {
+      if (rec) { try { rec.stop(); } catch (_) {} }
+      mic.classList.remove('listening');
+      listening = false;
+    };
+    const start = () => {
+      rec = new SR();
+      rec.lang = 'ja-JP';
+      rec.interimResults = true;
+      rec.continuous = false;
+      rec.onresult = (ev) => {
+        let txt = '';
+        for (let i = ev.resultIndex; i < ev.results.length; i++) {
+          txt += ev.results[i][0].transcript;
+        }
+        $('#kwInput').value = txt;
+      };
+      rec.onerror = () => stop();
+      rec.onend = () => stop();
+      try { rec.start(); mic.classList.add('listening'); listening = true; }
+      catch (_) { stop(); }
+    };
+
+    mic.addEventListener('click', () => {
+      if (listening) stop(); else start();
+    });
+  }
+
+  /* ---- Exit flow ---- */
+  function bindExit() {
+    const open = () => openModal('exitModal');
+    $('#exitBtn1').addEventListener('click', open);
+    $('#exitBtn2').addEventListener('click', open);
+    $('#exitConfirmBtn').addEventListener('click', () => {
+      // close tab if possible, else go back to login + clear input
+      try { window.close(); } catch (_) {}
+      // fallback: navigate to about:blank-ish reset
+      setTimeout(() => {
+        closeModal('exitModal');
+        $('#kwInput').value = '';
+        show('login');
+        $('#pwInput').value = '';
+      }, 100);
+    });
+  }
+  function bindModals() {
+    document.querySelectorAll('[data-modal-close]').forEach(b => {
+      b.addEventListener('click', () => {
+        const m = b.closest('.modal-backdrop');
+        if (m) m.classList.remove('active');
+      });
+    });
+    // backdrop click closes — except for modals with data-no-backdrop-close
+    $$('.modal-backdrop').forEach(m => {
+      if (m.hasAttribute('data-no-backdrop-close')) return;
+      m.addEventListener('click', (e) => {
+        if (e.target === m) m.classList.remove('active');
+      });
+    });
+  }
+
+  /* ---- Admin (password change) ---- */
+  function bindAdmin() {
+    let pressTimer = null;
+    let pressed = false;
+    const title = $('#brandTitle');
+
+    const startPress = () => {
+      pressed = true;
+      pressTimer = setTimeout(() => {
+        if (pressed) openAdmin();
+      }, 5000);
+    };
+    const cancelPress = () => {
+      pressed = false;
+      if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
+    };
+    title.addEventListener('mousedown', startPress);
+    title.addEventListener('touchstart', startPress, { passive: true });
+    ['mouseup','mouseleave','touchend','touchcancel'].forEach(ev =>
+      title.addEventListener(ev, cancelPress));
+
+    // Also expose via menu button on search screen
+    $('#menuBtn').addEventListener('click', openAdmin);
+
+    function openAdmin() {
+      $('#curPw').value = '';
+      $('#newPw').value = '';
+      $('#confPw').value = '';
+      $('#adminMsg').textContent = '';
+      openModal('adminModal');
+      setTimeout(() => $('#curPw').focus(), 50);
+    }
+
+    $('#changePwBtn').addEventListener('click', () => {
+      const cur = $('#curPw').value || '';
+      const nw = $('#newPw').value || '';
+      const conf = $('#confPw').value || '';
+      const msg = $('#adminMsg');
+      msg.textContent = '';
+
+      if (hashPassword(cur) !== getStoredHash()) {
+        msg.textContent = t('adminCurWrong'); return;
+      }
+      if (nw.length < 4) {
+        msg.textContent = t('adminTooShort'); return;
+      }
+      if (nw !== conf) {
+        msg.textContent = t('adminMismatch'); return;
+      }
+      localStorage.setItem(STORAGE_KEYS.pwHash, hashPassword(nw));
+      msg.style.color = 'var(--green)';
+      msg.textContent = t('adminChanged');
+      setTimeout(() => {
+        msg.style.color = '';
+        closeModal('adminModal');
+      }, 1200);
+    });
+  }
+
+  /* ---- Feedback (mailto) ---- */
+  function sendFeedback() {
+    const subject = '【要望】柏の葉スマートシティツアーガイドFAQ';
+    const body =
+      '柏の葉スマートシティツアーガイドFAQアプリについて、下記の点について修正をご検討ください。\n' +
+      '\n' +
+      '１．（タイトル＊＊＊＊＊＊＊）\n' +
+      '　（要望の内容＊＊＊＊）\n' +
+      '　（画面キャプチャーがあれば添付で貼り付けてください。）\n';
+    const to = 'furuta.ideas@gmail.com';
+    // RFC 6068 — the local-part and host of the recipient remain unencoded so all mail clients open cleanly.
+    const href = 'mailto:' + to
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+    // Use a hidden link element to avoid popup-blocker issues on some browsers
+    const a = document.createElement('a');
+    a.href = href;
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    // Close the admin modal so the user returns to the search screen
+    closeModal('adminModal');
+  }
+
+  /* ---- Wire up ---- */
+  function init() {
+    // Ensure default password hash is set
+    getStoredHash();
+    // Restore lockout countdown if still active
+    const until = parseInt(localStorage.getItem(STORAGE_KEYS.lockUntil) || '0', 10);
+    if (until && Date.now() < until) startLockoutCountdown(until);
+
+    $('#loginForm').addEventListener('submit', loginAttempt);
+    $('#searchForm').addEventListener('submit', runSearch);
+    $('#backBtn').addEventListener('click', () => { show('search'); setTimeout(() => $('#kwInput').focus(), 50); });
+    $('#moreBtn').addEventListener('click', showMore);
+    setupVoice();
+    bindExit();
+    bindModals();
+    bindAdmin();
+
+    // Language toggle buttons
+    document.querySelectorAll('.lang-toggle button[data-set-lang]').forEach(b => {
+      b.addEventListener('click', () => setLang(b.getAttribute('data-set-lang')));
+    });
+    applyLang();
+
+    // Beta-notice OK → advance to search screen (modal cannot be dismissed any other way)
+    $('#betaOkBtn').addEventListener('click', () => {
+      closeModal('betaModal');
+      show('search');
+      setTimeout(() => $('#kwInput').focus(), 50);
+    });
+
+    // Send-feedback button (mailto)
+    $('#sendFeedbackBtn').addEventListener('click', sendFeedback);
+
+    // Focus password
+    setTimeout(() => $('#pwInput').focus(), 50);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    // Script is at end of body — DOMContentLoaded may have already fired
+    init();
+  }
+})();
+</script>
+</body>
+</html>

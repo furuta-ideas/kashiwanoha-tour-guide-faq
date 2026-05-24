@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Build-time temp output that lives outside this folder
+*.log
+
+# Local-only files that aren't part of the released app
+script_raw.json
+script_part*.txt
+
+# Local Claude Code preview state (keep launch.json itself)
+.claude/settings.local.json
+
+# Backups
+*.bak
+*.orig
