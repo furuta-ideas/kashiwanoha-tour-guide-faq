@@ -623,27 +623,15 @@
   <div class="modal-backdrop" id="adminModal">
     <div class="modal" role="dialog" aria-modal="true">
       <h2><span class="jp-only">管理者メニュー</span><span class="en-only">Admin menu</span></h2>
-
-      <div style="margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #e8eaed">
-        <p style="margin:0 0 10px 0">
-          <span class="jp-only">運営事務局へ要望・ご意見を送信できます。お使いのメールアプリが起動します。</span>
-          <span class="en-only">Send a request or feedback to the operations office. Your default mail app will open.</span>
-        </p>
-        <div style="display:flex; justify-content:flex-end">
-          <button class="btn-primary" id="sendFeedbackBtn" style="background:var(--green)">
-            <span class="jp-only">✉ 意見の送信</span><span class="en-only">✉ Send feedback</span>
-          </button>
-        </div>
-      </div>
-
-      <p><span class="jp-only">パスワードを変更します。現パスワードと新パスワードを入力してください。</span><span class="en-only">Change the password. Please enter the current and new password.</span></p>
-      <input type="password" id="curPw" placeholder="" autocomplete="off" data-ph-jp="現パスワード" data-ph-en="Current password" />
-      <input type="password" id="newPw" placeholder="" autocomplete="off" data-ph-jp="新パスワード" data-ph-en="New password" />
-      <input type="password" id="confPw" placeholder="" autocomplete="off" data-ph-jp="新パスワード（確認）" data-ph-en="New password (confirm)" />
-      <div class="modal-msg" id="adminMsg"></div>
+      <p style="margin:0 0 14px 0">
+        <span class="jp-only">運営事務局へ要望・ご意見を送信できます。お使いのメールアプリが起動します。</span>
+        <span class="en-only">Send a request or feedback to the operations office. Your default mail app will open.</span>
+      </p>
       <div class="modal-actions">
         <button class="iconbtn" data-modal-close><span class="jp-only">キャンセル</span><span class="en-only">Cancel</span></button>
-        <button class="btn-primary" id="changePwBtn"><span class="jp-only">変更する</span><span class="en-only">Change</span></button>
+        <button class="btn-primary" id="sendFeedbackBtn" style="background:var(--green)">
+          <span class="jp-only">✉ 意見の送信</span><span class="en-only">✉ Send feedback</span>
+        </button>
       </div>
     </div>
   </div>
@@ -1125,38 +1113,8 @@
     $('#menuBtn').addEventListener('click', openAdmin);
 
     function openAdmin() {
-      $('#curPw').value = '';
-      $('#newPw').value = '';
-      $('#confPw').value = '';
-      $('#adminMsg').textContent = '';
       openModal('adminModal');
-      setTimeout(() => $('#curPw').focus(), 50);
     }
-
-    $('#changePwBtn').addEventListener('click', () => {
-      const cur = $('#curPw').value || '';
-      const nw = $('#newPw').value || '';
-      const conf = $('#confPw').value || '';
-      const msg = $('#adminMsg');
-      msg.textContent = '';
-
-      if (hashPassword(cur) !== getStoredHash()) {
-        msg.textContent = t('adminCurWrong'); return;
-      }
-      if (nw.length < 4) {
-        msg.textContent = t('adminTooShort'); return;
-      }
-      if (nw !== conf) {
-        msg.textContent = t('adminMismatch'); return;
-      }
-      localStorage.setItem(STORAGE_KEYS.pwHash, hashPassword(nw));
-      msg.style.color = 'var(--green)';
-      msg.textContent = t('adminChanged');
-      setTimeout(() => {
-        msg.style.color = '';
-        closeModal('adminModal');
-      }, 1200);
-    });
   }
 
   /* ---- Feedback (mailto) ---- */
