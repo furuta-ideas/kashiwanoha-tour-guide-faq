@@ -224,47 +224,64 @@ if (Test-Path $enPath) {
     Write-Host "Merged English translations: $merged / $($db.Count)"
 }
 
-# Use JavaScriptSerializer so single-element arrays stay as arrays (PowerShell's ConvertTo-Json unwraps them).
-Add-Type -AssemblyName System.Web.Extensions
-$ser = New-Object System.Web.Script.Serialization.JavaScriptSerializer
-$ser.MaxJsonLength = [int]::MaxValue
-
-# Build plain hashtables + object[] arrays — JavaScriptSerializer doesn't handle generic Lists well.
-$arr = New-Object 'System.Collections.Generic.List[object]'
-foreach ($rec in $db) {
-    $kwOut = [object[]]@()
-    foreach ($k in $rec['keywords']) { $kwOut = $kwOut + [string]$k }
-
-    $tagOut = [object[]]@()
-    foreach ($t in $rec['tags']) { $tagOut = $tagOut + [string]$t }
-
-    $ansOut = [object[]]@()
-    foreach ($a in $rec['answers']) { $ansOut = $ansOut + [string]$a }
-
-    $h = @{
-        id       = [int]$rec['id']
-        question = [string]$rec['question']
-        keywords = $kwOut
-        tags     = $tagOut
-        answers  = $ansOut
+# Manual JSON encoder — avoids the PS 5.1 single-element-array unwrap and the System.Web.UI loader bug.
+function Json-EscapeString {
+    param([string]$s)
+    if ($null -eq $s) { return '""' }
+    $sb = New-Object System.Text.StringBuilder
+    [void]$sb.Append('"')
+    foreach ($ch in $s.ToCharArray()) {
+        $code = [int]$ch
+        switch ($code) {
+            8  { [void]$sb.Append('\b'); continue }
+            9  { [void]$sb.Append('\t'); continue }
+            10 { [void]$sb.Append('\n'); continue }
+            12 { [void]$sb.Append('\f'); continue }
+            13 { [void]$sb.Append('\r'); continue }
+            34 { [void]$sb.Append('\"'); continue }
+            92 { [void]$sb.Append('\\'); continue }
+            default {
+                if ($code -lt 0x20) {
+                    [void]$sb.AppendFormat('\u{0:x4}', $code)
+                } else {
+                    [void]$sb.Append($ch)
+                }
+            }
+        }
     }
+    [void]$sb.Append('"')
+    return $sb.ToString()
+}
 
-    if ($rec.Contains('question_en') -and $rec['question_en']) { $h['question_en'] = [string]$rec['question_en'] }
+function Json-StringArray {
+    param($items)
+    $parts = New-Object System.Collections.Generic.List[string]
+    if ($items) {
+        foreach ($it in $items) { [void]$parts.Add((Json-EscapeString ([string]$it))) }
+    }
+    return '[' + ($parts -join ',') + ']'
+}
+
+$recordJsonList = New-Object System.Collections.Generic.List[string]
+foreach ($rec in $db) {
+    $parts = New-Object System.Collections.Generic.List[string]
+    [void]$parts.Add('"id":' + [int]$rec['id'])
+    [void]$parts.Add('"question":' + (Json-EscapeString ([string]$rec['question'])))
+    [void]$parts.Add('"keywords":' + (Json-StringArray $rec['keywords']))
+    [void]$parts.Add('"tags":' + (Json-StringArray $rec['tags']))
+    [void]$parts.Add('"answers":' + (Json-StringArray $rec['answers']))
+    if ($rec.Contains('question_en') -and $rec['question_en']) {
+        [void]$parts.Add('"question_en":' + (Json-EscapeString ([string]$rec['question_en'])))
+    }
     if ($rec.Contains('tags_en') -and $rec['tags_en']) {
-        $tEn = [object[]]@()
-        foreach ($t in $rec['tags_en']) { $tEn = $tEn + [string]$t }
-        $h['tags_en'] = $tEn
+        [void]$parts.Add('"tags_en":' + (Json-StringArray $rec['tags_en']))
     }
     if ($rec.Contains('answers_en') -and $rec['answers_en']) {
-        $aEn = [object[]]@()
-        foreach ($a in $rec['answers_en']) { $aEn = $aEn + [string]$a }
-        $h['answers_en'] = $aEn
+        [void]$parts.Add('"answers_en":' + (Json-StringArray $rec['answers_en']))
     }
-
-    [void]$arr.Add($h)
+    [void]$recordJsonList.Add('{' + ($parts -join ',') + '}')
 }
-$arrObj = [object[]]$arr.ToArray()
-$json = $ser.Serialize($arrObj)
+$json = '[' + ($recordJsonList -join ',') + ']'
 # Ensure forward slashes inside <script> are safe
 $json = $json -replace '</', '<\/'
 
