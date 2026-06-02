@@ -19,3 +19,6 @@ script_part*.txt
 # Backups
 *.bak
 *.orig
+
+# One-shot maintenance scripts
+apply_faq_fixes.ps1

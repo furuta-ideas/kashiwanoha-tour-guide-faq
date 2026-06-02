@@ -89,6 +89,34 @@
   .iconbtn.danger { color: var(--red); }
   .iconbtn.primary { color: var(--blue); }
 
+  /* Icon-only round buttons (top bar) */
+  .iconbtn.icon-only {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .iconbtn.icon-only.danger {
+    background: rgba(234, 67, 53, 0.08);
+    color: var(--red);
+  }
+  .iconbtn.icon-only.danger:hover { background: rgba(234, 67, 53, 0.18); }
+  .iconbtn.icon-only.primary {
+    background: rgba(26, 115, 232, 0.08);
+    color: var(--blue);
+  }
+  .iconbtn.icon-only.primary:hover { background: rgba(26, 115, 232, 0.18); }
+  .iconbtn.icon-only.accent {
+    background: rgba(52, 168, 83, 0.10);
+    color: var(--green);
+  }
+  .iconbtn.icon-only.accent:hover { background: rgba(52, 168, 83, 0.22); }
+
   /* ---- Language toggle ---- */
   .lang-toggle {
     position: absolute;
@@ -528,7 +556,7 @@
   <!-- ===== Search screen ===== -->
   <section id="search" class="screen" aria-label="キーワード入力画面 / Search">
     <div class="topbar">
-      <button class="iconbtn danger" id="exitBtn1" title="アプリを終了 / Exit"><span class="jp-only">✕ 終了</span><span class="en-only">✕ Exit</span></button>
+      <button class="iconbtn icon-only danger" id="exitBtn1" aria-label="終了 / Exit" title="アプリを終了 / Exit">✕</button>
       <div class="spacer"></div>
       <h1><span class="jp-only">ガイドＦＡＱ 検索</span><span class="en-only">Guide FAQ Search</span></h1>
       <div class="spacer"></div>
@@ -536,7 +564,7 @@
         <button type="button" data-set-lang="ja" class="active">JP</button>
         <button type="button" data-set-lang="en">EN</button>
       </div>
-      <button class="iconbtn" id="menuBtn" title="管理メニュー / Admin">⋮</button>
+      <button class="iconbtn icon-only accent" id="menuBtn" aria-label="意見の送信 / Send feedback" title="意見の送信 / Send feedback">✉</button>
     </div>
     <div class="container">
       <div class="search-wrap">
@@ -570,7 +598,7 @@
   <!-- ===== Results screen ===== -->
   <section id="results" class="screen" aria-label="検索結果画面 / Results">
     <div class="topbar">
-      <button class="iconbtn danger" id="exitBtn2" title="アプリを終了 / Exit"><span class="jp-only">✕ 終了</span><span class="en-only">✕ Exit</span></button>
+      <button class="iconbtn icon-only danger" id="exitBtn2" aria-label="終了 / Exit" title="アプリを終了 / Exit">✕</button>
       <div class="spacer"></div>
       <h1><span class="jp-only">検索結果</span><span class="en-only">Results</span></h1>
       <div class="spacer"></div>
@@ -578,7 +606,7 @@
         <button type="button" data-set-lang="ja" class="active">JP</button>
         <button type="button" data-set-lang="en">EN</button>
       </div>
-      <button class="iconbtn primary" id="backBtn" title="検索画面に戻る / Back"><span class="jp-only">← 戻る</span><span class="en-only">← Back</span></button>
+      <button class="iconbtn icon-only primary" id="backBtn" aria-label="戻る / Back" title="検索画面に戻る / Back">←</button>
     </div>
     <div class="container" id="resultsContainer">
       <div class="results-header">
@@ -620,21 +648,6 @@
     </div>
   </div>
 
-  <div class="modal-backdrop" id="adminModal">
-    <div class="modal" role="dialog" aria-modal="true">
-      <h2><span class="jp-only">管理者メニュー</span><span class="en-only">Admin menu</span></h2>
-      <p style="margin:0 0 14px 0">
-        <span class="jp-only">運営事務局へ要望・ご意見を送信できます。お使いのメールアプリが起動します。</span>
-        <span class="en-only">Send a request or feedback to the operations office. Your default mail app will open.</span>
-      </p>
-      <div class="modal-actions">
-        <button class="iconbtn" data-modal-close><span class="jp-only">キャンセル</span><span class="en-only">Cancel</span></button>
-        <button class="btn-primary" id="sendFeedbackBtn" style="background:var(--green)">
-          <span class="jp-only">✉ 意見の送信</span><span class="en-only">✉ Send feedback</span>
-        </button>
-      </div>
-    </div>
-  </div>
 </div>
 
 <script>
@@ -1088,35 +1101,6 @@
     });
   }
 
-  /* ---- Admin (password change) ---- */
-  function bindAdmin() {
-    let pressTimer = null;
-    let pressed = false;
-    const title = $('#brandTitle');
-
-    const startPress = () => {
-      pressed = true;
-      pressTimer = setTimeout(() => {
-        if (pressed) openAdmin();
-      }, 5000);
-    };
-    const cancelPress = () => {
-      pressed = false;
-      if (pressTimer) { clearTimeout(pressTimer); pressTimer = null; }
-    };
-    title.addEventListener('mousedown', startPress);
-    title.addEventListener('touchstart', startPress, { passive: true });
-    ['mouseup','mouseleave','touchend','touchcancel'].forEach(ev =>
-      title.addEventListener(ev, cancelPress));
-
-    // Also expose via menu button on search screen
-    $('#menuBtn').addEventListener('click', openAdmin);
-
-    function openAdmin() {
-      openModal('adminModal');
-    }
-  }
-
   /* ---- Feedback (mailto) ---- */
   function sendFeedback() {
     const subject = '【要望】柏の葉スマートシティツアーガイドFAQ';
@@ -1138,8 +1122,6 @@
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    // Close the admin modal so the user returns to the search screen
-    closeModal('adminModal');
   }
 
   /* ---- Wire up ---- */
@@ -1157,7 +1139,9 @@
     setupVoice();
     bindExit();
     bindModals();
-    bindAdmin();
+
+    // ✉ icon in the search topbar fires the feedback mailto directly.
+    $('#menuBtn').addEventListener('click', sendFeedback);
 
     // Language toggle buttons
     document.querySelectorAll('.lang-toggle button[data-set-lang]').forEach(b => {
@@ -1171,9 +1155,6 @@
       show('search');
       setTimeout(() => $('#kwInput').focus(), 50);
     });
-
-    // Send-feedback button (mailto)
-    $('#sendFeedbackBtn').addEventListener('click', sendFeedback);
 
     // Focus password
     setTimeout(() => $('#pwInput').focus(), 50);
