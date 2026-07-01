@@ -279,6 +279,14 @@
     padding: 24px 20px;
     margin-top: 16px;
   }
+  /* Compact variant used in the results screen */
+  .search-wrap.results-search {
+    padding: 14px 16px 12px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+  }
+  .search-wrap.results-search .search-btn-row { margin-top: 10px; }
+  .search-wrap.results-search .btn-primary { min-width: 160px; padding: 10px 20px; font-size: .95rem; }
   .search-input-row {
     display: flex;
     align-items: center;
@@ -606,9 +614,20 @@
         <button type="button" data-set-lang="ja" class="active">JP</button>
         <button type="button" data-set-lang="en">EN</button>
       </div>
-      <button class="iconbtn icon-only primary" id="backBtn" aria-label="戻る / Back" title="検索画面に戻る / Back">←</button>
+      <button class="iconbtn icon-only accent" id="menuBtn2" aria-label="意見の送信 / Send feedback" title="意見の送信 / Send feedback">✉</button>
     </div>
     <div class="container" id="resultsContainer">
+      <div class="search-wrap results-search">
+        <form id="searchForm2" autocomplete="off">
+          <div class="search-input-row">
+            <input id="kwInput2" type="text" placeholder="" data-ph-jp="キーワードで再検索（半角スペースでAND）" data-ph-en="Re-search (space = AND)" autocomplete="off" enterkeyhint="search" />
+            <button type="button" class="micbtn" id="micBtn2" title="音声入力 / Voice input">🎤</button>
+          </div>
+          <div class="search-btn-row">
+            <button type="submit" class="btn-primary"><span class="jp-only">🔍 再検索</span><span class="en-only">🔍 Search again</span></button>
+          </div>
+        </form>
+      </div>
       <div class="results-header">
         <div class="results-meta">
           <div class="label"><span class="jp-only">検索キーワード</span><span class="en-only">Search keyword</span></div>
@@ -778,49 +797,161 @@
     return s;
   }
 
-  /* ---- Scoring search ---- */
-  function tokenize(q) {
-    const norm = normalize(q);
-    if (!norm) return [];
-    // split on Japanese particles and punctuation, keep meaningful chunks
-    const parts = norm.split(/[\s、。,.\/\\?？!！「」（）()\[\]\-_=+*&%$#@~"'｜\|・]+/).filter(Boolean);
-    // Also include the whole normalized query
-    const set = new Set(parts);
-    set.add(norm);
-    return [...set].filter(t => t.length >= 1);
+  /* ---- Synonym expansion ------------------------------------------------
+     Each row lists surface forms of a single concept. Query terms that hit
+     any member match every other member. Entered raw; normalized on load.  */
+  const SYNONYM_GROUPS_RAW = [
+    ['AI', '人工知能', 'エーアイ', 'artificial intelligence'],
+    ['AIカメラ', 'AI camera', '監視カメラ'],
+    ['カメラ', 'camera'],
+    ['自動運転', '自動運転車', '自律走行', '無人運転', 'autonomous', 'autonomous driving', 'level4', 'レベル4', 'level 4'],
+    ['バス', 'bus', 'シャトルバス', 'shuttle'],
+    ['KOIL', 'コイル', 'コイルパーク'],
+    ['UDCK', 'アーバンデザインセンター', 'urban design center'],
+    ['スマートシティ', 'smart city', 'smartcity'],
+    ['SMC', 'エスエムシー'],
+    ['ららぽーと', 'ららぽ', 'lalaport'],
+    ['太陽光', 'ソーラー', 'solar', '太陽光パネル', 'solar panel', 'photovoltaic', 'pv'],
+    ['蓄電池', 'バッテリー', 'battery', '電池', 'エネルギー貯蔵'],
+    ['NAS', 'ナス', 'NAS電池', 'ナトリウム硫黄', 'sodium sulfur'],
+    ['リチウム', 'lithium', 'リチウムイオン', 'lithium ion'],
+    ['EV', '電気自動車', 'electric vehicle'],
+    ['エネルギー', 'energy', '電力', '電気', 'power'],
+    ['AEMS', 'エリアエネルギーマネジメントシステム', 'area energy management'],
+    ['都市OS', 'データプラットフォーム', 'KDPF', 'data platform', 'city os'],
+    ['スマートライフパス', 'smart life pass', 'ライフパス'],
+    ['あ・し・た', 'あした', 'ashita', 'まちの健康研究所', '健康研究所'],
+    ['アクアテラス', 'aqua terrace', '調整池'],
+    ['ラグビースクール', 'ラグビー校', 'rugby school'],
+    ['かけだし横丁', 'かけだし', 'yokocho', '横丁'],
+    ['歴史', 'history', '沿革', '過去', '成り立ち'],
+    ['駐車場', 'parking', 'パーキング'],
+    ['マンション', 'condo', 'condominium', 'apartment', 'タワマン', 'タワーマンション', 'tower'],
+    ['公民学', 'ppp', '公民学連携', 'public-private-academic'],
+    ['ミクストユース', 'mixed-use', 'mixed use', 'mixeduse'],
+    ['ウォーカブル', 'walkable', 'walkability', '歩きやすい', 'ウォーカビリティ', 'walk'],
+    ['ポートランド', 'portland'],
+    ['防災', 'disaster prevention', '減災', 'disaster', 'レジリエンス', 'resilience'],
+    ['植物工場', 'plant factory'],
+    ['ゲートタワー', 'gate tower', 'ゲートスクエア', 'gate square'],
+    ['ワイヤレス充電', '走行中給電', 'wireless charging', '非接触給電', 'in-motion charging'],
+    ['ベジチェック', 'vegecheck', 'vegie check', '野菜'],
+    ['ウォーキング', 'walking', '散歩'],
+    ['V2I', 'V2X', 'vehicle-to-infrastructure'],
+    ['V2P', 'vehicle-to-pedestrian'],
+    ['LEED', 'リード', 'leed-nd'],
+    ['グリーンアクシス', 'green axis'],
+    ['子育て', '育児', 'childcare', 'child rearing', 'kids', '教育'],
+    ['健康', 'health', 'wellness', 'longevity', '健康長寿'],
+    ['環境', 'environment', 'environmental', '環境共生'],
+    ['共創', 'co-creation', 'cocreation'],
+    ['実証実験', '実証', 'pilot', 'trial', 'proof of concept', 'poc'],
+    ['三井不動産', 'mitsui', '三井', 'mitsui fudosan'],
+    ['東京大学', '東大', 'utokyo', 'university of tokyo'],
+    ['千葉大学', '千葉大', 'chiba university'],
+    ['柏市', 'kashiwa city', '柏'],
+    ['TX', 'つくばエクスプレス', 'tsukuba express'],
+    ['視察', 'observation', 'inspection', 'ビジター'],
+    ['ツアー', 'tour', '見学'],
+    ['料金', '費用', 'fee', 'cost', 'price', '価格'],
+    ['予算', 'budget'],
+    ['人口', 'population', '住民数'],
+    ['住民', 'resident', 'residents'],
+    ['アート', 'art'],
+    ['かげもしゃ', 'kagemosha'],
+    ['フレイル', 'frailty'],
+    ['大学', 'university', 'academic'],
+    ['オフィス', 'office'],
+    ['店舗', 'shop', 'store', 'テナント', 'tenant'],
+    ['地震', 'earthquake', '震災'],
+    ['セキュリティ', 'security', '安全'],
+    ['カゴメ', 'kagome'],
+    ['明治', 'meiji'],
+    ['花王', 'kao'],
+    ['蔦屋', 'tsutaya', 'T-Site', 'tsite'],
+    ['駅前', 'station front', 'station area'],
+    ['起業', 'startup', 'スタートアップ', 'entrepreneur'],
+  ];
+
+  // Build a bidirectional lookup: normalized-token → Set of normalized alternatives.
+  const SYNONYM_LOOKUP = (function () {
+    const m = new Map();
+    for (const group of SYNONYM_GROUPS_RAW) {
+      const norms = group.map(normalize).filter(Boolean);
+      const set = new Set(norms);
+      for (const key of norms) {
+        if (!m.has(key)) m.set(key, new Set());
+        for (const v of set) m.get(key).add(v);
+      }
+    }
+    return m;
+  })();
+
+  function expandTerm(termNorm) {
+    const out = new Set([termNorm]);
+    // Prefer exact-key expansion. If the term matches a synonym key directly,
+    // we intentionally do NOT fall through to substring expansion — it would
+    // otherwise flood the results with unrelated matches (e.g. searching
+    // "AIカメラ" would also expand to every AI-group synonym alone).
+    if (SYNONYM_LOOKUP.has(termNorm)) {
+      SYNONYM_LOOKUP.get(termNorm).forEach(v => out.add(v));
+      return [...out].filter(Boolean);
+    }
+    // Fallback: substring-based expansion (useful for compound queries like
+    // "自動運転バス" where the whole phrase is not an entry, but its parts are).
+    for (const [key, set] of SYNONYM_LOOKUP) {
+      if (key.length < 3) continue; // skip very short keys (e.g. "ai") that
+                                    // would over-expand random 2-char sequences
+      if (termNorm.indexOf(key) >= 0 || key.indexOf(termNorm) >= 0) {
+        set.forEach(v => out.add(v));
+      }
+    }
+    return [...out].filter(Boolean);
   }
 
-  function score(rec, tokens, rawNorm) {
-    if (!tokens.length) return 0;
-    let s = 0;
-    // Search both JA and EN fields so EN-typed keywords also match
+  /* ---- AND search over synonym-expanded terms ---- */
+  function extractTerms(q) {
+    if (!q) return [];
+    const trimmed = String(q).trim();
+    if (!trimmed) return [];
+    // Split on any run of whitespace (ASCII + full-width) — each piece is an
+    // independent required term.
+    return trimmed.split(/[\s　]+/).map(s => s.trim()).filter(Boolean);
+  }
+
+  function scoreAnd(rec, terms) {
+    if (!terms.length) return 0;
     const qNorm = normalize((rec.question || '') + ' ' + (rec.question_en || ''));
     const tagNorm = ([...(rec.tags || []), ...(rec.tags_en || [])]).map(normalize);
     const kwNorm = ([...(rec.keywords || []), ...(rec.keywords_en || [])]).map(normalize);
     const aNorm = ([...(rec.answers || []), ...(rec.answers_en || [])]).map(normalize);
 
-    for (const t of tokens) {
-      if (!t) continue;
-      // Exact match against any keyword
-      if (kwNorm.some(k => k === t)) s += 10;
-      // Partial match against keyword
-      else if (kwNorm.some(k => k && k.indexOf(t) >= 0)) s += 6;
-      // Partial in question
-      if (qNorm.indexOf(t) >= 0) s += 5;
-      // Tag match (partial)
-      if (tagNorm.some(tg => tg && tg.indexOf(t) >= 0)) s += 3;
-      // Answer partial
-      if (aNorm.some(a => a && a.indexOf(t) >= 0)) s += 1;
+    let total = 0;
+    for (const raw of terms) {
+      const termNorm = normalize(raw);
+      if (!termNorm) continue;
+      const alternatives = expandTerm(termNorm);
+      let best = 0;
+      for (const alt of alternatives) {
+        if (!alt) continue;
+        let s = 0;
+        if (kwNorm.some(k => k === alt)) s += 10;
+        else if (kwNorm.some(k => k && k.indexOf(alt) >= 0)) s += 6;
+        if (qNorm.indexOf(alt) >= 0) s += 5;
+        if (tagNorm.some(tg => tg && tg.indexOf(alt) >= 0)) s += 3;
+        if (aNorm.some(a => a && a.indexOf(alt) >= 0)) s += 1;
+        if (s > best) best = s;
+      }
+      if (best === 0) return 0; // AND: any missing term drops the record
+      total += best;
     }
-    // Whole-query boost
-    if (rawNorm && qNorm.indexOf(rawNorm) >= 0) s += 4;
-    return s;
+    return total;
   }
 
   function search(query) {
-    const tokens = tokenize(query);
-    const rawNorm = normalize(query);
-    const scored = FAQ_DB.map(rec => ({ rec, s: score(rec, tokens, rawNorm) }))
+    const terms = extractTerms(query);
+    if (!terms.length) return [];
+    const scored = FAQ_DB.map(rec => ({ rec, s: scoreAnd(rec, terms) }))
                          .filter(o => o.s > 0)
                          .sort((a, b) => b.s - a.s || a.rec.id - b.rec.id);
     return scored.map(o => o.rec);
@@ -894,13 +1025,9 @@
   let lastQuery = '';
   let pageIndex = 0;
 
-  function runSearch(e) {
-    e && e.preventDefault();
-    const q = ($('#kwInput').value || '').trim();
-    if (!q) {
-      $('#kwInput').focus();
-      return;
-    }
+  function performSearch(query) {
+    const q = (query || '').trim();
+    if (!q) return;
     lastQuery = q;
     lastResults = search(q);
     pageIndex = 0;
@@ -908,8 +1035,27 @@
     show('results');
   }
 
+  function runSearch(e) {
+    e && e.preventDefault();
+    const q = $('#kwInput').value || '';
+    if (!q.trim()) { $('#kwInput').focus(); return; }
+    performSearch(q);
+  }
+
+  function runSearch2(e) {
+    e && e.preventDefault();
+    const q = $('#kwInput2').value || '';
+    if (!q.trim()) { $('#kwInput2').focus(); return; }
+    $('#kwInput').value = q; // keep the main search input in sync
+    performSearch(q);
+    // Scroll to top of results so the user sees the fresh list
+    $('#resultsContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   function renderResults() {
     $('#resKw').textContent = lastQuery;
+    // Reflect the current query in the results-screen re-search input
+    if ($('#kwInput2')) $('#kwInput2').value = lastQuery;
     const total = lastResults.length;
     const start = pageIndex * PAGE_SIZE;
     const end = Math.min(start + PAGE_SIZE, total);
@@ -1026,8 +1172,10 @@
   }
 
   /* ---- Voice input (Web Speech API) ---- */
-  function setupVoice() {
-    const mic = $('#micBtn');
+  function setupVoiceFor(micId, inputId) {
+    const mic = document.getElementById(micId);
+    if (!mic) return;
+    const input = document.getElementById(inputId);
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SR) {
       mic.classList.add('unsupported');
@@ -1055,7 +1203,7 @@
         for (let i = ev.resultIndex; i < ev.results.length; i++) {
           txt += ev.results[i][0].transcript;
         }
-        $('#kwInput').value = txt;
+        input.value = txt;
       };
       rec.onerror = () => stop();
       rec.onend = () => stop();
@@ -1066,6 +1214,11 @@
     mic.addEventListener('click', () => {
       if (listening) stop(); else start();
     });
+  }
+
+  function setupVoice() {
+    setupVoiceFor('micBtn', 'kwInput');
+    setupVoiceFor('micBtn2', 'kwInput2');
   }
 
   /* ---- Exit flow ---- */
@@ -1134,14 +1287,15 @@
 
     $('#loginForm').addEventListener('submit', loginAttempt);
     $('#searchForm').addEventListener('submit', runSearch);
-    $('#backBtn').addEventListener('click', () => { show('search'); setTimeout(() => $('#kwInput').focus(), 50); });
+    $('#searchForm2').addEventListener('submit', runSearch2);
     $('#moreBtn').addEventListener('click', showMore);
     setupVoice();
     bindExit();
     bindModals();
 
-    // ✉ icon in the search topbar fires the feedback mailto directly.
+    // ✉ icons (search + results screens) fire the feedback mailto directly.
     $('#menuBtn').addEventListener('click', sendFeedback);
+    if ($('#menuBtn2')) $('#menuBtn2').addEventListener('click', sendFeedback);
 
     // Language toggle buttons
     document.querySelectorAll('.lang-toggle button[data-set-lang]').forEach(b => {
