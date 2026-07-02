@@ -23,6 +23,7 @@ $mime = @{
     '.jpg'  = 'image/jpeg'
     '.jpeg' = 'image/jpeg'
     '.gif'  = 'image/gif'
+    '.webp' = 'image/webp'
     '.svg'  = 'image/svg+xml'
     '.ico'  = 'image/x-icon'
     '.txt'  = 'text/plain; charset=utf-8'
