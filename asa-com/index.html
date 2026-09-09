@@ -15,6 +15,7 @@
    ============================================================ */
 :root{
   --split:5fr 2fr;
+  --rest-rows:3fr 1fr;
   --primary:#1A73E8;
   --primary-dark:#174EA6;
   --surface:#FFFFFF;
@@ -87,9 +88,45 @@ button{font-family:inherit;color:inherit}
 }
 
 /* ---------- 選択エリア ---------- */
-.board{position:relative;min-width:0;min-height:0;padding:var(--edge)}
+.board{
+  position:relative;min-width:0;min-height:0;padding:var(--edge);
+  display:grid;grid-template-rows:var(--rest-rows);gap:var(--gap);
+}
 .choices{
-  display:grid;gap:var(--gap);height:100%;
+  display:grid;gap:var(--gap);min-height:0;
+}
+
+/* ---------- 考え中（待機）ゾーン ---------- */
+.rest{
+  min-height:0;border:3px dashed var(--outline);border-radius:var(--radius);
+  background:var(--surface-variant);color:var(--on-surface-variant);
+  display:flex;align-items:center;justify-content:center;gap:.6em;
+  font-size:calc(clamp(20px,2.6vw,38px)*var(--font-scale));font-weight:600;
+  transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);
+}
+body.no-rest .rest{display:none}
+.rest:focus-visible{outline:4px solid var(--primary);outline-offset:-8px}
+/* 選択直後：ここに戻すまで滞留での確定を受け付けない状態 */
+.rest.callback{
+  border-style:solid;border-color:var(--primary);
+  background:#E8F0FE;color:var(--primary-dark);
+}
+body.hc .rest{background:#000;border-color:#fff;color:#fff}
+body.hc .rest.callback{border-color:#8AB4F8;color:#8AB4F8}
+.rest-dots{display:inline-flex;gap:.34em;align-items:center}
+.rest-dots i{
+  width:.42em;height:.42em;border-radius:50%;background:currentColor;opacity:.3;
+  animation:restdot 1.5s ease-in-out infinite;
+}
+.rest-dots i:nth-child(2){animation-delay:.22s}
+.rest-dots i:nth-child(3){animation-delay:.44s}
+@keyframes restdot{
+  0%,62%,100%{opacity:.28;transform:translateY(0)}
+  31%{opacity:.95;transform:translateY(-22%)}
+}
+@media (prefers-reduced-motion:reduce){
+  .rest-dots i{animation:none;opacity:.55}
+  .rest{transition:none}
 }
 .choices[data-level="1"]{grid-template-columns:1fr 1fr;--base:calc(clamp(56px,10vw,140px)*var(--font-scale));--icon:calc(clamp(48px,8vw,96px)*var(--font-scale))}
 .choices[data-level="2"]{grid-template-columns:repeat(3,1fr);--base:calc(clamp(40px,8vw,104px)*var(--font-scale));--icon:calc(clamp(40px,6.4vw,80px)*var(--font-scale))}
@@ -261,6 +298,10 @@ body.hc .choice.fired{background:var(--c);color:#000}
         <div class="vb-bar"><i id="vbBar"></i></div>
       </div>
       <div class="choices" id="choices" data-level="1"></div>
+      <button class="rest" id="restZone" type="button" aria-label="考え中（ここで待ちます）">
+        <span class="rest-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>考え中…</span>
+      </button>
     </div>
 
     <aside class="logpane">
@@ -337,10 +378,14 @@ var DEFAULTS = {
   undoMs:5000, cooldownMs:1000,
   sound:true, volume:0.18, speak:true, speakRate:1,
   fontScale:'normal', gap:8, showIcons:true, logRatio:'5:2', highContrast:false,
+  restSize:4, restGate:true,
   wakeWord:true, voiceWindowMs:15000, silenceMs:2000,
   keepAwake:true, protectSettings:false,
   micEnabled:true, logEnabled:true
 };
+
+/* 考え中ゾーンの高さ：選択エリアを 1/N とする（0＝表示しない） */
+var REST_ROWS = {0:'1fr', 5:'4fr 1fr', 4:'3fr 1fr', 3:'2fr 1fr'};
 
 var SPLITS = {
   '5:2':['5fr 2fr','5fr 2fr'], '3:1':['3fr 1fr','3fr 1fr'],
@@ -361,6 +406,29 @@ var kicked = false;
 
 var $ = function(id){ return document.getElementById(id); };
 var choicesEl=$('choices'), logListEl=$('logList'), toastEl=$('toast');
+var restEl=$('restZone');
+
+/* ------------------------------------------------------------
+   考え中（待機）ゾーン
+   選んでいないときの居場所。選択直後はここに戻るまで
+   滞留での確定を受け付けず、同じボタンの二度押しを防ぐ。
+   ------------------------------------------------------------ */
+var armed = true;
+function restGateOn(){ return S.restSize>0 && S.restGate; }
+function armRest(){
+  armed = true;
+  if(restEl) restEl.classList.remove('callback');
+}
+function parkFocus(disarm){
+  if(!restEl || !S.restSize){ armRest(); return; }
+  try{ restEl.focus({preventScroll:true}); }catch(e){ try{ restEl.focus(); }catch(e2){} }
+  if(disarm && restGateOn()){
+    armed = false;
+    restEl.classList.add('callback');
+  }else{
+    armRest();
+  }
+}
 
 function loadSettings(){
   var o = {};
@@ -441,6 +509,7 @@ function bindChoice(btn){
 
   function startDwell(){
     if(locked || timer) return;
+    if(restGateOn() && !armed) return;   // 考え中に戻るまで滞留を始めない
     btn.classList.add('dwelling');
     dwellEl.style.transition='none';
     dwellEl.style.transform='scaleX(0)';
@@ -500,6 +569,7 @@ function commit(btn){
   var entry = addLog({type:'choice', choiceId:id, text:c.label});
   showUndo(btn, entry);
   lock(S.cooldownMs);
+  parkFocus(true);            // 毎回「考え中」へフォーカスを戻す
 }
 
 function lock(ms){
@@ -860,11 +930,13 @@ var SHEET_ROWS = [
   {k:'tapToConfirm',  t:'タップで即確定', o:[[true,'ON'],[false,'OFF']]},
   {k:'undoMs',        t:'「とりけす」を出す時間', o:[[0,'出さない'],[3000,'3秒'],[5000,'5秒'],[10000,'10秒']]},
   {k:'cooldownMs',    t:'次を選べるまでの間隔（連打よけ）', o:[[0,'なし'],[500,'0.5秒'],[1000,'1.0秒'],[2000,'2.0秒']]},
+  {k:'restGate',      t:'「考え中」にもどってから次を選ぶ', dep:'restSize', o:[[true,'ON'],[false,'OFF']]},
 
   {sec:'画面'},
   {k:'level',         t:'レベル', o:[[1,'1 ／ 2択'],[2,'2 ／ 3択'],[3,'3 ／ 6択']]},
   {k:'fontScale',     t:'文字サイズ', o:[['normal','標準'],['large','大'],['xlarge','特大']]},
   {k:'gap',           t:'ボタンの間隔', o:[[8,'せまい'],[16,'ふつう'],[28,'ひろい']]},
+  {k:'restSize',      t:'「考え中」エリアの大きさ', o:[[0,'なし'],[5,'小 1/5'],[4,'標準 1/4'],[3,'大 1/3']]},
   {k:'showIcons',     t:'アイコンを表示', o:[[true,'ON'],[false,'OFF']]},
   {k:'logRatio',      t:'ログ欄の幅', o:[['5:2','標準'],['3:1','せまい'],['3:2','ひろい'],['hide','かくす']]},
   {k:'highContrast',  t:'ハイコントラスト', o:[[false,'OFF'],[true,'ON']]},
@@ -956,6 +1028,9 @@ function applySettings(){
   var root = document.documentElement.style;
   root.setProperty('--font-scale', FONT_SCALE[S.fontScale]||1);
   root.setProperty('--gap', (S.gap|0)+'px');
+  root.setProperty('--rest-rows', REST_ROWS[S.restSize] || REST_ROWS[4]);
+  document.body.classList.toggle('no-rest', !S.restSize);
+  if(!restGateOn()) armRest();
   var sp = SPLITS[S.logRatio] || SPLITS['5:2'];
   root.setProperty('--split', sp[0]);
   root.setProperty('--split-v', sp[1]);
@@ -997,6 +1072,10 @@ function requestWakeLock(){
    ============================================================ */
 function init(){
   applySettings();
+
+  restEl.addEventListener('pointerenter', armRest);
+  restEl.addEventListener('click', function(){ parkFocus(false); });
+  parkFocus(false);            // 起動時の既定フォーカスは「考え中」
 
   bindHold($('menuBtn'), $('menuHold'), 1000,
     function(){ openSheet(); },                                  // 長押し
