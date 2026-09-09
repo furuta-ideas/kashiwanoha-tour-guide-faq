@@ -5,12 +5,16 @@ iPad のアクセシビリティ機能（頭部の動き・視線・指先のタ
 
 | ファイル | 役割 |
 | --- | --- |
-| `asa-com.html` | 配布物。これ1つで動作します |
+| `index.html` | 配布物。これ1つで動作します |
 | `SPEC.md` | 仕様書（Rev.1） |
+
+## 公開URL
+
+**https://furuta-ideas.github.io/kashiwanoha-tour-guide-faq/asa-com/**
 
 ## 使いかた
 
-1. iPad の Safari で `asa-com.html` を開く
+1. iPad の Safari で上記URLを開く（またはこの `index.html` を直接開く）
 2. 共有メニュー → **ホーム画面に追加** でフルスクリーン起動になります
 3. 初回は選択ボタンを1度タップしてください（iOS の制限で、最初の操作までは音声・効果音・画面スリープ防止が有効になりません）
 

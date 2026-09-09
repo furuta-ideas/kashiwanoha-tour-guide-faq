@@ -6,7 +6,8 @@
 | 版数 | Rev.1（初版） |
 | 作成日 | 2026-09-09 |
 | 想定プラットフォーム | iPad（Safari / ホーム画面へ追加によるフルスクリーン起動） |
-| 実装形態 | HTML5 単一ファイル（`asa-com.html`）／外部依存なし・オフライン動作 |
+| 実装形態 | HTML5 単一ファイル（`asa-com/index.html`）／外部依存なし・オフライン動作 |
+| 公開URL | https://furuta-ideas.github.io/kashiwanoha-tour-guide-faq/asa-com/ |
 | デザインシステム | Google Material Design 3（M3）準拠、シンプル＋親しみやすさ |
 
 ---
@@ -327,7 +328,7 @@ datetime,time,type,label,level
 | 項目 | 内容 |
 | --- | --- |
 | 実装 | HTML5 + CSS3 + Vanilla JavaScript（ES2020） |
-| ファイル構成 | `asa-com/asa-com.html` 単一ファイル（CSS/JSインライン） |
+| ファイル構成 | `asa-com/index.html` 単一ファイル（CSS/JSインライン） |
 | 外部依存 | なし（アイコンはインラインSVGで内包） |
 | 音声認識 | Web Speech API（`SpeechRecognition` / `webkitSpeechRecognition`） |
 | 音声合成 | Web Speech Synthesis API（`speechSynthesis`） |
