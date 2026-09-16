@@ -22,3 +22,4 @@ script_part*.txt
 
 # One-shot maintenance scripts
 apply_faq_fixes.ps1
+node_modules/
