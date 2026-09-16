@@ -1,0 +1,546 @@
+<title>便利すぎた街の失敗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --paper:#F3F2ED;
+    --surface:#FBFAF6;
+    --ink:#17201C;
+    --muted:#6D756F;
+    --rule:#D6D5CC;
+    --accent:#1E5B49;
+    --accent-soft:#E2EBE6;
+    --signal:#9E3B2E;
+    --signal-soft:#F3E3DF;
+    --shadow:0 1px 0 rgba(23,32,28,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#111714;
+      --surface:#182019;
+      --ink:#E9E8E0;
+      --muted:#96A099;
+      --rule:#2C3630;
+      --accent:#6CBFA2;
+      --accent-soft:#1B2E27;
+      --signal:#E48170;
+      --signal-soft:#31201D;
+      --shadow:0 1px 0 rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#111714;
+    --surface:#182019;
+    --ink:#E9E8E0;
+    --muted:#96A099;
+    --rule:#2C3630;
+    --accent:#6CBFA2;
+    --accent-soft:#1B2E27;
+    --signal:#E48170;
+    --signal-soft:#31201D;
+    --shadow:0 1px 0 rgba(0,0,0,.4);
+  }
+
+  html,body{height:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    margin:0;
+    overflow:hidden;
+  }
+  *{box-sizing:border-box;}
+
+  .deck{height:100%;display:flex;flex-direction:column;}
+
+  /* ---- slide stage ---- */
+  .stage{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;}
+  .slide{display:none;min-height:100%;padding-block:clamp(28px,5vh,64px);padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));}
+  .slide.is-current{display:flex;flex-direction:column;justify-content:center;}
+  .inner{width:100%;max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(16px,2.4vh,26px);}
+
+  /* ---- type ---- */
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .eyebrow b{color:var(--accent);font-weight:500;}
+  .eyebrow .bar{flex:1;height:1px;background:var(--rule);min-width:24px;}
+
+  h1{
+    font-family:"Shippori Mincho B1","Yu Mincho",serif;
+    font-weight:800;font-size:clamp(30px,5.4vw,58px);line-height:1.25;
+    letter-spacing:.01em;margin:0;text-wrap:balance;
+  }
+  h2{
+    font-family:"Shippori Mincho B1","Yu Mincho",serif;
+    font-weight:600;font-size:clamp(23px,3.6vw,38px);line-height:1.35;
+    margin:0;text-wrap:balance;
+  }
+  .lede{font-size:clamp(15px,1.8vw,19px);color:var(--muted);max-width:62ch;margin:0;}
+  .kicker{
+    font-family:"Shippori Mincho B1","Yu Mincho",serif;
+    font-size:clamp(18px,2.4vw,26px);line-height:1.5;margin:0;
+    color:var(--accent);text-wrap:balance;
+  }
+  .kicker.warn{color:var(--signal);}
+  p{margin:0;}
+  strong{font-weight:700;}
+  .u{
+    background:linear-gradient(transparent 62%,var(--accent-soft) 62%);
+    padding-inline:1px;
+  }
+  .u-w{background:linear-gradient(transparent 62%,var(--signal-soft) 62%);padding-inline:1px;}
+
+  /* ---- title slide ---- */
+  .title-meta{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;
+    color:var(--muted);line-height:2;
+  }
+  .title-meta span{color:var(--ink);}
+
+  /* ---- fact grid ---- */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);}
+  .facts div{background:var(--surface);padding:14px 16px;display:flex;flex-direction:column;gap:3px;}
+  .facts dt,.facts .k{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  }
+  .facts .v{font-size:clamp(15px,1.7vw,18px);font-weight:500;line-height:1.5;font-variant-numeric:tabular-nums;}
+
+  /* ---- step chain ---- */
+  .steps{display:flex;flex-wrap:wrap;gap:8px;}
+  .step{
+    display:flex;align-items:baseline;gap:8px;
+    background:var(--surface);border:1px solid var(--rule);
+    padding:9px 13px;font-size:14px;font-weight:500;
+  }
+  .step i{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-style:normal;
+    font-size:11px;color:var(--accent);letter-spacing:.06em;
+  }
+  .step.hard{border-color:var(--signal);color:var(--signal);}
+  .step.hard i{color:var(--signal);}
+
+  /* ---- wall list (failure factors) ---- */
+  .walls{display:grid;gap:12px;}
+  .wall{
+    display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+    border-left:3px solid var(--signal);padding:10px 0 10px 16px;
+  }
+  .wall .n{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;
+    color:var(--signal);padding-top:4px;
+  }
+  .wall h3{margin:0;font-size:clamp(16px,1.9vw,20px);font-weight:700;line-height:1.5;}
+  .wall p{color:var(--muted);font-size:15px;margin-top:2px;}
+
+  /* ---- takeaway list ---- */
+  .takes{display:grid;gap:10px;}
+  .take{
+    display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;
+    background:var(--surface);border:1px solid var(--rule);padding:12px 15px;
+  }
+  .take .n{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;
+    color:var(--accent);padding-top:3px;
+  }
+  .take b{display:block;font-size:15.5px;line-height:1.5;}
+  .take span{display:block;color:var(--muted);font-size:14px;line-height:1.6;margin-top:2px;}
+
+  /* ---- timeline ---- */
+  .tl{display:grid;gap:0;border-left:1px solid var(--rule);margin-left:6px;}
+  .tl-row{display:grid;grid-template-columns:104px 1fr;gap:16px;padding:9px 0 9px 18px;position:relative;align-items:baseline;}
+  .tl-row::before{
+    content:"";position:absolute;left:-4.5px;top:19px;
+    width:8px;height:8px;border-radius:50%;background:var(--rule);
+  }
+  .tl-row.on::before{background:var(--accent);}
+  .tl-row.off::before{background:var(--signal);}
+  .tl-row time{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;
+    color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.02em;
+  }
+  .tl-row .t{font-size:15px;line-height:1.55;}
+  .tl-row.off .t{color:var(--signal);font-weight:700;}
+  .tl-row .t em{font-style:normal;color:var(--muted);font-size:13.5px;display:block;}
+
+  /* ---- quote / callout ---- */
+  .quote{
+    border:1px solid var(--rule);border-left:3px solid var(--accent);
+    background:var(--surface);padding:18px 20px;
+    font-family:"Shippori Mincho B1","Yu Mincho",serif;
+    font-size:clamp(17px,2.2vw,22px);line-height:1.65;
+  }
+  .quote cite{
+    display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-style:normal;font-size:11.5px;letter-spacing:.08em;
+    color:var(--muted);margin-top:10px;text-transform:uppercase;
+  }
+  .note{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;line-height:1.75;color:var(--muted);
+    border-top:1px solid var(--rule);padding-top:10px;
+  }
+
+  /* ---- two column ---- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,34px);}
+  .col h3{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 10px;font-weight:500;
+  }
+  .col ul{margin:0;padding-left:1.1em;display:grid;gap:7px;font-size:15px;}
+  .col.is-now ul{color:var(--signal);}
+  @media (max-width:640px){ .cols{grid-template-columns:1fr;} }
+
+  .asks{display:grid;gap:11px;counter-reset:q;}
+  .ask{
+    display:grid;grid-template-columns:auto 1fr;gap:13px;
+    font-size:clamp(15px,1.85vw,18px);line-height:1.6;
+  }
+  .ask::before{
+    counter-increment:q;content:"Q" counter(q);
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;
+    color:var(--accent);padding-top:5px;
+  }
+
+  /* ---- chrome ---- */
+  .bar{
+    position:relative;
+    display:flex;align-items:center;gap:14px;
+    border-top:1px solid var(--rule);background:var(--surface);
+    padding:8px max(16px,env(safe-area-inset-left,0px));
+    padding-bottom:calc(8px + env(safe-area-inset-bottom,0px));
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted);
+  }
+  .bar .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .bar button{
+    font:inherit;color:inherit;background:none;border:1px solid var(--rule);
+    padding:3px 10px;cursor:pointer;border-radius:2px;
+  }
+  .bar button:hover{border-color:var(--accent);color:var(--accent);}
+  .bar button:focus-visible,.ov li:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .count{font-variant-numeric:tabular-nums;color:var(--ink);}
+  .prog{position:absolute;left:0;right:0;bottom:0;height:2px;background:transparent;}
+  .prog i{display:block;height:100%;background:var(--accent);transition:width .25s ease;}
+
+  /* ---- overview ---- */
+  .ov{
+    position:fixed;inset:0;z-index:20;background:var(--paper);
+    overflow-y:auto;padding:clamp(20px,4vh,40px) max(20px,env(safe-area-inset-left,0px));
+    padding-top:calc(clamp(20px,4vh,40px) + env(safe-area-inset-top,0px));
+  }
+  .ov ol{max-width:760px;margin:16px auto 0;padding:0;list-style:none;display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+  .ov li{
+    background:var(--surface);padding:12px 16px;cursor:pointer;
+    display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline;font-size:15px;
+  }
+  .ov li:hover{background:var(--accent-soft);}
+  .ov li span{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted);}
+  .ov h2{max-width:760px;margin:0 auto;}
+
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important;animation:none!important;} }
+</style>
+
+<div class="deck">
+  <div class="stage" id="stage">
+
+    <!-- 01 -->
+    <section class="slide is-current">
+      <div class="inner">
+        <p class="eyebrow"><b>柏の葉スマートシティツアー</b><span class="bar"></span>2026.09.30</p>
+        <h1>便利すぎた街の<br>失敗</h1>
+        <p class="lede">2020年、柏の葉でおこなわれたマンション住民向けMaaS実証実験。<br>その参加者だった立場から、何が起き、なぜ続かなかったのかをお話しします。</p>
+        <p class="title-meta">
+          FOR&nbsp;&nbsp;<span>大阪大学大学院 工学研究科 ビジネスエンジニアリング専攻 様</span><br>
+          THEME&nbsp;&nbsp;<span>未来先取りモビリティ拠点の構想／分散型モビリティ拠点ネットワーク</span><br>
+          NOTE&nbsp;&nbsp;<span>成功モデルではなく、試行錯誤と頓挫の解像度をお持ち帰りいただきます</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">02<span class="bar"></span>事実</p>
+        <h2>日本初の「マンション住民向け<br>複数交通のサブスク」でした</h2>
+        <div class="facts">
+          <div><span class="k">実施期間</span><span class="v">2020.09.12 — 2021.01.31</span></div>
+          <div><span class="k">対象</span><span class="v">ザ・ゲートタワーウエスト<br>住民（1棟のみ）</span></div>
+          <div><span class="k">手段</span><span class="v">カーシェア／シェアサイクル<br>バス／タクシー（最大4種）</span></div>
+          <div><span class="k">課金</span><span class="v">月額定額（サブスク）</span></div>
+          <div><span class="k">アプリ</span><span class="v">Whim（MaaS Global社／<br>ヘルシンキ）</span></div>
+          <div><span class="k">MaaSレベル</span><span class="v">レベル3<br>（複数交通を定額提供）</span></div>
+        </div>
+        <p class="kicker">柏の葉は「都市近郊型」。同時に日本橋＝都心型、豊洲＝準都心型でも実施し、<span class="u">3つの街を比較する設計</span>でした。そして柏の葉が第1弾です。</p>
+        <p class="note">※ 電動キックボードは本実証のメニューには含まれません。柏の葉では別プロジェクトとして実証されており、私はそちらも利用しました。</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">03<span class="bar"></span>参加するまで</p>
+        <h2>使い始めるまでに、7つの関門がありました</h2>
+        <div class="steps">
+          <div class="step"><i>01</i>公募に応募</div>
+          <div class="step hard"><i>02</i>選考・当選</div>
+          <div class="step hard"><i>03</i>説明会に出席（必須）</div>
+          <div class="step hard"><i>04</i>クレジットカード登録</div>
+          <div class="step"><i>05</i>運転免許証の提示</div>
+          <div class="step"><i>06</i>アプリをインストール</div>
+          <div class="step hard"><i>07</i>LINE登録 → クーポンコード受領</div>
+        </div>
+        <p class="kicker warn">LINEに入らないとコードが届かず、サービスが始まらない。<br><span class="u-w">「アプリを配れば使われる」ではなかった</span>ということです。</p>
+        <div class="facts">
+          <div><span class="k">運営体制</span><span class="v">コミュニティマネジャー 1名 常駐</span></div>
+          <div><span class="k">連絡チャネル</span><span class="v">LINE 2系統<br>（コミュニティ用／不具合報告用）</span></div>
+          <div><span class="k">企画</span><span class="v">柏レイソル観戦チケット／<br>柏の葉公園での家族撮影会</span></div>
+        </div>
+        <p class="note">出典：2020年9〜12月に運営事務局（MaaS Global Ltd.）から参加者へ届いた案内メール8通。</p>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">04<span class="bar"></span>当事者として</p>
+        <h2>全部使いました。アプリも、よくできていました</h2>
+        <div class="steps">
+          <div class="step"><i>✓</i>カーシェア</div>
+          <div class="step"><i>✓</i>シェアサイクル</div>
+          <div class="step"><i>✓</i>バス（乗り放題）</div>
+          <div class="step"><i>✓</i>タクシー</div>
+          <div class="step"><i>✓</i>電動キックボード（別実証）</div>
+        </div>
+        <div class="quote">
+          UIは良かった。使い勝手も良かった。<br>それでも、続きませんでした。
+          <cite>── ここが、この事例のいちばん重要なところです</cite>
+        </div>
+        <p class="kicker">つまりこれは、<span class="u">技術やUXの失敗ではありません</span>。<br>だからこそ、次に同じ設計をすれば同じことが起きます。</p>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">05<span class="bar"></span>失敗要因</p>
+        <h2>続かなかった、4つの理由</h2>
+        <div class="walls">
+          <div class="wall">
+            <span class="n">01</span>
+            <div>
+              <h3>無料だったから使った</h3>
+              <p>実証期間中は無償。有料になったときに使うかというと、正直なところ微妙でした。</p>
+            </div>
+          </div>
+          <div class="wall">
+            <span class="n">02</span>
+            <div>
+              <h3>街が便利すぎて、そもそも移動需要が小さい</h3>
+              <p>柏の葉は非常に便利な街で、バスやタクシーで柏市方面に出る機会自体が少ない。利用は月1回程度。それでは月額定額の元が取れません。</p>
+            </div>
+          </div>
+          <div class="wall">
+            <span class="n">03</span>
+            <div>
+              <h3>目的地が、近すぎた</h3>
+              <p>シェアサイクルや電動キックボードが活きるのは、住まい・商業施設・勤務地がある程度離れて不便な場所です。柏の葉は、それらが離れていなかった。</p>
+            </div>
+          </div>
+          <div class="wall">
+            <span class="n">04</span>
+            <div>
+              <h3>エリアを跨げなかった</h3>
+              <p>柏市内や野田方面まで跨いで使えたなら、話は違ったはずです。1棟・1エリアに閉じた設計そのものに限界がありました。</p>
+            </div>
+          </div>
+        </div>
+        <p class="kicker warn">結論：<span class="u-w">狭いエリアの中だけで完結するMaaSは、成立しにくい。</span></p>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">06<span class="bar"></span>運営のリアル</p>
+        <h2>運営側も、走りながら直していました</h2>
+        <div class="takes">
+          <div class="take"><span class="n">01</span><div><b>無償期間を、途中で延長した</b><span>当初予定を10月31日まで延長。「まだ判断材料が足りない」という状態だったということです。</span></div></div>
+          <div class="take"><span class="n">02</span><div><b>無償 → 有償は、自動移行しなかった</b><span>有償実証は新規登録し直し。ここが最大の脱落ポイントになり得ます。</span></div></div>
+          <div class="take"><span class="n">03</span><div><b>料金ルールの説明が、利用者の理解を超えていた</b><span>「予約を実施した時点の期間が適用される」「72時間の枠」「超過分はカード課金」── 案内メールの但し書きがどんどん長くなっていきました。</span></div></div>
+          <div class="take"><span class="n">04</span><div><b>フィードバックは全件、ヘルシンキ本社が読んでいた</b><span>形式的なアンケートではなく、住民の声を直接開発に返す体制でした。</span></div></div>
+        </div>
+        <div class="quote">
+          柏の葉のユーザーフィードバックを受けて、東京の実証では<br>ユーザーの使い方に高い自由度を持たせたプランを導入した。
+          <cite>── 三井不動産 プレスリリース 2020.12.15（原文）</cite>
+        </div>
+        <p class="kicker">柏の葉は3エリアの第1弾。<span class="u">つまり、実験の実験台でした。</span></p>
+      </div>
+    </section>
+
+    <!-- 07 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">07<span class="bar"></span>その後</p>
+        <h2>構想は正しかった。けれど、足元が崩れました</h2>
+        <div class="tl">
+          <div class="tl-row on"><time>2019.04</time><p class="t">三井不動産、MaaS Global社と協業契約・出資</p></div>
+          <div class="tl-row on"><time>2020.09</time><p class="t">柏の葉で実証開始（第1弾）</p></div>
+          <div class="tl-row on"><time>2020.12</time><p class="t">日本橋・豊洲へ拡大（計6棟）<em>柏の葉の学びを反映し、自由度の高いプランへ</em></p></div>
+          <div class="tl-row on"><time>2021.12</time><p class="t">自社サービス「&amp;MOVE」を開始<em>商業施設・ホテル・マンションへ。ららぽーと豊洲では買物額の5%を交通費還元</em></p></div>
+          <div class="tl-row off"><time>2023.06</time><p class="t">Whimの日本サービス、一時休止<em>コロナ禍とウクライナ侵攻でフィンランド本社の資金調達力が低下</em></p></div>
+          <div class="tl-row off"><time>2024.03</time><p class="t">MaaS Global社、破産申請</p></div>
+          <div class="tl-row"><time>現在</time><p class="t">柏の葉に、定額制MaaSの実装サービスはありません<em>モビリティの主軸は自動運転バス（レベル4実証）へ</em></p></div>
+        </div>
+        <p class="kicker warn">教訓：<span class="u-w">街のサービスを、外部プラットフォームに預けることのリスク。</span><br>三井不動産が自前の「&amp;MOVE」に舵を切ったのは、この前です。</p>
+      </div>
+    </section>
+
+    <!-- 08 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">08<span class="bar"></span>もし、こうだったら</p>
+        <h2>交通だけで課金したのが、<br>そもそもの敗因かもしれません</h2>
+        <div class="quote">
+          柏の葉のマンションを借りると、都内の勤務先までの<br>つくばエクスプレスのチケットが、家賃に含まれている。
+          <cite>── 当時、三井不動産の方と交わした会話より（実施された施策ではありません）</cite>
+        </div>
+        <div class="cols">
+          <div class="col">
+            <h3>もし実現していたら</h3>
+            <ul>
+              <li>マンションそのものの付加価値になる</li>
+              <li>都内の高い物件に住むより、トータルで得になる</li>
+              <li>交通費は「住むことの一部」になり、使わない月の損得が消える</li>
+            </ul>
+          </div>
+          <div class="col is-now">
+            <h3>実際にやったこと</h3>
+            <ul>
+              <li>交通サービス単体での月額サブスク</li>
+              <li>だから「今月は元が取れたか」を利用者が毎月計算してしまう</li>
+              <li>月1回の利用では、必ず負ける</li>
+            </ul>
+          </div>
+        </div>
+        <p class="kicker">プレスリリースには <span class="u">“Real Estate as a Service”</span>、<br>「立地に左右されない移動の利便性」と書かれていました。構想は、そこにあったのです。</p>
+      </div>
+    </section>
+
+    <!-- 09 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">09<span class="bar"></span>持ち帰っていただきたいこと</p>
+        <h2>分散型モビリティ拠点ネットワークへ、6つ</h2>
+        <div class="takes">
+          <div class="take"><span class="n">01</span><div><b>拠点間の距離が、いちばん効く設計変数</b><span>近すぎる街ではシェアモビリティは成立しません。吹田・豊中で「どこが不便か」を先に測ることをおすすめします。</span></div></div>
+          <div class="take"><span class="n">02</span><div><b>課金設計は、需要量から逆算する</b><span>月に何回使うのかを先に置く。月1回の需要に月額定額を載せると、利用者は毎月「損」を計算します。</span></div></div>
+          <div class="take"><span class="n">03</span><div><b>エリアを跨げる設計にする</b><span>1拠点・1エリアで閉じると、便利さが立ち上がる前に終わります。</span></div></div>
+          <div class="take"><span class="n">04</span><div><b>「人が運営するコスト」を最初から見込む</b><span>コミュニティマネジャー1名とLINE2系統。DXの裏側は、完全な人手の仕事でした。</span></div></div>
+          <div class="take"><span class="n">05</span><div><b>交通単体で課金しない道を探す</b><span>家賃・医療・商業と束ねる。分散型拠点を公園・駅・病院に置くなら、その施設側の便益と合算できるはずです。</span></div></div>
+          <div class="take"><span class="n">06</span><div><b>自動運転は、2030年以降の話として置く</b><span>今はレベル2が主流で保安要員が必要。つまり運転士不足の解消にはなりません。当面の拠点構想は有人前提で設計し、無人化は後から載せられる形にしておく。</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide">
+      <div class="inner">
+        <p class="eyebrow">10<span class="bar"></span>おわりに</p>
+        <h2>柏の葉がお渡しできるのは、<br>成功モデルではなく失敗の解像度です</h2>
+        <p class="lede">この街のモビリティは、順風満帆な成功例の積み重ねではありません。数多くの試行錯誤と、頓挫の積み重ねです。それでも公民学が15年以上続いているのは、失敗を共有できる場（UDCK）があったからだと考えています。</p>
+        <p class="eyebrow" style="margin-top:8px">逆に、皆さんに伺いたいこと<span class="bar"></span></p>
+        <div class="asks">
+          <p class="ask">吹田・豊中で、住まいと目的地は「どれくらい離れて、どう不便」なのでしょうか。</p>
+          <p class="ask">分散型拠点の運営は、誰が担う想定ですか。阪急バスですか、自治体ですか、それとも施設側でしょうか。</p>
+          <p class="ask">その拠点は、交通以外の何と束ねて採算を取る設計になっていますか。</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="bar">
+    <button id="prev" type="button" aria-label="前のスライド">←</button>
+    <button id="next" type="button" aria-label="次のスライド">→</button>
+    <span class="count"><span id="cur">1</span> / <span id="tot">10</span></span>
+    <span class="title" id="barTitle">便利すぎた街の失敗</span>
+    <button id="ovBtn" type="button">目次 O</button>
+    <span class="prog"><i id="progBar"></i></span>
+  </div>
+</div>
+
+<div class="ov" id="ov" hidden>
+  <h2>目次</h2>
+  <ol id="ovList"></ol>
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage = document.getElementById('stage');
+  var cur = 0;
+  var titles = slides.map(function(s){
+    var h = s.querySelector('h1, h2');
+    return h ? h.textContent.replace(/\s+/g,' ').trim() : '';
+  });
+
+  document.getElementById('tot').textContent = slides.length;
+
+  function show(i){
+    cur = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach(function(s, n){ s.classList.toggle('is-current', n === cur); });
+    document.getElementById('cur').textContent = cur + 1;
+    document.getElementById('barTitle').textContent = titles[cur];
+    document.getElementById('progBar').style.width = ((cur + 1) / slides.length * 100) + '%';
+    stage.scrollTop = 0;
+  }
+
+  document.getElementById('prev').addEventListener('click', function(){ show(cur - 1); });
+  document.getElementById('next').addEventListener('click', function(){ show(cur + 1); });
+
+  var ov = document.getElementById('ov');
+  var ovList = document.getElementById('ovList');
+  titles.forEach(function(t, i){
+    var li = document.createElement('li');
+    li.tabIndex = 0;
+    li.innerHTML = '<span>' + String(i + 1).padStart(2, '0') + '</span>';
+    li.appendChild(document.createTextNode(t));
+    li.addEventListener('click', function(){ show(i); toggleOv(false); });
+    li.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(i); toggleOv(false); }
+    });
+    ovList.appendChild(li);
+  });
+
+  function toggleOv(on){ ov.hidden = (on === undefined) ? !ov.hidden : !on; }
+  document.getElementById('ovBtn').addEventListener('click', function(){ toggleOv(); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { toggleOv(false); return; }
+    if (e.key === 'o' || e.key === 'O') { toggleOv(); return; }
+    if (!ov.hidden) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(cur + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(cur - 1); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+  });
+
+  var t0 = null;
+  stage.addEventListener('touchstart', function(e){ t0 = e.changedTouches[0].clientX; }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    if (t0 === null) return;
+    var dx = e.changedTouches[0].clientX - t0;
+    if (Math.abs(dx) > 60) { show(cur + (dx < 0 ? 1 : -1)); }
+    t0 = null;
+  }, {passive:true});
+
+  show(0);
+})();
+</script>
