@@ -349,6 +349,47 @@
   }
   .hint b { color: var(--text); font-weight: 500; }
 
+  /* ---- Category chips ---- */
+  .cat-section {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #eceff1;
+  }
+  .cat-label {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: .8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: .04em;
+  }
+  .cat-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    justify-content: center;
+  }
+  .cat-btn {
+    appearance: none;
+    border: 1.5px solid var(--blue);
+    background: #fff;
+    color: var(--blue);
+    font-size: .82rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .12s, color .12s, box-shadow .12s;
+    white-space: nowrap;
+    line-height: 1.3;
+  }
+  .cat-btn:hover {
+    background: var(--blue);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(26,115,232,.28);
+  }
+  .cat-btn:active { transform: scale(.97); }
+
   /* ---- Results screen ---- */
   .results-header {
     background: var(--surface);
@@ -506,20 +547,6 @@
   .modal input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,115,232,.15); }
   .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px; }
   .modal-msg { font-size: .85rem; color: var(--red); min-height: 1.2em; margin-bottom: 8px; }
-  .modal p.beta-notice {
-    color: var(--red);
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.75;
-    margin: 0 0 8px 0;
-    word-break: normal;
-    overflow-wrap: anywhere;
-    line-break: strict;
-  }
-  @media (max-width: 480px) {
-    .modal p.beta-notice { font-size: .95rem; line-height: 1.7; }
-  }
-  .modal h2.beta-title { color: var(--red); }
 
   /* ---- Responsive ---- */
   @media (max-width: 600px) {
@@ -557,7 +584,7 @@
         <div class="login-error" id="loginError"></div>
         <button type="submit" class="btn-primary" id="loginBtn"><span class="jp-only">ログイン</span><span class="en-only">Log in</span></button>
       </form>
-      <div class="login-footer"><span class="jp-only">Rev20 ベータテスト版</span><span class="en-only">Rev20 Beta</span></div>
+      <div class="login-footer">Rev23</div>
     </div>
   </section>
 
@@ -586,9 +613,13 @@
           </div>
         </form>
         <p class="hint">
-          <span class="jp-only">入力例：<b>AIカメラ</b> / <b>実証実験</b> / <b>街区</b> / <b>UDCK</b> / <b>自動運転</b></span>
-          <span class="en-only">Examples: <b>AI camera</b> / <b>pilot project</b> / <b>district</b> / <b>UDCK</b> / <b>autonomous driving</b></span>
+          <span class="jp-only">入力例：<b>AIカメラ</b> / <b>実証実験</b> / <b>街区</b> / <b>UDCK</b> / <b>自動運転</b><br />※ 半角スペースでAND検索、類義語も自動対応</span>
+          <span class="en-only">Examples: <b>AI camera</b> / <b>pilot project</b> / <b>district</b> / <b>UDCK</b> / <b>autonomous driving</b><br />※ Space-separated = AND; synonyms auto-expanded</span>
         </p>
+        <div class="cat-section">
+          <div class="cat-label"><span class="jp-only">カテゴリーで探す</span><span class="en-only">Browse by category</span></div>
+          <div class="cat-buttons" id="categoryButtons"></div>
+        </div>
       </div>
       <div class="footer">
         <span class="jp-only">
@@ -643,19 +674,6 @@
   </section>
 
   <!-- ===== Modals ===== -->
-  <div class="modal-backdrop" id="betaModal" data-no-backdrop-close>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="betaTitle">
-      <h2 id="betaTitle" class="beta-title"><span class="jp-only">⚠ ベータテスト版のお知らせ</span><span class="en-only">⚠ Beta Notice</span></h2>
-      <p class="beta-notice">
-        <span class="jp-only">このアプリは、現在ベータテスト版です。<br />ご使用中に間違い・追加要望のご意見が<br />あった場合、右上の管理者メニューから<br />意見の送信ボタンを押して<br />メッセージをお送りください。</span>
-        <span class="en-only">This app is currently in beta.<br />If you find any errors or have requests during use,<br />please tap the admin menu (top right) and use<br />the "Send feedback" button to message us.</span>
-      </p>
-      <div class="modal-actions">
-        <button class="btn-primary" id="betaOkBtn">OK</button>
-      </div>
-    </div>
-  </div>
-
   <div class="modal-backdrop" id="exitModal">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
       <h2 id="exitTitle"><span class="jp-only">アプリを終了しますか？</span><span class="en-only">Exit the app?</span></h2>
@@ -691,7 +709,7 @@
   };
   const MAX_FAILS = 3;
   const LOCKOUT_MS = 30 * 1000;
-  const PAGE_SIZE = 4;
+  const PAGE_SIZE = 8;
 
   /* ---- Language state ---- */
   let currentLang = (localStorage.getItem(STORAGE_KEYS.lang) === 'en') ? 'en' : 'ja';
@@ -992,8 +1010,8 @@
       localStorage.removeItem(STORAGE_KEYS.failCount);
       localStorage.removeItem(STORAGE_KEYS.lockUntil);
       input.value = '';
-      // Show beta notice modal first; on OK, advance to search screen.
-      openModal('betaModal');
+      show('search');
+      setTimeout(() => $('#kwInput').focus(), 50);
     } else {
       let fails = parseInt(localStorage.getItem(STORAGE_KEYS.failCount) || '0', 10) + 1;
       localStorage.setItem(STORAGE_KEYS.failCount, String(fails));
@@ -1024,6 +1042,51 @@
   let lastResults = [];
   let lastQuery = '';
   let pageIndex = 0;
+
+  /* ---- Category browse ---- */
+  function getCategoriesInOrder() {
+    // Preserve first-seen order across FAQ_DB (which is id-sorted after build),
+    // so the chip order matches the master Excel row order.
+    const seen = new Set();
+    const list = [];
+    for (const rec of FAQ_DB) {
+      const t = (rec.tags && rec.tags[0]) ? String(rec.tags[0]).trim() : '';
+      if (t && !seen.has(t)) {
+        seen.add(t);
+        list.push(t);
+      }
+    }
+    return list;
+  }
+
+  function renderCategoryButtons() {
+    const wrap = $('#categoryButtons');
+    if (!wrap) return;
+    const cats = getCategoriesInOrder();
+    wrap.innerHTML = cats.map(c =>
+      `<button type="button" class="cat-btn" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`
+    ).join('');
+    wrap.querySelectorAll('.cat-btn').forEach(b => {
+      b.addEventListener('click', () => filterByCategory(b.getAttribute('data-cat')));
+    });
+  }
+
+  function filterByCategory(cat) {
+    if (!cat) return;
+    const catNorm = normalize(cat);
+    const matched = FAQ_DB.filter(rec => {
+      const tags = [...(rec.tags || []), ...(rec.tags_en || [])].map(t => normalize(t));
+      return tags.some(t => t === catNorm);
+    }).sort((a, b) => (a.id || 0) - (b.id || 0));
+    lastQuery = 'カテゴリー：' + cat;
+    lastResults = matched;
+    pageIndex = 0;
+    // Sync the results-screen re-search input to empty so the user can type fresh keywords
+    if ($('#kwInput2')) $('#kwInput2').value = '';
+    if ($('#kwInput')) $('#kwInput').value = '';
+    renderResults();
+    show('results');
+  }
 
   function performSearch(query) {
     const q = (query || '').trim();
@@ -1289,6 +1352,7 @@
     $('#searchForm').addEventListener('submit', runSearch);
     $('#searchForm2').addEventListener('submit', runSearch2);
     $('#moreBtn').addEventListener('click', showMore);
+    renderCategoryButtons();
     setupVoice();
     bindExit();
     bindModals();
@@ -1302,13 +1366,6 @@
       b.addEventListener('click', () => setLang(b.getAttribute('data-set-lang')));
     });
     applyLang();
-
-    // Beta-notice OK → advance to search screen (modal cannot be dismissed any other way)
-    $('#betaOkBtn').addEventListener('click', () => {
-      closeModal('betaModal');
-      show('search');
-      setTimeout(() => $('#kwInput').focus(), 50);
-    });
 
     // Focus password
     setTimeout(() => $('#pwInput').focus(), 50);
