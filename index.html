@@ -637,6 +637,7 @@
   <!-- ===== Results screen ===== -->
   <section id="results" class="screen" aria-label="検索結果画面 / Results">
     <div class="topbar">
+      <button class="iconbtn icon-only primary" id="backBtn2" aria-label="戻る / Back" title="検索画面に戻る / Back to search">←</button>
       <button class="iconbtn icon-only danger" id="exitBtn2" aria-label="終了 / Exit" title="アプリを終了 / Exit">✕</button>
       <div class="spacer"></div>
       <h1><span class="jp-only">検索結果</span><span class="en-only">Results</span></h1>
@@ -1360,6 +1361,9 @@
     // ✉ icons (search + results screens) fire the feedback mailto directly.
     $('#menuBtn').addEventListener('click', sendFeedback);
     if ($('#menuBtn2')) $('#menuBtn2').addEventListener('click', sendFeedback);
+
+    // ← Back button on the results screen returns to the initial search screen.
+    if ($('#backBtn2')) $('#backBtn2').addEventListener('click', () => show('search'));
 
     // Language toggle buttons
     document.querySelectorAll('.lang-toggle button[data-set-lang]').forEach(b => {
