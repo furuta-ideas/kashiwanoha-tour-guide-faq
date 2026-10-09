@@ -201,6 +201,9 @@ if (Test-Path $enPath) {
     foreach ($rec in $db) {
         $en = $enMap[[int]$rec['id']]
         if ($null -eq $en) { continue }
+        if ($en.source_question -and $en.source_question -ne $rec['question']) {
+            throw "English translation source mismatch for FAQ $($rec['id']). Update faq_en.json before building."
+        }
         if ($en.question)   { $rec['question_en'] = [string]$en.question }
         if ($en.tags) {
             $tArr = New-Object System.Collections.Generic.List[string]
