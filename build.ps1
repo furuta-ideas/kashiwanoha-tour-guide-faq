@@ -1,8 +1,10 @@
-﻿# Build script: transforms FAQ Excel JSON into the embedded DB and writes index.html.
+# Build script: transforms FAQ Excel JSON into the embedded DB and writes index.html.
 # Re-run after the Excel file is updated.
 
 param(
-    [string]$Root = (Split-Path -Parent $MyInvocation.MyCommand.Path)
+    [string]$Root = (Split-Path -Parent $MyInvocation.MyCommand.Path),
+    [string]$Rev = 'Rev24',
+    [string]$Updated = (Get-Date -Format 'yyyy/MM/dd HH:mm')
 )
 
 $ErrorActionPreference = 'Stop'
@@ -77,6 +79,24 @@ function Split-Answers {
     return $cleaned.ToArray()
 }
 
+# Category column holds multiple tags separated by "／" (full-width slash).
+function Split-Tags {
+    param([string]$s)
+    if ([string]::IsNullOrWhiteSpace($s)) { return @() }
+    return @(($s -split '[／/]') | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+}
+
+# English labels for tags (used for tags_en on every record).
+$TagEn = @{
+    '柏の葉スマートシティ概要' = 'Smart City Overview'; '歴史' = 'History'; '街の運営' = 'City Operations'
+    '街のデータ' = 'City Statistics'; 'これからの街づくり' = 'Future City Development'; '住民の声' = 'Resident Voices'
+    'UDCK' = 'UDCK'; 'KOIL' = 'KOIL'; '健康長寿・あ・し・た' = 'Health (Ashita)'; '環境共生' = 'Environmental Coexistence'
+    'エネルギー・AEMS' = 'Energy (AEMS)'; 'モビリティ' = 'Mobility'; '都市OS' = 'Urban OS'
+    '防災・レジリエンス' = 'Disaster & Resilience'; 'ポートランド' = 'Portland'
+    '他のスマートシティとの比較' = 'Comparison with Other Smart Cities'; 'ツアー運営' = 'Tour Operations'
+    '1st Stage' = '1st Stage'; '2nd Stage' = '2nd Stage'; 'かけだし横丁' = 'Kakedashi Yokocho'; '経営数字' = 'Business Figures'
+}
+
 function Extract-Keywords {
     param([string]$question, [string]$category)
     # Keywords are derived from the question + category only.
@@ -104,8 +124,10 @@ function Extract-Keywords {
     }
 
     if ($category -and -not [string]::IsNullOrWhiteSpace($category)) {
-        $c = $category.Trim()
-        if ($c.Length -ge 2 -and -not $kw.Contains($c)) { $kw.Add($c, $true) }
+        foreach ($c0 in (Split-Tags $category)) {
+            $c = $c0.Trim()
+            if ($c.Length -ge 2 -and -not $kw.Contains($c)) { $kw.Add($c, $true) }
+        }
     }
     # Limit count to keep JSON compact
     $arr = @($kw.Keys)
@@ -129,7 +151,6 @@ foreach ($row in $rows) {
     $answersList = New-Object System.Collections.Generic.List[string]
     $i = 0
     foreach ($a in $answersRaw) {
-        if ($i -ge 3) { break }
         [void]$answersList.Add('● ' + $a.Trim())
         $i++
     }
@@ -139,7 +160,7 @@ foreach ($row in $rows) {
     foreach ($k in $kwArr) { [void]$kwList.Add([string]$k) }
 
     $tagList = New-Object System.Collections.Generic.List[string]
-    if (-not [string]::IsNullOrWhiteSpace($category)) { [void]$tagList.Add([string]$category.Trim()) }
+    foreach ($tg in (Split-Tags $category)) { [void]$tagList.Add($tg) }
 
     $rec = [ordered]@{
         id = [int]$no
@@ -205,16 +226,16 @@ if (Test-Path $enPath) {
             throw "English translation source mismatch for FAQ $($rec['id']). Update faq_en.json before building."
         }
         if ($en.question)   { $rec['question_en'] = [string]$en.question }
-        if ($en.tags) {
-            $tArr = New-Object System.Collections.Generic.List[string]
-            foreach ($t in $en.tags) { [void]$tArr.Add([string]$t) }
-            $rec['tags_en'] = $tArr
+        $tArr = New-Object System.Collections.Generic.List[string]
+        foreach ($tg in $rec['tags']) {
+            if (-not $TagEn.ContainsKey($tg)) { throw "No English label for tag '$tg' (FAQ $($rec['id']))" }
+            [void]$tArr.Add($TagEn[$tg])
         }
+        $rec['tags_en'] = $tArr
         if ($en.answers) {
             $aArr = New-Object System.Collections.Generic.List[string]
             $i = 0
             foreach ($a in $en.answers) {
-                if ($i -ge 3) { break }
                 $clean = ([string]$a).Trim()
                 if ($clean.StartsWith([char]0x25CF)) { $clean = $clean.TrimStart([char]0x25CF).Trim() }
                 if ($clean.Length -gt 0) { [void]$aArr.Add(([char]0x25CF).ToString() + ' ' + $clean) }
@@ -290,6 +311,9 @@ $json = $json -replace '</', '<\/'
 
 $template = Get-Content -Raw -Path $templatePath -Encoding UTF8
 $out = $template.Replace('/*__FAQ_DB__*/', $json)
+$meta = '{"rev":' + (Json-EscapeString $Rev) + ',"updated":' + (Json-EscapeString $Updated) + '}'
+$out = $out.Replace('/*__FAQ_META__*/', $meta)
 
 Set-Content -Path $outPath -Value $out -Encoding UTF8
 Write-Host "Wrote $outPath ($(([System.IO.FileInfo]$outPath).Length) bytes)"
+

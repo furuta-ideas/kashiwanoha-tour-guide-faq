@@ -1,1283 +1,1201 @@
 {
   "1": {
-    "source_question": "街の規模はどれくらいですか？",
-    "question": "What is the scale of the city?",
+    "source_question": "街の規模はどれくらいですか？人口はどの範囲で数えていますか？",
+    "question": "How large is the town? What range is used to count the population?",
     "answers": [
       "The development area is approximately 2.73 million m² (about 63 Tokyo Domes or ~5 Tokyo Disneylands) — one of the largest in Japan.",
+      "It covers the land readjustment project area of the Kashiwa North Central District (~273 ha).",
+      "This includes parts of Wakashiba, Kashiwa-no-ha, Shorenji, Funato, Koaota, Omuro, and Toyofuta.",
+      "Chiba Prefecture is the implementing body for the land readjustment, and Mitsui Fudosan develops mainly the blocks around the station.",
       "By early FY2026 the station-front development is largely complete; focus is shifting to the 'Innovation Campus Area' anchored by the University of Tokyo and the National Cancer Center East Hospital."
-    ],
-    "tags": [
-      "Smart City Overview"
     ]
   },
   "2": {
-    "source_question": "現在の人口・就業人口・年齢構成はどうなっていますか？",
-    "question": "What is the current population, workforce, and age composition?",
+    "source_question": "現在の人口・就業人口・年齢構成（世代構成）はどうなっていますか？",
+    "question": "What are the current population, working population, and age composition (generational makeup)?",
     "answers": [
-      "Residents: ~13,000. Planned population 26,000 by 2040 (originally 2030, extended by the board).",
-      "Workforce: 19,000–20,000. SMC's new technical center (1,400 employees) joined in April 2026.",
-      "Average household age is late 30s — 10–20 years younger than the national average. The aging rate is 10–20% vs. the national ~29%."
-    ],
-    "tags": [
-      "Smart City Overview"
+      "The resident population is ~14,000, against a planned population of 26,000.",
+      "In April 2026, the SMC New Technology Center (1,400 employees) joined the town.",
+      "Average household age is late 30s — 10–20 years younger than the national average. The aging rate is 10–20% vs. the national ~29%.",
+      "People aged 30 to 49 make up ~40%, with child-rearing households at the core."
     ]
   },
   "3": {
-    "source_question": "柏の葉スマートシティの目的は？",
-    "question": "What is the purpose of Kashiwa-no-ha Smart City?",
+    "source_question": "柏の葉スマートシティの目的は？なぜ三井不動産は街づくりに踏み込んだのですか？",
+    "question": "What is the purpose of the Kashiwa-no-ha Smart City? Why did Mitsui Fudosan get involved in town development?",
     "answers": [
+      "Sell-and-move-on real estate has limited upside; the goal is evolving into 'a real-estate firm with a unique city-making know-how.'",
       "For Mitsui Fudosan, it means shifting from real-estate to an 'asset business' — accumulating know-how for city-making whose value keeps appreciating.",
       "The guiding vision is the 'Kashiwa-no-ha International Campus Town Plan,' with Environmental Coexistence, Health & Longevity, and New Industry Creation as the three axes.",
-      "The ultimate goal is to export this know-how to other cities and abroad."
-    ],
-    "tags": [
-      "Smart City Overview"
+      "Kashiwa-no-ha alone won't recoup investment in 100 years, but the know-how packaged and exported abroad enables long-term returns.",
+      "Single-year break-even is projected by FY2028. A general incorporated association was set up in 2019 for TM monetization.",
+      "Until three years ago it was directly under the President's Office; it is now organized as the Innovation Promotion Division."
     ]
   },
   "4": {
-    "source_question": "住民は何を求めて柏の葉に移住していますか？",
-    "question": "Why do residents choose to move to Kashiwa-no-ha?",
+    "source_question": "住民は何を求めて移住していますか？マンション購入の決め手・資産価値は？",
+    "question": "What are residents looking for when they move here? What drives condominium purchases, and what about asset value?",
     "answers": [
       "Central-Tokyo access with a quiet, green environment; child-rearing support; asset value; and sympathy for the city-making concept.",
-      "Many residents drawn here want to apply their careers to community development."
-    ],
-    "tags": [
-      "Smart City Overview"
+      "Safety features — low car intrusion in child spaces, constant foot traffic, active residents' associations — also earn praise.",
+      "Many residents drawn here want to apply their careers to community development.",
+      "Block 1 (completed February 2008) has seen prices rise 30-40% from the purchase price. Apart from a brief period in 2011, prices have been on an upward trend.",
+      "A 70 m² unit today costs 100M+ yen (vs. 30M+ yen 15 years ago). 1LDK rentals: 200,000–300,000 yen/month."
     ]
   },
   "5": {
-    "source_question": "マンション購入の決め手は？資産価値の推移は？",
-    "question": "What is the deciding factor for buying a condominium? How have prices moved?",
+    "source_question": "ユニバーサルデザイン・障がい者対策はどうなっていますか？",
+    "question": "What is being done about universal design and accessibility for people with disabilities?",
     "answers": [
-      "Ichibangai (built 2006) has appreciated 30–40% since purchase. Except briefly in 2011, prices have kept rising.",
-      "A 70 m² unit today costs 100M+ yen (vs. 30M+ yen 15 years ago). 1LDK rentals: 200,000–300,000 yen/month.",
-      "Safety features — low car intrusion in child spaces, constant foot traffic, active residents' associations — also earn praise."
-    ],
-    "tags": [
-      "Smart City Overview"
+      "Pedestrian continuity is prioritized; parking entrances are consolidated to minimize sidewalk cuts.",
+      "General improvements in line with laws and ordinances are in place (sufficiently wide sidewalks, ramps, tactile paving for visually impaired people, etc.).",
+      "Diverse routes like 'Gakuen no Michi' and 'Ryokuen no Michi' realize walkable urban space."
     ]
   },
   "6": {
-    "source_question": "ユニバーサルデザインはどう統合されていますか？",
-    "question": "How is universal design integrated?",
-    "answers": [
-      "Pedestrian continuity is prioritized; parking entrances are consolidated to minimize sidewalk cuts.",
-      "Wide sidewalks, ramps for level changes, and tactile guide paving are installed.",
-      "Diverse routes like 'Gakuen no Michi' and 'Ryokuen no Michi' realize walkable urban space."
-    ],
-    "tags": [
-      "Smart City Overview"
-    ]
-  },
-  "7": {
     "source_question": "最初からグランドデザインがあったのですか？",
     "question": "Was there a grand design from the start?",
     "answers": [
       "The rare combination of public land plus Mitsui-family land — with UTokyo/Chiba U./national research institutes already nearby — allowed a long-horizon grand design.",
       "The plan has been continuously refined; recently it is reviewed roughly every two years."
-    ],
-    "tags": [
-      "Smart City Overview"
+    ]
+  },
+  "7": {
+    "source_question": "なぜ50年単位の街づくりなのですか？2030年以降の開発計画は？",
+    "question": "Why plan the town in 50-year units? What are the development plans after 2030?",
+    "answers": [
+      "Originally a 30-year plan (target 2030), extended by 10 years to 2040. Counting the late-1990s concept phase, the horizon spans 50 years.",
+      "Chiba Prefecture's land readjustment project is scheduled to be completed in FY2031, but development as a smart city will continue.",
+      "An extension to 2040 has been formally approved by the board.",
+      "The city must keep growing even after Mitsui Fudosan steps back — financial self-sufficiency is essential."
     ]
   },
   "8": {
-    "source_question": "なぜ50年単位の街づくりを目指しているのですか？",
-    "question": "Why plan on a 50-year horizon?",
-    "answers": [
-      "Originally a 30-year plan (target 2030), extended by 10 years to 2040. Counting the late-1990s concept phase, the horizon spans 50 years.",
-      "The city must keep growing even after Mitsui Fudosan steps back — financial self-sufficiency is essential."
-    ],
-    "tags": [
-      "Smart City Overview"
-    ]
-  },
-  "9": {
     "source_question": "「ミクストユース」とは何ですか？藤沢SSTとの違いは？",
     "question": "What is 'mixed-use'? How does Kashiwa-no-ha differ from Fujisawa SST?",
     "answers": [
       "A block design that concentrates living, working, playing, and learning within walking distance.",
-      "Fujisawa SST (Panasonic) is a detached-house-led community; Kashiwa-no-ha is condominium-led compact-city design — with shared walkability values."
-    ],
-    "tags": [
-      "Smart City Overview"
+      "Fujisawa SST (Panasonic) is a detached-house-led community; Kashiwa-no-ha is condominium-led compact-city design — with shared walkability values.",
+      "Fujisawa SST (town opened in 2014, ~19 ha) is mainly detached houses and uses an \"individual distributed\" model, with solar power and storage batteries in every home.",
+      "Kashiwa-no-ha mixes housing, offices, and commercial facilities, and uses a \"centrally managed\" model that shares electricity among blocks; its hallmark is the public-private-academic partnership (UDCK)."
     ]
   },
-  "10": {
+  "9": {
     "source_question": "この街の「三大ケイパビリティ」は何ですか？",
     "question": "What are the 'three capabilities' of Kashiwa-no-ha?",
     "answers": [
       "①Hardware (facilities, universities, research institutes), ②Digital (data platform), ③Software (UDCK — the organization that connects people).",
       "This trio keeps drawing residents, researchers, and enterprises."
-    ],
-    "tags": [
-      "Smart City Overview"
     ]
   },
-  "11": {
+  "10": {
     "source_question": "この街を一言で言うと？",
     "question": "Describe this city in one line.",
     "answers": [
       "'The city that creates the world's future image.'",
       "Beyond hardware and software, the culture that celebrates challenge — and the people who love it — matter most.",
       "The signature is that residents can iterate: live, experiment, fail, and improve."
-    ],
-    "tags": [
-      "Smart City Overview"
     ]
   },
-  "12": {
+  "11": {
     "source_question": "この土地はだれでも所有できるのか？",
     "question": "Can anyone own land or property here?",
     "answers": [
       "You can own properties offered for sale, such as condominiums, by purchasing them."
-    ],
-    "tags": [
-      "Smart City Overview"
+    ]
+  },
+  "12": {
+    "source_question": "ゲートタワーにはどんな施設がありますか？賃貸棟にした理由は？",
+    "question": "What's inside Gate Tower? Why rental instead of sale?",
+    "answers": [
+      "Residential + tenants that embody mixed-use — Caps Clinic (open on weekends), lifestyle-proposing daycare 'Chicol', and other Kashiwa-no-ha-flavored tenants.",
+      "The rental format embodies 'aging with grace': periodic turnover brings fresh interaction and information, feeding city growth."
     ]
   },
   "13": {
+    "source_question": "ららぽーと柏の葉の店舗数と年間来場者数はどのくらいですか？",
+    "question": "How many stores does LaLaport Kashiwanoha have, and how many visitors does it get per year?",
+    "answers": [
+      "It opened on November 22, 2006, and will celebrate its 20th anniversary in November 2026.",
+      "It has ~180 stores (as of December 2025, announced by Mitsui Fudosan) and ~15 million visitors per year (November 2024, announced by Mitsui Fudosan and others).",
+      "It is located in front of Kashiwa-no-ha Campus Station, and a major renovation is planned from spring 2027."
+    ]
+  },
+  "14": {
+    "source_question": "三井ガーデンホテル柏の葉はどんなホテルですか？",
+    "question": "What kind of hotel is Mitsui Garden Hotel Kashiwa-no-ha?",
+    "answers": [
+      "It opened in 2014 and has 137 guest rooms.",
+      "It has \"Garden Spa,\" a large public bath with natural hot spring water that wells up on the premises.",
+      "The Smart Center (AEMS) is also located in this building."
+    ]
+  },
+  "15": {
     "source_question": "駅前開発エリアはどのような考えで進めたのですか？",
     "question": "What was the approach for the station-front area?",
     "answers": [
       "We began with Mitsui-owned Block 4 as Stage 1.",
       "The population — mainly child-rearing families — has grown as planned. Daytime population growth is now the goal."
-    ],
-    "tags": [
-      "History"
     ]
   },
-  "14": {
+  "16": {
     "source_question": "辻仲病院は誘致したのですか？",
     "question": "Was Tsujinaka Hospital invited to open here?",
     "answers": [
       "Not invited — the hospital opened on its own initiative.",
       "The Tsujinaka group was expanding capacity, learned of the TX-driven development plan, broke ground in 2008, and opened in June 2009."
-    ],
-    "tags": [
-      "History"
     ]
   },
-  "15": {
-    "source_question": "かけだし横丁はどうやって生まれたのですか？",
-    "question": "How was Kakedashi Yokocho created?",
+  "17": {
+    "source_question": "かけだし横丁はどうやって生まれたのですか？テナント選定や名物「No.4」は？",
+    "question": "How did Kakedashi Yokocho come about? How were tenants selected, and what is the signature \"No.4\"?",
     "answers": [
       "Residents and academics were saying 'PPP is great, but there's no after-hours gathering place.'",
+      "It solves two issues at once: the \"dark, scary space under the elevated tracks\" and the \"lack of places for evening socializing.\"",
       "After a temporary yatai prototype validated by Prof. Deguchi (UDCK center director), UDCK and Mitsui Fudosan negotiated with TX, and it was implemented under the viaduct in 2018.",
-      "Today it's 19 yatai-inspired shops."
-    ],
-    "tags": [
-      "History"
+      "Open flames are normally restricted under elevated tracks, but this was made possible through discussions with Tsukuba Express (TX).",
+      "It consists of 19 small, food-stall-style eateries plus the Runners Station, for a total of 20 units.",
+      "Mitsui Fudosan leads recruitment with quality first. Since opening (through COVID) only half turned over — mostly to expand elsewhere.",
+      "Day-to-day: Mitsui Fudosan Building Management.",
+      "'No.4' is a signature drink inspired by Kashiwa-no-ha's sunset — a co-creation among Kakedashi Yokocho, KOIL, and Kashiwa City (alcohol-free option available)."
     ]
   },
-  "16": {
+  "18": {
     "source_question": "この街づくりでの最大の困難は何でしたか？",
     "question": "What was the biggest challenge in this city-making?",
     "answers": [
       "The 2011 Great East Japan Earthquake. After seniors were stranded on upper floors, development was paused for a year to overhaul disaster planning — resulting in the Smart Center (completed 2014).",
-      "The overhaul was pushed through against strong pushback from city and academic stakeholders."
-    ],
-    "tags": [
-      "History"
-    ]
-  },
-  "17": {
-    "source_question": "2030年以降の開発計画は？",
-    "question": "What are the development plans beyond 2030?",
-    "answers": [
-      "The Chiba Prefecture land-readjustment project targets 2030 as one milestone, but Smart City work continues.",
-      "An extension to 2040 has been formally approved by the board."
-    ],
-    "tags": [
-      "Future City Development"
-    ]
-  },
-  "18": {
-    "source_question": "工場は作らないのですか？",
-    "question": "Will there be factories?",
-    "answers": [
-      "The Innovation District focuses on offices and research labs.",
-      "SMC opened a 3-building technical center in April 2026. Mitsui's Link Lab is expanding with a second building."
-    ],
-    "tags": [
-      "Future City Development"
+      "The overhaul was pushed through against strong pushback from city and academic stakeholders.",
+      "In fact, at the time, the buildings could not share their emergency power with one another. In addition, no one was aware that the shopping center had a groundwater pump, so it could not be used either.",
+      "In response, the plan was fundamentally reviewed, leading to power sharing between blocks through AEMS, use of water, and making the central Smart Center a seismically isolated building."
     ]
   },
   "19": {
-    "source_question": "地域通貨の構想はありますか？",
-    "question": "Are there plans for a local currency?",
+    "source_question": "「スマートシティ」と名乗り始めたのはいつですか？",
+    "question": "When did the town start calling itself a \"smart city\"?",
     "answers": [
-      "Considered in the past but never implemented.",
-      "Toronto/Estonia examples remain shallow in adoption; leaving seniors behind is a concern. No plans now or in the foreseeable future."
-    ],
-    "tags": [
-      "Future City Development"
+      "The term \"smart city\" did not exist around 2000 when development began; the town has used it since around 2011.",
+      "In July 2011, Kashiwa City, Chiba Prefecture, the University of Tokyo, Chiba University, and Mitsui Fudosan held a joint press conference, and the effort got fully underway."
     ]
   },
   "20": {
-    "source_question": "AI進展時のスマートシティのあり方は議論されていますか？",
-    "question": "Has the AI-era role of the smart city been discussed?",
+    "source_question": "三井不動産は元々どの土地を持っていたのですか？",
+    "question": "What land did Mitsui Fudosan originally own?",
     "answers": [
-      "Internally, yes — but as generative AI is a means, not an end, there is not yet a clear answer for what to deliver via it."
-    ],
-    "tags": [
-      "Future City Development"
+      "The golf course (Kashiwa Golf Club) and the Mitsui housing complex were originally owned by Mitsui; it did not buy up other land.",
+      "Universities, hospitals, parks, and the like are on public land."
     ]
   },
   "21": {
-    "source_question": "こどもたちはまちに定着させる考えか？",
-    "question": "Do you aim to encourage children to stay in the city as they grow up?",
+    "source_question": "柏の葉と醤油にはどんな関係がありますか？",
+    "question": "What is the connection between Kashiwa-no-ha and soy sauce?",
     "answers": [
-      "Keeping children in the city is difficult, but we believe it is important to create an environment that makes those who grow up here want to return."
-    ],
-    "tags": [
-      "Future Development"
+      "The Yoshida family of the \"Former Yoshida Residence Historical Park\" brewed soy sauce until the Taisho era (they sold the management rights to Noda Shoyu [now Kikkoman] in Taisho 11, i.e., 1922).",
+      "Because of this history, soy sauce is used as a secret ingredient in Kakedashi Yokocho's signature cocktail \"No.4.\"",
+      "The name \"No.4\" comes in part from the fact that the site of the alley was once the 4th hole of Kashiwa Golf Club."
     ]
   },
   "22": {
-    "source_question": "このまちから離れて行っても良いということか？それもオープンにしている？",
-    "question": "Is it also acceptable for people to leave the city? Do you take an open approach to that?",
-    "answers": [
-      "Our approach is generally open, although we hope people will grow up here. The first stage lacked workplaces: without both living and working locally, it was hard to feel the city was truly one's own. The second stage has brought more workplaces, including SMC. We hope the third stage will develop a city where people can earn a living."
-    ],
-    "tags": [
-      "Future Development"
-    ]
-  },
-  "23": {
     "source_question": "三井不動産柏の葉街づくり推進部の役割範囲は？",
     "question": "What is the scope of Mitsui Fudosan's Kashiwa-no-ha City Development Division?",
     "answers": [
       "About 40 people across four functions: real-estate development, life-science clustering, data-platform activation, and area management.",
       "PPP promotion, enterprise attraction, resident collaboration, and co-creation — all integrated.",
       "Mitsui Fudosan Building Management handles day-to-day. Link Lab is directly run; Conference and Ashita use external partners."
-    ],
-    "tags": [
-      "City Operations"
+    ]
+  },
+  "23": {
+    "source_question": "街の運営予算やUDCKの資金はどこから出ていますか？",
+    "question": "Where does the town's operating budget and UDCK's funding come from?",
+    "answers": [
+      "Mainly UDCK Town Management (in substance, Mitsui Fudosan). TM is developing its own revenue streams toward self-sustainability.",
+      "UDCK's funding has a multi-layered structure: shared contributions, national subsidies, Mitsui's capital expenditure, university research funds, and corporate contributions.",
+      "A 19-member consortium was also established in 2019.",
+      "For upgraded public roads, Mitsui builds them and Kashiwa City shares operating/maintenance costs.",
+      "No direct city subsidies, but strong support in personnel, consortium building, and rent subsidy at KOIL TERRACE."
     ]
   },
   "24": {
-    "source_question": "街の運営予算・公共施設予算はどこから出ていますか？",
-    "question": "Where does the city-operations / public-facility budget come from?",
-    "answers": [
-      "Mainly UDCK Town Management (in substance, Mitsui Fudosan). TM is developing its own revenue streams toward self-sustainability.",
-      "For upgraded public roads, Mitsui builds them and Kashiwa City shares operating/maintenance costs.",
-      "No direct city subsidies, but strong support in personnel, consortium building, and rent subsidy at KOIL TERRACE."
-    ],
-    "tags": [
-      "City Operations"
-    ]
-  },
-  "25": {
-    "source_question": "なぜ三井不動産は「街づくり」に踏み込んだのですか？三井の収益視点は？",
-    "question": "Why did Mitsui Fudosan enter 'city-making'? Where's the return?",
-    "answers": [
-      "Sell-and-move-on real estate has limited upside; the goal is evolving into 'a real-estate firm with a unique city-making know-how.'",
-      "Kashiwa-no-ha alone won't recoup investment in 100 years, but the know-how packaged and exported abroad enables long-term returns.",
-      "Single-year break-even is projected by FY2028. A general incorporated association was set up in 2019 for TM monetization.",
-      "Three years ago it was under the president's office; now it's organized within the Innovation Promotion HQ."
-    ],
-    "tags": [
-      "City Operations"
-    ]
-  },
-  "26": {
     "source_question": "KPIはどう設定していますか？",
     "question": "How are KPIs set?",
     "answers": [
       "The International Campus Town Plan sets 'priority goals' and 'goals' per field, with periodic follow-up surveys.",
       "Positive: high expectations for daily convenience and future streetscape. Negative: few local jobs, so commuting to central Tokyo dominates.",
-      "Public data: '2019 Kashiwa-no-ha International Campus Town Plan' at kashiwanoha-smartcity.com."
-    ],
-    "tags": [
-      "City Operations"
+      "Disclosed data: The Kashiwa-no-ha International Campus Town Initiative (2019 revised edition) is published on the Kashiwa City website (https://www.city.kashiwa.lg.jp/hokubuseibi/shiseijoho/keikaku/shigoto/kaihatsu/4521.html)."
     ]
   },
-  "27": {
-    "source_question": "UDCKは自動運転などをどう承認していますか？",
-    "question": "How does UDCK approve things like autonomous driving?",
+  "25": {
+    "source_question": "柏の葉スマートシティは誰が主導していますか？UDCKはどう関与・承認していますか？",
+    "question": "Who leads the Kashiwa-no-ha Smart City? How is UDCK involved and how does it give approval?",
     "answers": [
+      "Three parallel drivers: public (Kashiwa City, Chiba Prefecture), private (Mitsui Fudosan et al.), and academic (UTokyo, Chiba U., AIST).",
+      "Development is led by Mitsui Fudosan; UDCK is the advisory body that verifies alignment with the International Campus Town Plan.",
       "UDCK is an advisory body under the International Campus Town Plan. Operators (e.g., Mitsui Fudosan) draft proposals; UDCK aligns them in the planning stage.",
       "Example: recommending distinct bus livery, arranging resident briefings for autonomous bus trials."
-    ],
-    "tags": [
-      "City Operations"
     ]
   },
-  "28": {
+  "26": {
     "source_question": "公民学、民間企業と違う苦労は？",
     "question": "What's difficult about PPP compared with pure-private work?",
     "answers": [
       "Procedures and pace differ greatly — universities may take 2–3 months for an item to reach the next faculty meeting, and require extensive documentation."
-    ],
-    "tags": [
-      "City Operations"
     ]
   },
-  "29": {
+  "27": {
     "source_question": "この街には外国人でも住めますか？",
     "question": "Can foreigners live here?",
     "answers": [
       "Yes — anyone. Many international students and researchers already live here.",
       "There is no rental-term lock-in, and tenants' rights are strongly protected by Japanese law."
-    ],
-    "tags": [
-      "City Operations"
     ]
   },
-  "30": {
+  "28": {
     "source_question": "パンフレットやチラシのデザインの統一感はどのように図っているか？",
     "question": "How do you maintain a consistent design across brochures and flyers?",
     "answers": [
       "UDCK previously had an art director who coordinated the overall visual tone and direction.",
       "UDCK still commissions designers for its brochures and other publications.",
-      "Many materials are also produced by directors, who appear to be naturally conscious of design quality."
-    ],
-    "tags": [
-      "City Operations"
+      "Many materials are also produced by directors, who appear to be naturally conscious of design quality.",
+      "We cannot control even flyers made by local residents, but many of them have a good design."
+    ]
+  },
+  "29": {
+    "source_question": "住民になるのに審査はありますか？",
+    "question": "Is there a screening process to become a resident?",
+    "answers": [
+      "For housing, only the standard rental or purchase procedures apply, with no special screening.",
+      "Even if you live here, providing personal data is not mandatory."
+    ]
+  },
+  "30": {
+    "source_question": "柏の葉に町会（自治会）はありますか？",
+    "question": "Are there neighborhood associations (jichikai) in Kashiwa-no-ha?",
+    "answers": [
+      "The Kashiwa-no-ha area also has neighborhood associations such as those for Kashiwa-no-ha 1-3 chome and Kashiwa-no-ha Campus Block 1 and Block 2, which belong to the Tanaka Regional Furusato Council.",
+      "In tower condominiums, the management association (board of directors) also plays a major role in day-to-day operations."
     ]
   },
   "31": {
-    "source_question": "世代構成は？",
-    "question": "What is the age composition?",
+    "source_question": "急に住民が増えて学校が足りなくなりませんか？",
+    "question": "Won't the sudden increase in residents cause a shortage of schools?",
     "answers": [
-      "Residents in their 30s and 40s dominate."
-    ],
-    "tags": [
-      "City Statistics"
+      "By staggering the construction timing of condominiums and making some of them rentals, the town avoids concentrating households of the same generation all at once."
     ]
   },
   "32": {
-    "source_question": "つくばエクスプレス（柏の葉キャンパス駅）の1日乗降者数は？",
-    "question": "What's the daily ridership at Kashiwa-no-ha Campus Station (Tsukuba Express)?",
+    "source_question": "うまくいかないお店や事業はありますか？",
+    "question": "Are there any shops or businesses that aren't doing well?",
     "answers": [
-      "FY2025: 21,333/day (FY2024: 19,821). Crossed 20,000 for the first time."
-    ],
-    "tags": [
-      "City Statistics"
+      "There are cases where, even when popular, a shop's sales don't cover the rent and it cannot continue.",
+      "Community-based business types without an established business model struggle to turn a profit and need ways to raise their unit prices."
     ]
   },
   "33": {
+    "source_question": "つくばエクスプレス（柏の葉キャンパス駅）の1日の乗車人員は？",
+    "question": "How many people board the Tsukuba Express (TX) at Kashiwa-no-ha Campus Station each day?",
+    "answers": [
+      "The average daily boarding count was 21,322 in FY2025 (FY2024: 19,821), exceeding 20,000 for the first time."
+    ]
+  },
+  "34": {
     "source_question": "区画整理の進捗は？",
     "question": "How is the land-readjustment project progressing?",
     "answers": [
       "Northern Kashiwa Central District: 79.3% complete as of end of FY2024 (per Kashiwa City)."
-    ],
-    "tags": [
-      "City Statistics"
-    ]
-  },
-  "34": {
-    "source_question": "住民の評価や不満は？",
-    "question": "What is residents' feedback and dissatisfaction?",
-    "answers": [
-      "Living environment is highly rated. Restaurants, business support, and community are where improvement requests concentrate.",
-      "Involvement in city-making splits into 'participants,' 'observers,' and 'consumers' — resident-led is still emerging.",
-      "The root cause is limited high-skill jobs on-site — mixed-use needs work opportunities nearby."
-    ],
-    "tags": [
-      "Resident Voices"
     ]
   },
   "35": {
-    "source_question": "住民によるまちの評価ランキングは？",
-    "question": "How do residents rank the city?",
+    "source_question": "この街にないものは何ですか？",
+    "question": "What does this town not have?",
     "answers": [
-      "In the 2016 survey: #1 shopping convenience, #2 green and pleasant environment, #3 commute/school access (International Campus Town Plan p.7)."
-    ],
-    "tags": [
-      "Resident Voices"
+      "There are no driving schools, children's centers, museums, and the like."
     ]
   },
   "36": {
-    "source_question": "住民目線でこの街をどう評価していますか？",
-    "question": "From a resident's view, how do you rate the city?",
+    "source_question": "工場は作らないのですか？",
+    "question": "Will there be factories?",
     "answers": [
-      "First impression: 'a nice place — feels like a university campus.' The reason: UDCK-led spatial design plus PPP.",
-      "Second impression: serendipity is everywhere on the community/soft side — casual conversations spawn ideas that get implemented. A rare quality."
-    ],
-    "tags": [
-      "Resident Voices"
+      "The Innovation District focuses on offices and research labs.",
+      "SMC opened a 3-building technical center in April 2026. Mitsui's Link Lab is expanding with a second building."
     ]
   },
   "37": {
+    "source_question": "地域通貨の構想はありますか？",
+    "question": "Are there plans for a local currency?",
+    "answers": [
+      "Considered in the past but never implemented.",
+      "Toronto/Estonia examples remain shallow in adoption; leaving seniors behind is a concern. No plans now or in the foreseeable future."
+    ]
+  },
+  "38": {
+    "source_question": "AI進展時のスマートシティのあり方は議論されていますか？",
+    "question": "Has the AI-era role of the smart city been discussed?",
+    "answers": [
+      "Internally, yes — but as generative AI is a means, not an end, there is not yet a clear answer for what to deliver via it."
+    ]
+  },
+  "39": {
+    "source_question": "子どもたちを街に定着させる考えですか？離れていっても良いのですか？",
+    "question": "Is the idea to keep children rooted in the town? Is it fine if they leave?",
+    "answers": [
+      "Keeping children in the city is difficult, but we believe it is important to create an environment that makes those who grow up here want to return.",
+      "We are basically open about it, but we do hope they will grow up in the town.",
+      "In Stage 1, there were not enough places to work. Without both living and working there, it was hard for people to feel it was their own town.",
+      "In Stage 2, workplaces such as SMC increased.",
+      "In Stage 3, we hope to make it a town where people can earn a good living."
+    ]
+  },
+  "40": {
+    "source_question": "ラグビースクールジャパンとは？なぜ柏の葉に開校？",
+    "question": "What is Rugby School Japan? Why here?",
+    "answers": [
+      "Opened in September 2023 as the Japan campus of the prestigious British school Rugby School (founded in 1567; the UK campus was a filming location for the Harry Potter films). It is the first full-fledged British-style boarding school in the Tokyo metropolitan area.",
+      "Ages 11–18, target 780 students (opened with ~140 from 16+ countries). Fees ~4.5–5.5M yen tuition + ~2.9–3.2M yen boarding + ~1.5M yen other, per year.",
+      "It was chosen as the school's first base in Japan because of Kashiwa-no-ha's physical environment and community."
+    ]
+  },
+  "41": {
+    "source_question": "まだ開発を広げるのですか？",
+    "question": "Is development still expanding?",
+    "answers": [
+      "Yes. Without places to work, the area would become a bedroom community, so industrial companies are being attracted to the northern area.",
+      "The northern area has multiple landowners, so it is difficult to extend AEMS as one integrated system as was done near the station; a building-by-building approach is being considered."
+    ]
+  },
+  "42": {
+    "source_question": "街が古くなって劣化しませんか？",
+    "question": "Won't the town age and deteriorate?",
+    "answers": [
+      "Mitsui Fudosan promotes the concept of \"improving with age\" (keidai-yuka), a town whose value grows over the years.",
+      "The idea is to renew the value of the software side to raise income, and use that income to renovate buildings; LaLaport also undergoes regular large-scale renovations.",
+      "Residents' attachment and sense of ownership are the key."
+    ]
+  },
+  "43": {
+    "source_question": "技術は100年後まで使えるのですか？",
+    "question": "Can the technology be used for the next 100 years?",
+    "answers": [
+      "Technology is replaced every 10-15 years.",
+      "What matters is not the technology itself but the people and systems that adopt it."
+    ]
+  },
+  "44": {
+    "source_question": "パークタワー柏の葉キャンパスとはどんな建物ですか？",
+    "question": "What kind of building is Park Tower Kashiwa-no-ha Campus?",
+    "answers": [
+      "It is a 43-story, 629-unit tower condominium scheduled for completion in July 2027.",
+      "It is a 1-minute walk from the station, uses a mid-story seismic isolation structure, and has parking for ~40% of the units, assuming a lifestyle that does not depend on cars.",
+      "Once completed, it is expected to be the tallest building in Kashiwa City."
+    ]
+  },
+  "45": {
+    "source_question": "住民の評価や不満は？評価ランキングは？",
+    "question": "How do residents rate the town, and what are their complaints? Is there a ranking?",
+    "answers": [
+      "Living environment is highly rated. Restaurants, business support, and community are where improvement requests concentrate.",
+      "In the 2016 survey: #1 shopping convenience, #2 green and pleasant environment, #3 commute/school access (International Campus Town Plan p.7).",
+      "Involvement in city-making splits into 'participants,' 'observers,' and 'consumers' — resident-led is still emerging.",
+      "The root cause is limited high-skill jobs on-site — mixed-use needs work opportunities nearby."
+    ]
+  },
+  "46": {
+    "source_question": "住民目線でこの街をどう評価していますか？どこが気に入っていますか？",
+    "question": "How do residents evaluate this town? What do they like about it?",
+    "answers": [
+      "First impression: 'a nice place — feels like a university campus.' The reason: UDCK-led spatial design plus PPP.",
+      "Second impression: serendipity is everywhere on the community/soft side — casual conversations spawn ideas that get implemented. A rare quality.",
+      "The wide sidewalks, which make it easy to get around even with strollers or bicycles.",
+      "There are many everyday pleasures, such as LaLaport, the bakery at T-SITE, and the indoor play area at Chicol, and many residents have dogs.",
+      "Running in Kashiwa-no-ha Park and the cherry blossom-lined paths on the Chiba University campus are also popular."
+    ]
+  },
+  "47": {
     "source_question": "まちの人のマナーが良くてこの環境が保たれているという話があったが、この街は住む人（高所得者）を選んでいるように感じる。",
     "question": "You mentioned residents' good manners help maintain this environment. Does the city select its residents, particularly high-income residents?",
     "answers": [
       "The city does not select residents. From a resident's perspective, people seem to have naturally gravitated here who follow the rules and actively participate in the community."
-    ],
-    "tags": [
-      "Residents' Views"
     ]
   },
-  "38": {
+  "48": {
+    "source_question": "子ども向けの施設はありますか？",
+    "question": "Are there facilities for children?",
+    "answers": [
+      "Along Green Axis there are nursery schools and Chicol, which has an after-school program, a cooking studio, and a coworking space for parents with children.",
+      "Cars cannot enter Green Axis, so it is safe and is also used as a route to elementary school."
+    ]
+  },
+  "49": {
+    "source_question": "学生向けの住まいはありますか？",
+    "question": "Is there housing for students?",
+    "answers": [
+      "Rents are high and there are few studio apartments, so a shortage of student housing is a challenge.",
+      "There are some options, such as residences for international students of the University of Tokyo."
+    ]
+  },
+  "50": {
+    "source_question": "ペットと暮らせますか？",
+    "question": "Can I live here with pets?",
+    "answers": [
+      "Many residents have dogs, and some condominiums allow pets.",
+      "You can walk dogs along Green Axis, but in some parts of condominium grounds the rule is to keep the leash short or carry the dog."
+    ]
+  },
+  "51": {
+    "source_question": "ららぽーと以外に買い物できる場所はありますか？",
+    "question": "Are there places to shop other than LaLaport?",
+    "answers": [
+      "There are T-SITE (Tsutaya Books), shops selling local vegetables, bakeries, and more.",
+      "However, some people say there are still few commercial facilities other than LaLaport."
+    ]
+  },
+  "52": {
     "source_question": "UDCKは何をしている組織ですか？構成団体は？",
     "question": "What is UDCK, and who are the member organizations?",
     "answers": [
       "Japan's first Urban Design Center — a neutral hub where government, universities, business, and residents gather to discuss, agree, and implement.",
-      "Eight members: Kashiwa City, Kashiwa Chamber of Commerce, Tanaka & Kashiwa-no-ha Furusato Councils, Mitsui Fudosan, TX, UTokyo, Chiba U.",
+      "It consists of 8 organizations: Kashiwa City, the Kashiwa Chamber of Commerce and Industry, the Tanaka Regional Furusato Council, the Kashiwa-no-ha Regional Furusato Council, Mitsui Fudosan, the Metropolitan Intercity Railway Company, the University of Tokyo, and Chiba University.",
       "Neutrality is anchored by UTokyo/Chiba U. professors at the center; working groups handle execution; the board decides."
-    ],
-    "tags": [
-      "PPP (UDCK)"
     ]
   },
-  "39": {
-    "source_question": "UDCKの資金源は？",
-    "question": "How is UDCK funded?",
-    "answers": [
-      "A multi-layered mix: allocations, national subsidies, Mitsui capital contributions, university research budgets, and enterprise contributions.",
-      "A 19-member consortium was also established in 2019."
-    ],
-    "tags": [
-      "PPP (UDCK)"
-    ]
-  },
-  "40": {
-    "source_question": "柏の葉スマートシティは誰が主導していますか？",
-    "question": "Who leads Kashiwa-no-ha Smart City?",
-    "answers": [
-      "Three parallel drivers: public (Kashiwa City, Chiba Prefecture), private (Mitsui Fudosan et al.), and academic (UTokyo, Chiba U., AIST).",
-      "Development is led by Mitsui Fudosan; UDCK is the advisory body that verifies alignment with the International Campus Town Plan."
-    ],
-    "tags": [
-      "PPP (UDCK)"
-    ]
-  },
-  "41": {
+  "53": {
     "source_question": "なぜ公民学連携がうまく回っているのですか？",
     "question": "Why does PPP work here?",
     "answers": [
       "UDCK is the 'place' that hosts the experiment→improve cycle.",
       "The advisory-body model keeps government from over-owning decisions, enabling flexible pivots; many staffers have been continuous for 15+ years.",
       "Each stakeholder's 'benefit' is designed in — for the autonomous bus: university = tech testing, city = future-mobility precedent, Mitsui = living lab, citizens = better daily life."
-    ],
-    "tags": [
-      "PPP (UDCK)"
     ]
   },
-  "42": {
+  "54": {
     "source_question": "各プロジェクトの事業主体はUDCK？三井不動産？お金は？",
     "question": "Who owns each project — UDCK or Mitsui? Where's the money?",
     "answers": [
       "Individual projects are owned by enterprises or universities; UDCK plays the coordinator/prioritizer role.",
       "Examples — walking routes: Meiji; autonomous bus: UTokyo (national subsidy); Smart City Consortium: UDCK secretariat wins national subsidies."
-    ],
-    "tags": [
-      "PPP (UDCK)"
     ]
   },
-  "43": {
-    "source_question": "新しい取り組みの住民同意はどう得ていますか？",
-    "question": "How is resident consent obtained for new initiatives?",
+  "55": {
+    "source_question": "新しい取り組みについて、住民の同意・合意形成はどう得ていますか？",
+    "question": "How do you obtain residents' consent and build consensus for new initiatives?",
     "answers": [
       "UDCK is the communication hub — briefings, inquiries, and after-care.",
-      "For AI cameras and autonomous bus trials, launching the message through PPP-based UDCK (rather than a private-company voice) helps allay privacy concerns."
-    ],
-    "tags": [
-      "PPP (UDCK)"
+      "For AI cameras and autonomous bus trials, launching the message through PPP-based UDCK (rather than a private-company voice) helps allay privacy concerns.",
+      "In park-planning workshops, we devised ways for participants to speak as equals without representing their affiliations, including LEGO-based activities and practice in listening and speaking.",
+      "We build trust by holding such sessions many times.",
+      "Faculty members from the University of Tokyo and Chiba University serve as chairs of working groups and, together with the government, look for flexible solutions."
     ]
   },
-  "44": {
-    "source_question": "住民参加はどう実現していますか？",
-    "question": "How is resident participation realized?",
+  "56": {
+    "source_question": "住民参加はどう実現していますか？（ポートランド的な市民参加）",
+    "question": "How is resident participation achieved? (Portland-style citizen participation)",
     "answers": [
+      "'Our city is ours to build' — implemented via UDCK, where universities/government/enterprise/residents co-create through workshops and events.",
       "The UDCK-adjacent 'Minna no Machizukuri Studio' (Living Lab) runs the cycle: share issues → prototype → deploy → feedback.",
       "Aqua Terrace (a retention pond turned waterfront) is the archetype: a resident idea that UDCK stood behind and delivered."
-    ],
-    "tags": [
-      "PPP (UDCK)"
     ]
   },
-  "45": {
+  "57": {
     "source_question": "住民は街の情報をどう得ていますか？",
     "question": "How do residents get information?",
     "answers": [
       "UDCK is always accessible, with regular salons for dialogue.",
       "Online: station-front signage, LINE, Facebook, web, posters, email — a wide mix.",
       "Reaching passive residents is a challenge; an app is planned."
-    ],
-    "tags": [
-      "PPP (UDCK)"
     ]
   },
-  "46": {
-    "source_question": "UDCK型の連携モデルは他都市に横展開されていますか？",
-    "question": "Has the UDCK model been replicated in other cities?",
+  "58": {
+    "source_question": "UDCKはどのように誕生し、他都市に横展開されていますか？",
+    "question": "How did UDCK come about, and has it been replicated in other cities?",
     "answers": [
-      "About 30 sites across Japan now.",
-      "Overseas exports (consulting) are also part of Mitsui Fudosan's mid-term strategy."
-    ],
-    "tags": [
-      "PPP (UDCK)"
+      "Professor Takeshi Kitazawa of the University of Tokyo conceived it, drawing on more than 10 urban design centers overseas.",
+      "It opened in November 2006, about six months after the proposal, with the goal of \"100 UDCs across Japan.\"",
+      "The UDC model has spread to ~30 locations nationwide, and within Kashiwa City, \"UDC2\" in front of Kashiwa Station is also active.",
+      "Overseas exports (consulting) are also part of Mitsui Fudosan's mid-term strategy.",
+      "AEMS technology has been carried over to projects such as Harumi Flag, and the know-how is also being applied to redevelopment in Nihonbashi and elsewhere."
     ]
   },
-  "47": {
+  "59": {
     "source_question": "小中高との連携は？",
     "question": "How do you collaborate with elementary, junior high, and high schools?",
     "answers": [
       "Sixth-grade students at Kashiwa-no-ha Elementary School study the local community and present their findings several times a year.",
       "Kashiwa-no-ha High School students organize a community cultural festival, negotiating directly with vendors themselves."
-    ],
-    "tags": [
-      "Public-Private-Academic Partnership / UDCK"
     ]
   },
-  "48": {
-    "source_question": "「あ・し・た」は何をする施設ですか？",
-    "question": "What is 'Ashita'?",
+  "60": {
+    "source_question": "UDCKの建物は東京大学の施設ですか？",
+    "question": "Is the UDCK building a University of Tokyo facility?",
+    "answers": [
+      "UDCK rents and uses the first floor of a University of Tokyo satellite facility."
+    ]
+  },
+  "61": {
+    "source_question": "住民は実証実験に協力的ですか？",
+    "question": "Are residents cooperative with demonstration experiments?",
+    "answers": [
+      "Many are cooperative. For large-scale experiments, participants are recruited through briefing sessions; for small-scale ones, through event-style calls.",
+      "It is common to offer compensation (e.g., ¥12,000 for two weeks of participation).",
+      "When we call for cooperation from Ashita members, spots sometimes fill up the next day."
+    ]
+  },
+  "62": {
+    "source_question": "千葉大学の柏の葉キャンパスでは何を研究していますか？",
+    "question": "What research is done at Chiba University's Kashiwa-no-ha Campus?",
+    "answers": [
+      "Research on plant factories, which greatly reduce water use and grow vegetables and strawberries without pesticides.",
+      "In 2025, the BIH (Bio-Health Open Innovation Hub) opened, advancing research on preventive medicine and vaccines (such as nasal mucosal vaccines and rice-based vaccines).",
+      "Research is also conducted on \"space horticulture,\" growing plants in space."
+    ]
+  },
+  "63": {
+    "source_question": "地元や議会との関係はうまくいっていますか？",
+    "question": "Are relations with the local community and the city council going well?",
+    "answers": [
+      "Some aspects are not going well, and I hear that dealing with the council was difficult at first.",
+      "We believe that disagreement is not a bad thing, and that what matters is a relationship in which people can discuss frankly."
+    ]
+  },
+  "64": {
+    "source_question": "KOILとはどんな施設ですか？運営・料金・利用条件は？",
+    "question": "What kind of facility is KOIL? How is it operated, what does it cost, and what are the conditions of use?",
+    "answers": [
+      "KOIL (Kashiwa-no-ha Open Innovation Lab) is a shared-office + founder-support base run by Mitsui Fudosan. From 170 shared seats to private rooms — scales with growth.",
+      "Now operated by Mitsui Fudosan Building Management (spun in-house to accumulate know-how and deepen ownership).",
+      "Community managers support seed/early-stage founders — free consultations, cross-company matching, community-side soft support.",
+      "A community manager is on site, and free consultations with lawyers, tax accountants, and others are available.",
+      "Pitch events and networking sessions are held regularly, and tea and similar refreshments are free.",
+      "As your business grows you can move to larger spaces (10 people, then 20, then 100), and there is no move-out deadline.",
+      "Unlimited plan: 19,800 yen/month (9:00–23:00). 5-visit plan: 8,800 yen/month. Drop-in: 1,650 yen/day.",
+      "Locker: from 2,200 yen/month. Mail slot: 1,100 yen/month. Legal registration: 5,500 yen/month.",
+      "Weekend/holiday drop-in OK. Membership requires a business plan and screening (co-creation fit is a criterion)."
+    ]
+  },
+  "65": {
+    "source_question": "KOIL STARTUP PROGRAMの支援内容は？運営するTEPとは？",
+    "question": "What support does the KOIL STARTUP PROGRAM offer? What is TEP, which runs it?",
+    "answers": [
+      "Beyond office space — domain experts walk implementation with you (selective admission). Priority themes: decarbonization, disaster, mobility, life-science, etc.",
+      "Support: 1 year of KOIL free; TEP business-plan seminars; assigned-mentor coaching (3–4 months); pilot-project consultation; startup networking; legal/capital-strategy specials.",
+      "KOIL STARTUP PROGRAM is co-hosted by Mitsui Fudosan + Kashiwa City, with TEP planning and running it.",
+      "TEP is the startup support organization of Kashiwa-no-ha Smart City, and has been a partner since the KOIL design stage.",
+      "Kashiwa City's own startup support ('Startup Concierge') is also delivered by TEP."
+    ]
+  },
+  "66": {
+    "source_question": "どんな企業が柏の葉に集積していますか？なぜ選ばれるのですか？",
+    "question": "Which enterprises cluster in Kashiwa-no-ha? Why?",
+    "answers": [
+      "They include SMC Corporation (pneumatic control equipment, 37% global market share, ~¥120 billion investment, ~1,400 employees, completed September 2025), The Japan Steel Works (JSW, new-materials research base, scheduled to start operating in the second half of FY2027), Astellas Pharma, the National Cancer Center, and the All Blacks' Japan base, among others.",
+      "Selection reasons: ①clustered research bodies, ②smart-wellness office, ③living-lab access, ④transit (25 km from Tokyo center, 34 min from Akihabara), ⑤cross-industry co-creation.",
+      "Framing: 'Not just office relocation — investment in a place for experiment and co-creation.'"
+    ]
+  },
+  "67": {
+    "source_question": "SMC用地の土地スキームは？",
+    "question": "How was SMC's land structured?",
+    "answers": [
+      "Kashiwa City owns; Mitsui Fudosan only holds usage rights (direct real-estate P&L for Mitsui is a loss).",
+      "Mitsui takes no sales profit; the arrangement brings Kashiwa City sale proceeds and corporate enterprise tax revenue, building a long-term relationship that continues even when the council or mayor changes.",
+      "For Mitsui, this is an 'asset-business' result: contributes to citywide value."
+    ]
+  },
+  "68": {
+    "source_question": "KOIL（コイル）はもっと住民に開かれた場所にできないか？",
+    "question": "Could KOIL be made more open to local residents?",
+    "answers": [
+      "KOIL is a paid facility and is not fully open to everyone, but residents can use the table-tennis area. Residents can also enjoy free food and drinks at events held twice a month."
+    ]
+  },
+  "69": {
+    "source_question": "KOILのスタートアップ企業で成功した事例、失敗した事例は？",
+    "question": "What are some successful and unsuccessful startup examples at KOIL?",
+    "answers": [
+      "One success story is Fuller. Mitsui provided hands-on support, and the company listed on the Tokyo Stock Exchange Growth market in July 2025.",
+      "Some companies appear to have depended too heavily on Mitsui Fudosan and had to close their operations when Mitsui's relevant business themes ended.",
+      "We understand that companies were initially welcomed broadly, including many without ties to Kashiwa-no-ha. Companies are now assessed for whether operating here has a meaningful purpose.",
+      "Fuller, Inc., an app development company, listed about 11 years after moving its base to Kashiwa-no-ha.",
+      "KOIL's flexible lease units let tenants expand at low cost, and in hiring, some candidates reportedly said they wanted to work in Kashiwa-no-ha.",
+      "Government support is also available, such as Kashiwa City's subsidies for new businesses.",
+      "At launch it was a major failure, with only 3 members.",
+      "After listening to users, the program was completely rebuilt with a market-in approach, and it has now grown to ~400 members."
+    ]
+  },
+  "70": {
+    "source_question": "CO-GROWTHとは何ですか？",
+    "question": "What is CO-GROWTH?",
+    "answers": [
+      "It is a program launched in November 2024 by Mitsui Fudosan and UDCK Town Management so that companies and the town can grow together.",
+      "It supports companies in three stages: R&D, demonstration (PoC), and implementation and outreach.",
+      "Meiji's \"Bringing the Future to the Town with Yogurt\" is a leading example."
+    ]
+  },
+  "71": {
+    "source_question": "日本製鋼所（JSW）はどんな会社ですか？なぜ柏の葉に？",
+    "question": "What kind of company is The Japan Steel Works (JSW)? Why Kashiwa-no-ha?",
+    "answers": [
+      "Founded in 1907, it is a manufacturer of plastic injection molding machines, battery material production equipment, and more.",
+      "As a commemorative project for its 120th anniversary, it is building a new-materials research base in Kashiwa-no-ha (scheduled to start operating in the second half of FY2027).",
+      "It chose Kashiwa-no-ha, where universities and companies from other industries gather, as a new research site apart from its existing products."
+    ]
+  },
+  "72": {
+    "source_question": "実証から事業化した例、うまくいかなかった例は？続ける・やめるの判断は？",
+    "question": "Are there examples of demonstrations that became businesses, or that did not work out? How are continue-or-stop decisions made?",
+    "answers": [
+      "In the energy field, Yanekara is expanding its business using Kashiwa-no-ha as a demonstration site.",
+      "On the other hand, the 2020 MaaS demonstration had a limited target group, and because the town is already so convenient the need was weak, so it did not take hold. Electric kickboards have also not reached commercialization.",
+      "Decisions to stop or expand hinge on three points: (1) the burden of safety, regulation, and operations; (2) whether residents accept it; and (3) cost-effectiveness and a sustainable funding source. Failures are treated as lessons and applied to the next effort."
+    ]
+  },
+  "73": {
+    "source_question": "「あ・し・た」は何をする施設ですか？スタッフ・利用対象・運営費は？",
+    "question": "What is Ashita for? What about its staff, who can use it, and operating costs?",
     "answers": [
       "A frailty-prevention 'town health lab' on Lalaport Kashiwa-no-ha North 3F. Named for 'Aruku (walk) / Shaberu (talk) / Taberu (eat).'",
       "Free measurements (body composition, grip, walking age, VegeCheck), plus exercise/nutrition classes and walking events.",
-      "A concrete embodiment of 'the city where just living here makes you healthier.' ~3,900 members; well-rated by participating firms as a pilot venue."
-    ],
-    "tags": [
-      "Health (Ashita)"
+      "No doctors or nurses are stationed there; staff with health knowledge assist visitors.",
+      "People from outside the Kashiwa-no-ha area can also participate.",
+      "It is the concrete base for the vision of \"a town where you become healthy just by living there.\" It has ~3,700 members, and companies also rate it highly as a site for demonstration experiments.",
+      "Operating costs are mainly borne by Mitsui Fudosan.",
+      "Additional funding comes from healthcare-company tenants using Ashita's infrastructure (member data, on-site booths, pilot access)."
     ]
   },
-  "49": {
+  "74": {
     "source_question": "データ活用（Dot to Dot／スマートライフパス）はどう機能していますか？",
     "question": "How does data activation (Dot to Dot / Smart Life Pass) work?",
     "answers": [
       "The 'Dot to Dot' foundation securely connects health data with resident consent; on top of it we've built the Kashiwa-no-ha Data Platform (KDPF).",
       "Services are delivered via the 'Kashiwa-no-ha Smart Life Pass' portal. ~6,000 registrants (half Kashiwa-no-ha, half Kobe City, which replicated KDPF).",
-      "Purpose-limited use, anonymization/aggregation, and access controls are foundational."
-    ],
-    "tags": [
-      "Health (Ashita)"
+      "Purpose-limited use, anonymization/aggregation, and access controls are foundational.",
+      "The responsible party is determined for each type of data, and individual consent, anonymization, and a ban on use beyond the stated purpose are prerequisites.",
+      "Health data can be used across services within the scope the individual has consented to (opt-in) through \"Dot to Dot.\"",
+      "The basic approach is to start small (a small start)."
     ]
   },
-  "50": {
-    "source_question": "「あ・し・た」の運営費はどこが負担していますか？",
-    "question": "Who funds Ashita's operations?",
-    "answers": [
-      "Mitsui Fudosan primarily.",
-      "Additional funding comes from healthcare-company tenants using Ashita's infrastructure (member data, on-site booths, pilot access)."
-    ],
-    "tags": [
-      "Health (Ashita)"
-    ]
-  },
-  "51": {
-    "source_question": "高齢者への取り組みは？",
-    "question": "What is done for seniors?",
+  "75": {
+    "source_question": "高齢者への取り組みは？食支援はありますか？",
+    "question": "What initiatives are there for seniors? Is there any food support?",
     "answers": [
       "Concierges support smartphone/app onboarding — 'no one left behind' by digital transformation.",
-      "Employment opportunities are also created — e.g., a plant factory named 'Mirai' (with an 85-year-old staff member) and a city-internal job app."
-    ],
-    "tags": [
-      "Health (Ashita)"
+      "Employment opportunities are also created through Mirai Co., Ltd.'s plant factory (with a staff member as old as 85) and an in-town job listing app.",
+      "Ashita holds short classes led by cooking experts and others, but there is no meal delivery service."
     ]
   },
-  "52": {
+  "76": {
     "source_question": "ベジチェックはどう計測しますか？",
     "question": "How does VegeCheck work?",
     "answers": [
       "A KAGOME technology that estimates vegetable (especially green/yellow) intake from skin carotenoid levels.",
       "Carotenoids accumulate in skin over 2–4 weeks; an LED illuminates the skin and the reflected light is measured. Studies confirm 200 ml/day of vegetable juice for a month raises skin carotenoids."
-    ],
-    "tags": [
-      "Health (Ashita)"
     ]
   },
-  "53": {
-    "source_question": "障がい者対策は？",
-    "question": "What are the measures for people with disabilities?",
-    "answers": [
-      "Standard measures under law and local ordinances — wide sidewalks, ramps, tactile paving. No Kashiwa-no-ha-specific additions beyond those."
-    ],
-    "tags": [
-      "Health (Ashita)"
-    ]
-  },
-  "54": {
+  "77": {
     "source_question": "健康長寿のデータは取れていますか？",
     "question": "Do you have longevity data yet?",
     "answers": [
       "No clear numbers yet like 'life expectancy up by N years.'",
       "Long-term accumulation should enable comparisons with other cities."
-    ],
-    "tags": [
-      "Health (Ashita)"
     ]
   },
-  "55": {
+  "78": {
     "source_question": "健康イベントの参加人数はどのくらいか？",
     "question": "How many people attend health events?",
     "answers": [
       "No published figures are available, but our impression is that around 50 people attend each event."
-    ],
-    "tags": [
-      "Health and Longevity / Ashita"
     ]
   },
-  "56": {
+  "79": {
     "source_question": "ウォーキングルトでのデータ取得方法は？",
     "question": "How is data collected through Walkingurt?",
     "answers": [
       "Participants currently complete handwritten questionnaires at each event, but there is no detailed integration with apps. Apps such as Smart Life Pass and Calomama Plus collect vital data in Kashiwa-no-ha, but Walkingurt participants cannot currently be identified through those apps."
-    ],
-    "tags": [
-      "Health and Longevity / Ashita"
     ]
   },
-  "57": {
-    "source_question": "高齢者向けの食支援がどこまで実際に機能しているか？",
-    "question": "What food-related support is actually available for older residents?",
+  "80": {
+    "source_question": "明治の「ヨーグルトで街にミライを」とは？",
+    "question": "What is Meiji's \"Bringing the Future to the Town with Yogurt\"?",
     "answers": [
-      "Ashita offers short classes led by cooking experts and others, but there is no meal-delivery service. Related information: https://www.kashiwanoha-smartcity.com/info/topics/41/"
-    ],
-    "tags": [
-      "Health and Longevity / Ashita"
+      "It is a health promotion project run by Meiji and Kashiwa-no-ha.",
+      "It includes events combining yogurt and walking, measurements such as bone density, and tooth-brushing and gargling classes at nursery schools.",
+      "It is conducted as joint research with Chiba University, and more than 600 people have participated since 2025."
     ]
   },
-  "58": {
+  "81": {
     "source_question": "LEED-NDとは？取得の意義は？",
     "question": "What is LEED-ND, and why does it matter?",
     "answers": [
       "The international city-making certification from USGBC. Kashiwa-no-ha earned the first LEED-ND Platinum in Japan.",
       "Evaluated on ecology, transit, walkability, local food, and building energy. Third-party international validation eases discussions with overseas enterprises, investors, and financial institutions; strong ESG story.",
       "Concrete outcome: SMC's 120+ billion-yen investment (~1,400 employees), citing 'smart wellness office' as a selection reason."
-    ],
-    "tags": [
-      "Environmental Coexistence"
     ]
   },
-  "59": {
+  "82": {
     "source_question": "アクアテラスは今も調整池ですか？",
     "question": "Is Aqua Terrace still a retention pond?",
     "answers": [
       "Yes. Kashiwa City owns it; Mitsui Fudosan built the upgrade; UDCK manages operations.",
       "Day-to-day: UDCK-TM. Deep cleaning: residents join. Major renewal: Mitsui funds. 'Managed by everyone.'",
-      "SMC's building design harmonizes with the waterfront landscape."
-    ],
-    "tags": [
-      "Environmental Coexistence"
+      "SMC's building design harmonizes with the waterfront landscape.",
+      "It does not draw water from a river; it is a retention pond that collects rainwater.",
+      "To make it easier for living creatures to inhabit, it is designed so that water flows in easily from the stormwater pipes.",
+      "The vegetation is maintained regularly, and UDCK also holds cleanup events."
     ]
   },
-  "60": {
+  "83": {
     "source_question": "環境共生（自然環境・治水）の取り組みは？",
     "question": "What are the environmental-coexistence and flood-control initiatives?",
     "answers": [
       "First LEED-ND Platinum in Japan. Aqua Terrace and similar retention ponds are converted to relaxing waterfront spaces while retaining flood-control function.",
       "Improved walkability toward Kashiwa-no-ha Park and Konbukuro Pond (natural spring) — 'walkable city' in practice.",
       "PPP management agreements enable open public use plus maintenance."
-    ],
-    "tags": [
-      "Environmental Coexistence"
     ]
   },
-  "61": {
-    "source_question": "AEMS（エリアエネルギーマネジメントシステム）とは？何が「日本初」ですか？",
-    "question": "What is AEMS? What is the 'Japan-first' point?",
+  "84": {
+    "source_question": "ゲートスクエアの建物にはどんな省エネの工夫がありますか？",
+    "question": "What energy-saving features do the Gate Square buildings have?",
+    "answers": [
+      "They incorporate green walls, solar panels on the eaves, water-retaining blocks, cool trenches cooled by underground air, and light ducts that bring in natural light.",
+      "Together with BEMS and AEMS, the plan is to cut CO2 by ~40% compared with the standard."
+    ]
+  },
+  "85": {
+    "source_question": "歩道や街並みのデザインにはどんな工夫がありますか？",
+    "question": "What design features are there in the sidewalks and streetscape?",
+    "answers": [
+      "Tile patterns are matched at the boundary between public and private land, creating step-free sidewalks.",
+      "Other features include poles that slow vehicles to protect pedestrians and footprint signs that encourage walking (nudges).",
+      "The cost of raising sidewalk quality is shared according to design guidelines set by the public-private-academic partnership."
+    ]
+  },
+  "86": {
+    "source_question": "AEMSとは？何が「日本初」ですか？他に街区間で電力融通している街は？",
+    "question": "What is AEMS? What is \"Japan's first\" about it? Are there other towns that share power between blocks?",
     "answers": [
       "In service since 2014. Visualizes and optimizes area-wide electricity use, generation, storage, and inter-block power transfer.",
       "Japan-first: transferring power across public roads between districts. AC→DC→AC conversion prevents backflow to the grid; obtained the 'Specified Supply' scheme after negotiations with METI.",
+      "Few other examples can be found of sharing power across public roads between buildings of different uses using a privately owned power line.",
+      "For sharing between residences, examples include Smart City Shiosai Ashiya (Hyogo Prefecture) and Urawa Misono (Saitama Prefecture).",
       "Peaks are inverted between office districts (weekday) and Lalaport (weekend); transfers even them out. Owned/operated by Mitsui Fudosan, co-developed with Hitachi."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "62": {
-    "source_question": "太陽光と蓄電池の規模は？発電施設はどこにありますか？",
-    "question": "What is the scale of solar and batteries? Where are they installed?",
+  "87": {
+    "source_question": "太陽光と蓄電池の規模は？太陽光パネル・発電施設はどこにありますか？",
+    "question": "How large are the solar and battery facilities? Where are the solar panels and power generation facilities?",
     "answers": [
       "Solar: ~720 kW total across two sites (Gate Square ~220 kW + Lalaport ~500 kW). On the rooftops of KOIL and Lalaport.",
-      "Batteries: ~15,650 kWh (15.6 MWh) — one of Japan's largest. Lithium-ion ~3,800 kWh (like 900 EVs) + NAS ~11,850 kWh.",
+      "Total battery capacity is ~16,796 kWh, among the largest in Japan: lithium-ion batteries at 3,836 kWh (equivalent to ~900 Priuses) plus NAS batteries at 12,960 kWh.",
       "Backup gas generators total ~2,000 kW."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "63": {
+  "88": {
     "source_question": "AEMSの省エネ効果は？",
     "question": "What are AEMS's energy-saving outcomes?",
     "answers": [
       "Steady state: ~26% peak cut across the area, saving ~10 million yen/year in electricity.",
       "Disaster: ~60% of Gate Square's power sustained for 3 days.",
       "Roughly 15% of the large commercial facility's power is renewable in normal times."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "64": {
+  "89": {
     "source_question": "AEMSのコスト負担・所有主体は？",
     "question": "Who bears AEMS's cost and owns it?",
     "answers": [
       "Mitsui Fudosan bears it fully — nothing is allocated to residents.",
       "Originally a Hitachi product proposal; after 3/11, residents + Mitsui + Hitachi jointly re-derived requirements from on-the-ground needs — a market-in redesign.",
-      "The Electricity Business Act interpretation was negotiated directly with METI, resulting in the 'Specified Supply' authorization."
-    ],
-    "tags": [
-      "Energy (AEMS)"
+      "The Electricity Business Act interpretation was negotiated directly with METI, resulting in the 'Specified Supply' authorization.",
+      "There is no return to residents. Residents sign separate contracts with power companies as usual and purchase electricity from them.",
+      "The annual savings of ~¥10 million come from lower electricity charges among Mitsui Fudosan Group facilities."
     ]
   },
-  "65": {
+  "90": {
     "source_question": "リチウムイオン電池とNAS電池を2種類使う理由は？",
     "question": "Why use both lithium-ion and NAS batteries?",
     "answers": [
       "Lithium-ion excels at short-duration high-power bursts — pairs with AEMS for real-time control.",
-      "NAS excels at long-duration high-capacity — 12,960 kWh (7.2 h) supports peak cut, emergency backup, and inter-district transfers."
-    ],
-    "tags": [
-      "Energy (AEMS)"
+      "NAS excels at long-duration high-capacity — 12,960 kWh (7.2 h) supports peak cut, emergency backup, and inter-district transfers.",
+      "Even in normal times, the batteries are charged at night and discharged during the daytime peak in power demand.",
+      "Because demand peaks differ (offices on weekdays 9:00-17:00, commercial facilities on holidays 10:00-21:00, and residences 18:00-24:00), power is shared between blocks to level out demand.",
+      "Note that NGK Insulators, the maker of NAS batteries, has announced the end of manufacturing and sales (final shipments are planned for around January 2027)."
     ]
   },
-  "66": {
-    "source_question": "自然エネルギーは太陽光以外に何がありますか？地熱発電は？",
-    "question": "Are there natural energy sources besides solar? Geothermal?",
+  "91": {
+    "source_question": "自然エネルギーは太陽光以外に何がありますか？地熱は？バイオガスとバイオマスの違いは？",
+    "question": "What renewable energy is there besides solar? What about geothermal? What is the difference between biogas and biomass?",
     "answers": [
       "Solar is the workhorse. No geothermal (no viable resource on this plain); wind is small streetlight-scale support only.",
-      "Biogas (food waste → methane) and cogeneration complement.",
+      "A cogeneration system using biogas (food waste to methane gas) was also built, but it is not currently in operation.",
+      "Biomass is a general term for resources derived from plants and animals, and biogas is the gas, such as methane, produced by fermenting them.",
       "For visitors expecting geothermal: highlight Japan-first inter-district power transfer as the marquee capability."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "67": {
-    "source_question": "非常時、住宅にも電力は供給されますか？",
-    "question": "In emergencies, is power supplied to housing?",
+  "92": {
+    "source_question": "非常時、住宅や病院にも電力は供給されますか？",
+    "question": "In an emergency, is power supplied to homes and hospitals?",
     "answers": [
       "Yes — from the Smart Center (AEMS) to district housing, prioritized for common facilities, elevators, well pumps — the 'life essentials.'",
-      "Coverage inside individual rooms / units depends on each hotel or mansion's BCP."
-    ],
-    "tags": [
-      "Energy (AEMS)"
+      "Coverage inside individual rooms / units depends on each hotel or mansion's BCP.",
+      "Power is not sent to hospitals.",
+      "Nearby hospitals each have their own emergency power sources."
     ]
   },
-  "68": {
+  "93": {
     "source_question": "AEMSモニターに表示される2,344kWとは何ですか？",
     "question": "What is the 2,344 kW figure shown on the AEMS monitor?",
     "answers": [
       "The 720 kW solar (installed capacity) plus grid electricity from TEPCO — a combined figure. Grid receipt and on-site generation are combined at peak."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "69": {
+  "94": {
     "source_question": "太陽光は電気自動車にも使っていますか？エネルギー融通実績は？",
     "question": "Does solar power EVs? Any real emergency transfers?",
     "answers": [
       "Not for EVs — it feeds district power transfers, peak cut, and peak shift.",
-      "In the past 10 years, no emergency inter-district transfer has been triggered."
-    ],
-    "tags": [
-      "Energy (AEMS)"
+      "In the past 10 years, no emergency inter-district transfer has been triggered.",
+      "Since operations began in 2014, there has been no long-term power outage, so the system has never been activated.",
+      "In an emergency, the Smart Center serves as the disaster-response hub, and staff perform the switching operations.",
+      "System inspections and operation tests are carried out, but drills with resident participation are not held.",
+      "EV chargers are installed at each condominium, T-SITE, and other locations.",
+      "There are cases of using car-share vehicles as emergency power sources, but there is no mechanism for using private EVs as a power source for the whole town."
     ]
   },
-  "70": {
+  "95": {
     "source_question": "AEMSの技術は他の街に横展開されていますか？",
     "question": "Has AEMS been deployed to other cities?",
     "answers": [
       "Yes — 'HARUMI AI-AEMS' (built on Hitachi Lumada) is deployed at Harumi Flag (former Olympic Village, ~5,600 units, ~12,000 residents).",
       "It integrates HEMS/BEMS/MEMS at 4 layers, and includes Japan's first hydrogen pipeline — sustaining ~1 week of power during disasters."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "71": {
+  "96": {
     "source_question": "ごみ収集は独自システムですか？",
     "question": "Is waste collection unique to this city?",
     "answers": [
       "Same as ordinary city condos. A cogeneration system was built initially, but is no longer operating.",
       "Two sustainability challenges — 'how to collect waste' and 'how to share costs' — led to discontinuation."
-    ],
-    "tags": [
-      "Energy (AEMS)"
     ]
   },
-  "72": {
-    "source_question": "バイオガスとバイオマスの違いは何か？",
-    "question": "What is the difference between biogas and biomass?",
+  "97": {
+    "source_question": "住戸のHEMSは今も使われていますか？",
+    "question": "Is the HEMS in homes still in use?",
     "answers": [
-      "The source describes biomass as material such as sawdust processed into solid fuel and burned to supplement a gas flame. Biogas is a system that produces and uses gases such as methane."
-    ],
-    "tags": [
-      "Energy / AEMS"
+      "Because HEMS for residences had limited effect, its functions are being scaled back or removed.",
+      "BEMS in offices and other buildings continues to operate."
     ]
   },
-  "73": {
-    "source_question": "モビリティの取り組みは？",
-    "question": "What are the mobility initiatives?",
+  "98": {
+    "source_question": "NAS電池の更新はどうするのですか？",
+    "question": "How will the NAS batteries be replaced?",
+    "answers": [
+      "NGK Insulators, the manufacturer, has announced it will end manufacturing and sales of NAS batteries (final shipments are planned for around January 2027), so future replacement is an issue.",
+      "No large-scale, prolonged blackout has occurred since the 2011 earthquake, but the NAS battery offers the reassurance of an emergency \"insurance policy.\""
+    ]
+  },
+  "99": {
+    "source_question": "AEMSは「マイクログリッド」ですか？",
+    "question": "Is AEMS a \"microgrid\"?",
+    "answers": [
+      "It is not a microgrid in the strict sense.",
+      "It is a \"hybrid\" system: in normal times it is connected to the utility grid, and only in emergencies does it disconnect and run independently."
+    ]
+  },
+  "100": {
+    "source_question": "スマートセンター（AEMS）は今も進化していますか？",
+    "question": "Is the Smart Center (AEMS) still evolving?",
+    "answers": [
+      "The basic design has not changed greatly, but parts of it have been updated.",
+      "Since 2025, Mitsui Fudosan has been running a demonstration of an \"energy resource aggregation business\" in Kashiwa-no-ha, with participants including Daikin Industries (air-conditioning control) and Yanekara (EV charging control)."
+    ]
+  },
+  "101": {
+    "source_question": "柏の葉はVPP（仮想発電所）ですか？",
+    "question": "Is Kashiwa-no-ha a VPP (virtual power plant)?",
+    "answers": [
+      "Kashiwa-no-ha itself is not a VPP.",
+      "The energy buildings with storage batteries function as a BESS (battery energy storage system), and VPP demonstrations are being run by companies such as Yanekara.",
+      "Automated demand response (auto DR) is also not currently being carried out."
+    ]
+  },
+  "102": {
+    "source_question": "モビリティの取り組みは？実際に使われているサービスはありますか？",
+    "question": "What mobility initiatives are there? Are any services actually in use?",
     "answers": [
       "Leveraging the station-front location: public-transit priority, bike lanes, and share-cycles — reducing car dependence.",
-      "Improved walking access to Kashiwa-no-ha Park and Konbukuro Pond — 'walkable city' in practice."
-    ],
-    "tags": [
-      "Mobility"
+      "Improved walking access to Kashiwa-no-ha Park and Konbukuro Pond — 'walkable city' in practice.",
+      "E-scooter pilots and others have run, but nothing is a permanent service yet.",
+      "As northern development proceeds, more options are being explored."
     ]
   },
-  "74": {
+  "103": {
     "source_question": "近隣マンションの駐車場台数は？",
     "question": "How many parking spaces at nearby condos?",
     "answers": [
       "Ichibangai: 977 units / 990 spaces.",
       "Nibangai: 880 units / 536 mechanical + 204 drive-in + 19 surface."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "75": {
+  "104": {
     "source_question": "自動運転バスの取り組みは？なぜ柏の葉で？",
     "question": "What's the autonomous-bus initiative? Why Kashiwa-no-ha?",
     "answers": [
-      "Japan's first Level-4 (fully driverless) trial on public roads (station front ↔ UTokyo campus, 2.6 km, 40-passenger bus).",
+      "A Level 4 autonomous driving demonstration is being conducted on public roads (2.6 km from the station to the University of Tokyo campus, 40-passenger vehicle). It is the first on public roads in the Tokyo metropolitan area and the first in Chiba Prefecture (Japan's first Level 4 was in Eiheiji Town, Fukui Prefecture).",
+      "Because it also serves as a Level 2 demonstration, a driver is currently on board.",
       "Kashiwa-no-ha has a proven 'city that welcomes pilots' record; Kashiwa City has ITS soil; residents build understanding progressively.",
-      "AI cameras and UTokyo ITS Council's signal-sensor integration are the technical signatures."
-    ],
-    "tags": [
-      "Mobility"
+      "Its features are AI cameras and traffic signal sensor integration led by the Kashiwa ITS Promotion Council."
     ]
   },
-  "76": {
-    "source_question": "レベル4実証の概要は？運転手は乗っていますか？",
-    "question": "What is the Level-4 trial? Is a driver onboard?",
+  "105": {
+    "source_question": "レベル4実証の概要は？運転手は乗っていますか？運転士不足の解決になりますか？",
+    "question": "What is the Level 4 demonstration about? Is there a driver on board? Does it solve the driver shortage?",
     "answers": [
-      "Jan–Feb 2026: revenue operation of a Level-4 (specified autonomous operation) segment along Kashiwa-no-ha Campus Station ↔ UTokyo Kashiwa Campus.",
+      "Since January 2026, specified automated operation (Level 4) commercial service has been running on part of the route between Kashiwa-no-ha Campus Station and the University of Tokyo Kashiwa Campus. It resumed in October and is currently in operation.",
       "For this trial, a driver is onboard. Strictly, Level 4 assumes no driver — responsibility on the system.",
-      "Remote monitoring/control is not part of this trial (future consideration)."
-    ],
-    "tags": [
-      "Mobility"
+      "For the time being it operates with a safety attendant on board, and solving the driver shortage is a future challenge.",
+      "Remote monitoring/control is not part of this trial (future consideration).",
+      "The demonstration is led by the Kashiwa ITS Promotion Council, with cooperation from Kashiwa City, which manages the roads (Mitsui Fudosan is not the lead of the demonstration)."
     ]
   },
-  "77": {
+  "106": {
     "source_question": "V2I／V2Pとは？どこで実施？",
     "question": "What are V2I and V2P? Where deployed?",
     "answers": [
       "V2I: vehicle-to-infrastructure (signals, etc.). V2P: vehicle-to-pedestrian. Combining on-vehicle sensing with infrastructure info for safer autonomy.",
       "For the Level-4 segment, describe the deployment as one location: the park-front intersection (standardized wording)."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "78": {
+  "107": {
     "source_question": "事故時の責任分担は？これまでの事故は？",
     "question": "Accident liability? Prior incidents?",
     "answers": [
       "Under Japanese road-traffic law, in Level-4 zones the driving-responsibility subject moves to the system side — civil-liability frameworks are still being refined nationally.",
       "No accidents with the autonomous bus as primary party. There's been a rear-end collision by another driver hitting a stopped bus."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "79": {
+  "108": {
     "source_question": "5年間の実証実験から得た主な知見は？今後の展開は？",
     "question": "What did 5 years of pilots teach you? What's next?",
     "answers": [
       "Avoiding parked vehicles and improving road environment lift the continuation rate; gradual resident understanding is critical; ongoing sensor/control updates are essential.",
       "Next: use 2026 trial data to advance social implementation. Route expansion and higher frequency under review; only publicly confirmed info is shared."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "80": {
+  "109": {
     "source_question": "走行中給電（ワイヤレス充電）とは？",
     "question": "What is in-motion wireless charging?",
     "answers": [
-      "Coils embedded in the road let the bus receive 100 m worth of range from a 1-second stop.",
+      "It is a technology with coils embedded in the road that can charge enough for 100 m of driving in 1 second of stopping (the Kashiwa-no-ha demonstration was conducted with passenger EVs).",
       "Batteries shrink from ~2 tons to ~200 kg."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "81": {
+  "110": {
     "source_question": "AIカメラで何をしていますか？監視社会になりませんか？",
     "question": "What do the AI cameras do? Are we becoming a surveillance state?",
     "answers": [
       "About 29 cameras. Uses: crowd analytics, flooding detection, suspicious behavior, and Aqua Terrace safety.",
       "'Not surveillance — safety, crime prevention, congestion reduction, service improvement.' Purpose-limited, anonymized, access-controlled, and audit-ready.",
       "Motion sensors detect only people; vehicles are handled by the bus's dedicated sensors."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "82": {
-    "source_question": "実際に公共モビリティを使っている事例は？",
-    "question": "Any real public mobility services in operation?",
-    "answers": [
-      "E-scooter pilots and others have run, but nothing is a permanent service yet.",
-      "As northern development proceeds, more options are being explored."
-    ],
-    "tags": [
-      "Mobility"
-    ]
-  },
-  "83": {
+  "111": {
     "source_question": "自動運転バスに乗れますか？",
     "question": "Can I ride the autonomous bus?",
     "answers": [
       "Yes — bookable at tour registration. See the tour booking site."
-    ],
-    "tags": [
-      "Mobility"
     ]
   },
-  "84": {
-    "source_question": "データ連携システム（KDPF）に新規加入は可能ですか？",
-    "question": "Can new participants join the data-linkage system (KDPF)?",
+  "112": {
+    "source_question": "道路の緑のラインは何ですか？",
+    "question": "What is the green line on the road?",
     "answers": [
-      "Yes — new participation is welcome."
-    ],
-    "tags": [
-      "Data Platform"
+      "It was a line marking the autonomous bus route, but some people said it was \"rather scary,\" so it is being removed.",
+      "The demonstration of wireless charging while driving has been temporarily suspended because the subsidy ended."
     ]
   },
-  "85": {
-    "source_question": "KDPF運用の課題は？",
-    "question": "Challenges in operating KDPF?",
+  "113": {
+    "source_question": "データ連携システム（KDPF）に新規加入できますか？運用の課題と今後の展開は？",
+    "question": "Can new members join the data platform (KDPF)? What are the operational challenges and future plans?",
     "answers": [
+      "Yes, new members can join.",
       "Financially it's out-of-pocket — a standalone loss. Not charged to residents; UDCK-TM bears it.",
-      "The goal isn't standalone profit — it's to license the platform to municipalities in Japan and abroad. Long-term aim: break-even."
-    ],
-    "tags": [
-      "Data Platform"
-    ]
-  },
-  "86": {
-    "source_question": "今後の展開予定は？",
-    "question": "What are the next steps for the Data Platform?",
-    "answers": [
+      "The goal isn't standalone profit — it's to license the platform to municipalities in Japan and abroad. Long-term aim: break-even.",
       "App upgrades and UX improvements are under review; regional expansion continues (e.g., Kobe City)."
-    ],
-    "tags": [
-      "Data Platform"
     ]
   },
-  "87": {
-    "source_question": "KOILとはどんな施設ですか？運営はどこですか？",
-    "question": "What is KOIL? Who operates it?",
+  "114": {
+    "source_question": "スマートセンターに人は常駐していますか？なぜホテルの建物にあるのですか？",
+    "question": "Is the Smart Center staffed on-site? Why is it located in a hotel building?",
     "answers": [
-      "KOIL (Kashiwa-no-ha Open Innovation Lab) is a shared-office + founder-support base run by Mitsui Fudosan. From 170 shared seats to private rooms — scales with growth.",
-      "Community managers support seed/early-stage founders — free consultations, cross-company matching, community-side soft support.",
-      "Now operated by Mitsui Fudosan Building Management (spun in-house to accumulate know-how and deepen ownership)."
-    ],
-    "tags": [
-      "New Industry (KOIL)"
+      "The actual monitoring room is next door, staffed 24 hours a day, 365 days a year.",
+      "In a disaster, it serves as the town's disaster-prevention base.",
+      "In 2014, it was the sturdiest base-isolated building in the town, so it was installed here.",
+      "A gap is built in between the building and the surrounding ground to allow for movement during earthquakes."
     ]
   },
-  "88": {
-    "source_question": "KOILの料金・利用条件は？",
-    "question": "What are KOIL's fees and terms?",
+  "115": {
+    "source_question": "街のネット回線やWi-Fiは誰が管理していますか？",
+    "question": "Who manages the town's internet lines and Wi-Fi?",
     "answers": [
-      "Unlimited plan: 19,800 yen/month (9:00–23:00). 5-visit plan: 8,800 yen/month. Drop-in: 1,650 yen/day.",
-      "Locker: from 2,200 yen/month. Mail slot: 1,100 yen/month. Legal registration: 5,500 yen/month.",
-      "Weekend/holiday drop-in OK. Membership requires a business plan and screening (co-creation fit is a criterion)."
-    ],
-    "tags": [
-      "New Industry (KOIL)"
+      "Internet service inside homes is provided by Mitsui Fudosan Residential.",
+      "Free Wi-Fi is available in front of the station, and its operation is outsourced to the NTT Group.",
+      "The AEMS network was built by Hitachi and is maintained by Mitsui Fudosan Facilities."
     ]
   },
-  "89": {
-    "source_question": "KOIL STARTUP PROGRAMの支援内容は？",
-    "question": "What does the KOIL STARTUP PROGRAM offer?",
+  "116": {
+    "source_question": "データが漏えいしたらどうなりますか？",
+    "question": "What happens if data is leaked?",
     "answers": [
-      "Beyond office space — domain experts walk implementation with you (selective admission). Priority themes: decarbonization, disaster, mobility, life-science, etc.",
-      "Support: 1 year of KOIL free; TEP business-plan seminars; assigned-mentor coaching (3–4 months); pilot-project consultation; startup networking; legal/capital-strategy specials."
-    ],
-    "tags": [
-      "New Industry (KOIL)"
+      "The urban OS is built by companies such as BIPROGY and Hitachi.",
+      "The handling of personal information is overseen by UDCK Town Management and an ethics review system."
     ]
   },
-  "90": {
-    "source_question": "TEPとは？",
-    "question": "What is TEP?",
-    "answers": [
-      "Kashiwa-no-ha's startup-support organization — partnered with KOIL from its design stage.",
-      "KOIL STARTUP PROGRAM is co-hosted by Mitsui Fudosan + Kashiwa City, with TEP planning and running it.",
-      "Kashiwa City's own startup support ('Startup Concierge') is also delivered by TEP."
-    ],
-    "tags": [
-      "New Industry (KOIL)"
-    ]
-  },
-  "91": {
-    "source_question": "どんな企業が柏の葉に集積していますか？なぜ選ばれるのですか？",
-    "question": "Which enterprises cluster in Kashiwa-no-ha? Why?",
-    "answers": [
-      "SMC (pneumatic control, 37% global share; ~120bn yen investment; ~1,400 employees; completed Sep 2025); JSW (Nippon Steel Works, 2027 completion, new-materials R&D); Astellas Pharma; NCC East Hospital; All Blacks Japan base — and more.",
-      "Selection reasons: ①clustered research bodies, ②smart-wellness office, ③living-lab access, ④transit (25 km from Tokyo center, 34 min from Akihabara), ⑤cross-industry co-creation.",
-      "Framing: 'Not just office relocation — investment in a place for experiment and co-creation.'"
-    ],
-    "tags": [
-      "New Industry (KOIL)"
-    ]
-  },
-  "92": {
-    "source_question": "SMC用地の土地スキームは？",
-    "question": "How was SMC's land structured?",
-    "answers": [
-      "Kashiwa City owns; Mitsui Fudosan only holds usage rights (direct real-estate P&L for Mitsui is a loss).",
-      "Mitsui forwent an estimated 50-billion-yen sale profit — bringing Kashiwa City sale + corporate-tax revenue and building a long-term partnership across administrations.",
-      "For Mitsui, this is an 'asset-business' result: contributes to citywide value."
-    ],
-    "tags": [
-      "New Industry (KOIL)"
-    ]
-  },
-  "93": {
-    "source_question": "KOIL（コイル）はもっと住民に開かれた場所にできないか？",
-    "question": "Could KOIL be made more open to local residents?",
-    "answers": [
-      "KOIL is a paid facility and is not fully open to everyone, but residents can use the table-tennis area. Residents can also enjoy free food and drinks at events held twice a month."
-    ],
-    "tags": [
-      "New Industry Creation / KOIL"
-    ]
-  },
-  "94": {
-    "source_question": "KOILのスタートアップ企業で成功した事例、失敗した事例は？",
-    "question": "What are some successful and unsuccessful startup examples at KOIL?",
-    "answers": [
-      "The source cites Fuller as a success story supported by Mitsui and states that it was listed on the Mothers market.",
-      "Some companies appear to have depended too heavily on Mitsui Fudosan and had to close their operations when Mitsui's relevant business themes ended.",
-      "We understand that companies were initially welcomed broadly, including many without ties to Kashiwa-no-ha. Companies are now assessed for whether operating here has a meaningful purpose."
-    ],
-    "tags": [
-      "New Industry Creation / KOIL"
-    ]
-  },
-  "95": {
-    "source_question": "ゲートタワーにはどんな施設がありますか？賃貸棟にした理由は？",
-    "question": "What's inside Gate Tower? Why rental instead of sale?",
-    "answers": [
-      "Residential + tenants that embody mixed-use — Caps Clinic (open on weekends), lifestyle-proposing daycare 'Chicol', and other Kashiwa-no-ha-flavored tenants.",
-      "The rental format embodies 'aging with grace': periodic turnover brings fresh interaction and information, feeding city growth."
-    ],
-    "tags": [
-      "Facilities"
-    ]
-  },
-  "96": {
-    "source_question": "ラグビースクールジャパンとは？なぜ柏の葉に開校？",
-    "question": "What is Rugby School Japan? Why here?",
-    "answers": [
-      "Japan school of Britain's storied Rugby School (est. 1567; the Harry Potter filming location). Opened September 2023 — the metropolitan area's first authentic British boarding school.",
-      "Ages 11–18, target 780 students (opened with ~140 from 16+ countries). Fees ~4.5–5.5M yen tuition + ~2.9–3.2M yen boarding + ~1.5M yen other, per year.",
-      "Chosen as the school's first Asian base — drawn by Kashiwa-no-ha's hardware and community."
-    ],
-    "tags": [
-      "Facilities"
-    ]
-  },
-  "97": {
-    "source_question": "かけだし横丁のテナント選定は？名物「No.4」とは？",
-    "question": "How are Kakedashi Yokocho tenants selected? What is 'No.4'?",
-    "answers": [
-      "Mitsui Fudosan leads recruitment with quality first. Since opening (through COVID) only half turned over — mostly to expand elsewhere.",
-      "Day-to-day: Mitsui Fudosan Building Management.",
-      "'No.4' is a signature drink inspired by Kashiwa-no-ha's sunset — a co-creation among Kakedashi Yokocho, KOIL, and Kashiwa City (alcohol-free option available)."
-    ],
-    "tags": [
-      "Facilities"
-    ]
-  },
-  "98": {
-    "source_question": "太陽光パネルはどこにありますか？",
-    "question": "Where are the solar panels?",
-    "answers": [
-      "Installed across the rooftops of KOIL and Lalaport."
-    ],
-    "tags": [
-      "Facilities"
-    ]
-  },
-  "99": {
+  "117": {
     "source_question": "高層マンションの舗装は何トン車の消防車に耐えますか？",
     "question": "Can the pavement handle fire trucks — what tonnage?",
     "answers": [
       "Up to 8-ton trucks.",
       "Fire trucks periodically enter Nibangai's Green Axis; hydrant test points are distributed along the street.",
       "20-ton heavy fire truck access remains an open item."
-    ],
-    "tags": [
-      "Disaster & Resilience"
     ]
   },
-  "100": {
+  "118": {
     "source_question": "災害時、警備システムが救助の邪魔になりませんか？",
     "question": "Won't the security system block emergency rescue?",
     "answers": [
       "Concierges handle manual overrides.",
       "Mitsui facilities generally implement panic-open (automatic unlock in emergencies); condos are considered similar."
-    ],
-    "tags": [
-      "Disaster & Resilience"
     ]
   },
-  "101": {
+  "119": {
     "source_question": "防災用の水・トイレ・かまどベンチは？",
     "question": "What about emergency water, toilets, and kamado benches?",
     "answers": [
       "Kamado benches installed in parks. Lalaport has independent groundwater and fuel storage for 3 days.",
-      "Emergency toilets and drainage remain an open item, flagged by fire officials."
-    ],
-    "tags": [
-      "Disaster & Resilience"
+      "Emergency toilets and drainage remain an open item, flagged by fire officials.",
+      "At LaLaport Kashiwanoha, groundwater is pumped up and filtered through sand and activated carbon to make drinking water. About 90% of the water used is groundwater even in normal times, and in a disaster it can supply drinking water for ~110,000 people per day (assuming 3 L per person)."
     ]
   },
-  "102": {
+  "120": {
     "source_question": "防災教育の取り組みは？",
     "question": "What is the disaster-education work?",
     "answers": [
       "The 2023 'Hatsumei-no-ha' launched 'Saigai Monster' — a kids' disaster-experience game using smartphones to learn safe places in flooding/earthquake scenarios.",
       "Small-fire-truck visits organized with Gakken Nursery + local fire departments — building 'personal responsibility' from a young age."
-    ],
-    "tags": [
-      "Disaster & Resilience"
     ]
   },
-  "103": {
-    "source_question": "人の目による見守り（防犯対策）は三井不動産独自の取り組みなのか？",
-    "question": "Is community watchfulness as a crime-prevention measure unique to Mitsui Fudosan?",
+  "121": {
+    "source_question": "治安はどうですか？人の目による見守りは三井不動産独自の取り組みですか？",
+    "question": "How is public safety? Is watching over by people's eyes unique to Mitsui Fudosan?",
     "answers": [
-      "It is not unique to Mitsui Fudosan. It builds on the culture of neighbors greeting and checking in on one another that existed during the Showa era."
-    ],
-    "tags": [
-      "Disaster Preparedness and Resilience"
+      "Crime is not zero, but it is very low.",
+      "In addition to security cameras and AI cameras, the town is designed to keep people safe through watchful eyes and liveliness (this is also why the condominiums have no walls).",
+      "Watching over by people's eyes is not unique to us; it is an extension of the culture of \"calling out to one another\" that has existed since the Showa era."
     ]
   },
-  "104": {
+  "122": {
     "source_question": "防災面を考慮すると、高層マンションではなく高くても３－４階建てが良いのでは？",
     "question": "For disaster preparedness, wouldn't buildings of at most three or four stories be preferable to high-rise condominiums?",
     "answers": [
       "To create a compact, mixed-use city, it was necessary to concentrate the population accommodated per unit of land area."
-    ],
-    "tags": [
-      "Disaster Preparedness and Resilience"
     ]
   },
-  "105": {
-    "source_question": "なぜポートランド（米国）が参考モデルなのですか？",
-    "question": "Why is Portland (US) a reference model?",
+  "123": {
+    "source_question": "柏の葉カンファレンスセンターの規模は？避難所になりますか？",
+    "question": "How large is the Kashiwa-no-ha Conference Center? Can it serve as an evacuation shelter?",
+    "answers": [
+      "It has six meeting rooms of various sizes, and the largest, Room 5+6, can hold ~400 people in theater style.",
+      "As a temporary shelter for people unable to return home, it can accommodate ~1,000 people.",
+      "The storage warehouse is stocked with water, food, portable toilets, blankets, and more."
+    ]
+  },
+  "124": {
+    "source_question": "柏の葉は水害に強いですか？",
+    "question": "Is Kashiwa-no-ha resistant to flooding?",
+    "answers": [
+      "It sits on a plateau at a higher elevation than the surrounding area, so it is considered a relatively safe area.",
+      "For details, please check the Kashiwa City hazard map."
+    ]
+  },
+  "125": {
+    "source_question": "なぜポートランドが参考モデルなのですか？柏の葉は何を学びましたか？",
+    "question": "Why is Portland the reference model? What did Kashiwa-no-ha learn?",
     "answers": [
       "Regular on 'best US cities to live in' — implements ①compact + walkable (20-minute daily radius), ②local-first, ③citizen participation, ④data activation, ⑤privacy.",
-      "Kashiwa-no-ha translated these into '8 Goals.'"
-    ],
-    "tags": [
-      "Portland"
+      "Kashiwa-no-ha translated these into '8 Goals.'",
+      "'Compact and walkable' — commerce, offices, housing, and parks in a walking radius from the station.",
+      "Portland's blocks are small, ~60 m square (half the usual size in the US), which creates more intersections and corners, makes the town pleasant to stroll, and encourages people to move around.",
+      "Mixed-use: ground floor commerce, upper floors offices/housing — spreads day/night vibrancy and levels energy use."
     ]
   },
-  "106": {
-    "source_question": "ポートランドの気候変動対策の目標は？",
-    "question": "What are Portland's climate targets?",
+  "126": {
+    "source_question": "ポートランドの気候変動対策の目標や重視するKPIは？",
+    "question": "What are Portland's climate change goals and key KPIs?",
     "answers": [
       "The Climate Action Plan targets CO₂ cuts from 1990: 25% by 2020, 40% by 2030, 80% by 2050.",
-      "Heavy focus on decarbonizing transport."
-    ],
-    "tags": [
-      "Portland"
-    ]
-  },
-  "107": {
-    "source_question": "ポートランドが重視するKPIは？モビリティの方向性は？",
-    "question": "What KPI does Portland prioritize? Mobility direction?",
-    "answers": [
-      "'Share of single-occupant driving' — target: 61% (2012) → 20% (2030).",
+      "Heavy focus on decarbonizing transport.",
+      "It focuses on the \"share of people commuting alone by car,\" with a goal of reducing it to 30% or less by 2035.",
       "Design intent shifts toward carpool, share, public transit — and, where needed, low-carbon options like EVs."
-    ],
-    "tags": [
-      "Portland"
     ]
   },
-  "108": {
-    "source_question": "柏の葉はポートランドから何を学んだのですか？街区設計の工夫は？",
-    "question": "What did Kashiwa-no-ha learn from Portland? Block design?",
+  "127": {
+    "source_question": "海外や国内の他のスマートシティとの違い・優れている点は？連携はありますか？",
+    "question": "How does it differ from, or excel over, other smart cities in Japan and abroad? Is there any collaboration?",
     "answers": [
-      "'Compact and walkable' — commerce, offices, housing, and parks in a walking radius from the station.",
-      "Blocks are ~60 m square (half the US default) — more intersections & corners, richer strolling, natural circulation.",
-      "Mixed-use: ground floor commerce, upper floors offices/housing — spreads day/night vibrancy and levels energy use."
-    ],
-    "tags": [
-      "Portland"
-    ]
-  },
-  "109": {
-    "source_question": "ポートランド的な市民参加は柏の葉でどう実装していますか？",
-    "question": "How is Portland-style citizen participation implemented here?",
-    "answers": [
-      "'Our city is ours to build' — implemented via UDCK, where universities/government/enterprise/residents co-create through workshops and events."
-    ],
-    "tags": [
-      "Portland"
-    ]
-  },
-  "110": {
-    "source_question": "他のスマートシティと比較して優れている点は？連携はある？",
-    "question": "What sets Kashiwa-no-ha apart from other smart cities? Any collaboration?",
-    "answers": [
+      "In Europe and the US the focus is on digital technology and autonomous driving, while in Japan it is on energy saving, disaster prevention, and responding to an aging population. The town development planned by a Google-affiliated company in Toronto, Canada, drew criticism over privacy and was canceled in 2020, citing economic uncertainty caused by the COVID-19 pandemic.",
+      "In Japan, Utsunomiya is a transport and urban-structure model centered on LRT (next-generation light rail), while Aizu-Wakamatsu is a model in which the city, the University of Aizu, and companies collaborate to digitalize an existing town on an opt-in basis with residents' consent.",
+      "Kashiwa-no-ha is distinctive in that it built the town from almost empty land through public-private-academic partnership, advancing demonstrations while repeatedly building consensus with residents.",
       "①Long-running PPP city-making that keeps improving with age; ②surrounding land rights pre-organized (Mitsui or public), enabling long-horizon development; ③long-term asset management immune to short-term politics.",
       "No direct partnerships with other smart cities, but many observers from various countries visit."
-    ],
-    "tags": [
-      "Comparison"
     ]
   },
-  "111": {
-    "source_question": "日本の事例を海外にそのまま適用できますか？",
-    "question": "Can Japan's approach be transplanted overseas as-is?",
+  "128": {
+    "source_question": "日本の事例を海外に適用できますか？始めるならどこから着手するのが現実的？",
+    "question": "Can Japanese examples be applied overseas? Where would it be realistic to start?",
     "answers": [
       "Not as-is — institutional, cultural, transit, operator, and budget contexts differ.",
-      "Design philosophy (purpose→operation→improvement), PPP craft, and 'start small, stack outcomes' — these transfer well. Clarifying 'what preconditions matter' is essential at each visit."
-    ],
-    "tags": [
-      "Comparison"
-    ]
-  },
-  "112": {
-    "source_question": "海外都市が始めるならどこから着手するのが現実的？",
-    "question": "For an overseas city starting out, where's the realistic beachhead?",
-    "answers": [
+      "Design philosophy (purpose→operation→improvement), PPP craft, and 'start small, stack outcomes' — these transfer well. Clarifying 'what preconditions matter' is essential at each visit.",
       "Rather than a giant build, start where three conditions align: ①clear challenge, ②measurable outcome, ③runnable operation.",
       "Kashiwa-no-ha itself repeated small-cycle experiment → operation → improvement — accumulating stakeholder trust and data over time."
-    ],
-    "tags": [
-      "Comparison"
     ]
   },
-  "113": {
+  "129": {
     "source_question": "中国のような大規模開発と柏の葉の違いは？",
     "question": "How does Kashiwa-no-ha differ from China's mega-scale developments?",
     "answers": [
       "China is faster; Japan can also see policy shifts as governors change.",
       "Kashiwa-no-ha's differentiator: a 100-year horizon, listening to residents.",
       "For giants like China's State Grid, Kashiwa-no-ha exemplifies 'demand-side micro-optimization that stabilizes the macro grid.'"
-    ],
-    "tags": [
-      "Comparison"
     ]
   },
-  "114": {
+  "130": {
+    "source_question": "福岡の九大跡地（FUKUOKA Smart EAST）とは？",
+    "question": "What is the Kyushu University former-campus site in Fukuoka (FUKUOKA Smart EAST)?",
+    "answers": [
+      "It is the redevelopment of the former Kyushu University Hakozaki Campus site (~50 ha), of which the southern ~28.5 ha is being developed by a corporate group led by Sumitomo Corporation.",
+      "The town is scheduled to open in FY2028."
+    ]
+  },
+  "131": {
     "source_question": "視察はどんな業種がどれくらい来ていますか？",
     "question": "What industries visit on observation tours? How many?",
     "answers": [
       "Overseas: mostly real-estate and government stakeholders involved in smart-city or real-estate development.",
       "Domestic: highly diverse — academics, smart-city developers, students, and many more."
-    ],
-    "tags": [
-      "Tour Operations"
     ]
   },
-  "115": {
-    "source_question": "ツアー資料（スライド等）はもらえますか？",
-    "question": "Can we get tour materials (slides, etc.)?",
+  "132": {
+    "source_question": "ツアー資料（スライド・英語資料）はもらえますか？",
+    "question": "Can I get the tour materials (slides, English materials)?",
     "answers": [
       "Generally distribution is limited to printed brochures; slide data is not shared (handling varies by request and content).",
-      "Public materials can be downloaded here: https://www.kashiwanoha-smartcity.com/download/"
-    ],
-    "tags": [
-      "Tour Operations"
+      "Public materials can be downloaded here: https://www.kashiwanoha-smartcity.com/download/",
+      "English materials are available on Mitsui Fudosan's English site (https://www.mitsuifudosan.co.jp/english/business/development/kashiwanoha/)."
+    ]
+  },
+  "133": {
+    "source_question": "ツアーは誰が案内していますか？料金は？",
+    "question": "Who guides the tour? What is the fee?",
+    "answers": [
+      "Since April 2024, guides have been people who live or work locally.",
+      "The fee is ¥15,400 per person (tax included), or ¥18,000 for English-language service."
     ]
   }
 }

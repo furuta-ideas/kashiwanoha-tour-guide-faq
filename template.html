@@ -270,6 +270,7 @@
     text-shadow: 0 1px 2px rgba(0,0,0,.65), 0 0 6px rgba(0,0,0,.35);
     user-select: none;
   }
+  .login-footer .login-meta { font-size: .75rem; font-weight: 500; margin-top: 2px; }
 
   /* ---- Search screen ---- */
   .search-wrap {
@@ -584,7 +585,13 @@
         <div class="login-error" id="loginError"></div>
         <button type="submit" class="btn-primary" id="loginBtn"><span class="jp-only">ログイン</span><span class="en-only">Log in</span></button>
       </form>
-      <div class="login-footer">Rev23</div>
+      <div class="login-footer">
+        <div id="metaRev"></div>
+        <div class="login-meta">
+          <span class="jp-only">更新日時：<span class="meta-updated"></span>　FAQ件数：<span class="meta-count"></span>件</span>
+          <span class="en-only">Updated: <span class="meta-updated"></span>　FAQs: <span class="meta-count"></span></span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -696,6 +703,7 @@
 
   /* ---- FAQ DB (embedded; rebuilt from Excel) ---- */
   const FAQ_DB = /*__FAQ_DB__*/;
+  const FAQ_META = /*__FAQ_META__*/;
 
   /* ---- Constants ---- */
   const APP_VERSION = '1.0';
@@ -1045,26 +1053,31 @@
 
   /* ---- Category browse ---- */
   function getCategoriesInOrder() {
-    // Preserve first-seen order across FAQ_DB (which is id-sorted after build),
-    // so the chip order matches the master Excel row order.
+    // Main categories (each FAQ's first tag) in first-seen order — FAQ_DB is id-sorted,
+    // so this matches the master Excel order. Secondary-only tags (e.g. 1st Stage) follow.
     const seen = new Set();
     const list = [];
-    for (const rec of FAQ_DB) {
-      const t = (rec.tags && rec.tags[0]) ? String(rec.tags[0]).trim() : '';
-      if (t && !seen.has(t)) {
-        seen.add(t);
-        list.push(t);
-      }
-    }
+    const add = t => { t = t ? String(t).trim() : ''; if (t && !seen.has(t)) { seen.add(t); list.push(t); } };
+    for (const rec of FAQ_DB) add(rec.tags && rec.tags[0]);
+    for (const rec of FAQ_DB) (rec.tags || []).forEach(add);
     return list;
+  }
+
+  function tagEnMap() {
+    const m = {};
+    for (const rec of FAQ_DB) {
+      (rec.tags || []).forEach((t, i) => { if (rec.tags_en && rec.tags_en[i] && !m[t]) m[t] = rec.tags_en[i]; });
+    }
+    return m;
   }
 
   function renderCategoryButtons() {
     const wrap = $('#categoryButtons');
     if (!wrap) return;
     const cats = getCategoriesInOrder();
+    const en = tagEnMap();
     wrap.innerHTML = cats.map(c =>
-      `<button type="button" class="cat-btn" data-cat="${escapeHTML(c)}">${escapeHTML(c)}</button>`
+      `<button type="button" class="cat-btn" data-cat="${escapeHTML(c)}"><span class="jp-only">${escapeHTML(c)}</span><span class="en-only">${escapeHTML(en[c] || c)}</span></button>`
     ).join('');
     wrap.querySelectorAll('.cat-btn').forEach(b => {
       b.addEventListener('click', () => filterByCategory(b.getAttribute('data-cat')));
@@ -1159,12 +1172,12 @@
 
   function cardHTML(rec, idx) {
     const tagsField = pickField(rec, 'tags', 'tags_en');
-    const tag = (tagsField.value && tagsField.value[0]) ? escapeHTML(tagsField.value[0]) : '';
+    const tag = (tagsField.value && tagsField.value.length) ? tagsField.value.map(escapeHTML).join(' / ') : '';
     const qField = pickField(rec, 'question', 'question_en');
     const aField = pickField(rec, 'answers', 'answers_en');
     const showFallback = (currentLang === 'en' && (qField.fallback || aField.fallback));
 
-    const ans = (aField.value || []).slice(0, 3).map(a => {
+    const ans = (aField.value || []).map(a => {
       const cleaned = String(a).replace(/^[●⚫・･\s]+/, '');
       return `<p class="answer"><span class="bullet">●</span>${escapeHTML(cleaned)}</p>`;
     }).join('');
@@ -1347,6 +1360,10 @@
     // Restore lockout countdown if still active
     const until = parseInt(localStorage.getItem(STORAGE_KEYS.lockUntil) || '0', 10);
     if (until && Date.now() < until) startLockoutCountdown(until);
+
+    $('#metaRev').textContent = FAQ_META.rev;
+    $$('.meta-updated').forEach(el => { el.textContent = FAQ_META.updated; });
+    $$('.meta-count').forEach(el => { el.textContent = FAQ_DB.length; });
 
     $('#loginForm').addEventListener('submit', loginAttempt);
     $('#searchForm').addEventListener('submit', runSearch);
